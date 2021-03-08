@@ -11,6 +11,7 @@ we might make it so that we can abstract out its logic into the tag system.
 *** DONE use the Deck-Code-Lookup to get the names of the cards
 *** DONE run it through a transform, to turn into an array of [{code: '', name: ''}]
 *** TODO once we have this array, use it as a dictionary with the created decks
+*** TODO deck-code-lookup error handling
 *** example
 input: shuffled array of numbers
 output: shuffled array of cards

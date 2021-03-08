@@ -3,26 +3,18 @@ import {doTimes} from "./utils/doTimes"
 import { decode, encode } from 'lor-deckcode'
 
 export const CardLookup = (cardCode) => {
-  return data.filter(currentCard => {
-    if (cardCode === currentCard.cardCode) {
-      return true
-    } else {
-      return false
-    }
-  })
-  .map(card => 
-    {
-      return {name: card.name, code: card.cardCode} 
-    })
+  return data.find(currentCard => cardCode === currentCard.cardCode)
 }
 
 export const deckCodeTranslation = (deckCode: string) => {
   let newDeck = []
   let deck = decode(deckCode)
   deck.forEach(({code, count}) => {
-    let decoratedCard = CardLookup(code)
+    let fullCard = CardLookup(code)
+    // TODO need error handling here
+    let trimmedCard = {name: fullCard.name, code: fullCard.cardCode}
     doTimes(() => {
-      newDeck.push(decoratedCard)
+      newDeck.push(trimmedCard)
     }, count)
   })
   return newDeck
