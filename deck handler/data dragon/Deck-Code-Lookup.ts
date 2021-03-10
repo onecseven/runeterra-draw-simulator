@@ -1,12 +1,12 @@
 import * as data from './assets/en_us/data/set1-en_us.json';
-import {doTimes} from "./utils/doTimes"
-import { decode, encode } from 'lor-deckcode'
+import {doTimes} from "../../utils/doTimes"
+import { decode } from 'lor-deckcode'
 
 export const CardLookup = (cardCode) => {
   return data.find(currentCard => cardCode === currentCard.cardCode)
 }
 
-export const deckCodeTranslation = (deckCode: string) => {
+export const deckCodeTranslation = (deckCode: string): preCard[] => {
   let newDeck = []
   let deck = decode(deckCode)
   deck.forEach(({code, count}) => {
