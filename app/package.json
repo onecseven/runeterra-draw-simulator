@@ -1,12 +1,13 @@
 {
-  "name": "runeterra-draw-simulator-ui",
+  "name": "tatis-react-redux-boilerplate",
   "version": "0.0.1",
-  "description": "bruh",
+  "description": "simple react redux boilerplate to get quickly into hacking.",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development",
     "dist": "webpack --mode production"
   },
+
   "author": "tati",
   "license": "ISC",
   "devDependencies": {
