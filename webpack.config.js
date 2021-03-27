@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
   }
 
   return {
-    entry: './src/index.js',
+    entry: './app/src/index.js',
     devtool: dev ? 'source-map' : 'none',
     mode: 'development',
     module: {
