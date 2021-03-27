@@ -1,0 +1,6 @@
+* UI Tasklist
+** TODO Receive decklists
+*** DONE Input field for deck code
+*** TODO Deck code validity checker? Or does the lor-decode package contain that?
+*** TODO Action, reducers for this. Also figure out a structure for the code.
+** TODO Show decklist
