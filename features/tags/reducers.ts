@@ -3,7 +3,6 @@
 const keywordSearch = () => {
 
 }
-S
 export const tagReducers = (hand, action: ActionTag) => {
   switch (action.type) {
     case "KEYWORD": {

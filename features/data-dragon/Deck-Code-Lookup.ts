@@ -1,4 +1,4 @@
-import * as data from './assets/en_us/data/set1-en_us.json';
+import  data from "../../assets/set1-lite-en_us/en_us/data/set1-en_us.json"
 import {doTimes} from "../../utils/doTimes"
 import { decode } from 'lor-deckcode'
 

@@ -37,7 +37,7 @@ declare interface Counter {
 
 declare interface AbstractDeck {
   deck  : Card[]
-  initialMulligan: () => {preMulligan: number[], mullFunc: getStartingHand}
+  // initialMulligan: () => {preMulligan: number[], mullFunc: getStartingHand}
   // decorator: () => decoratedCard[]
 }
 

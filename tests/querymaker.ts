@@ -1,4 +1,4 @@
-import { Mulliganer } from '../Mulliganer'
+import { Mulliganer } from '../features/tags/mulligans/Mulliganer'
 import { checkArrays } from "../utils/array-equality"
 
 let makeCard = () => Math.floor(Math.random() * 10)

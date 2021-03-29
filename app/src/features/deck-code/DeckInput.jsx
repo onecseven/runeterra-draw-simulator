@@ -5,10 +5,12 @@ import {add} from "./deckSlice"
 export const DeckInput = () => {
   const dispatch = useDispatch()
   const [label, setLabel] = useState("")
+  
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(add({payload: label}))
+    dispatch(add({code: label}))
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

@@ -1,6 +1,9 @@
 * UI Tasklist
 ** TODO Receive decklists
 *** DONE Input field for deck code
-*** TODO Deck code validity checker? Or does the lor-decode package contain that?
-*** TODO Action, reducers for this. Also figure out a structure for the code.
+*** DONE Deck code validity checker? Or does the lor-decode package contain that?
+*** DONE Action, reducers for this. Also figure out a structure for the code.
 ** TODO Show decklist
+*** DONE connected the typescript to the react what the fuck
+*** DONE decklist in the store
+*** TODO decklist component
