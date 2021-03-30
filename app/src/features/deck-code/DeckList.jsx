@@ -1,8 +1,12 @@
 import React from "react"
-import {useDispatch} from 'react-redux'
+import { useSelector } from "react-redux"
+
 export const DeckList = () => {
-const dispatch = useDispatch()
-return (
-<div>
-</div>
-)
+  const deck = useSelector(state => state.deck.cards)
+  if (!deck) return null
+  return (<ol>
+    {deck.map(card => {
+      return (<li>{card.name}</li>)
+    })}
+  </ol>)
+}
