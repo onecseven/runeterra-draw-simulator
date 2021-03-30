@@ -12,7 +12,7 @@ export const deckCodeTranslation = (deckCode: string): preCard[] => {
     let deck = decode(deckCode)
     deck.forEach(({code, count}) => {
       let fullCard = CardLookup(code)
-      let trimmedCard = {name: fullCard.name, code: fullCard.cardCode}
+      let trimmedCard = {name: fullCard.name, code: fullCard.cardCode, assets: fullCard.assets, region: fullCard.region, cost: fullCard.cost}
       doTimes(() => {
         newDeck.push(trimmedCard)
       }, count)
