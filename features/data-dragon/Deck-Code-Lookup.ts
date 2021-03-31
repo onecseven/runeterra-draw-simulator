@@ -1,9 +1,9 @@
-import data from "../../assets/set1-lite-en_us/en_us/data/set1-en_us.json"
+import * as data from "../../assets/cardInfo.json"
 import {doTimes} from "../../utils/doTimes"
 import { decode } from 'lor-deckcode'
 
 export const CardLookup = (cardCode) => {
-  return data.find(currentCard => cardCode === currentCard.cardCode)
+  return data[cardCode] || null
 }
 
 export const deckCodeTranslation = (deckCode: string): preCard[] => {
