@@ -1,5 +1,6 @@
 import React from "react"
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux"
+import { selectCard } from "../card/cardSlice"
 
 /*
 declare interface MulliganQuery {
@@ -14,12 +15,17 @@ declare interface MulliganQuery {
 }
 */
 
-
 export const MulliganQueryBuilder = () => {
-const dispatch = useDispatch()
-return (
-<div>
-  
-</div>
-)
+  const selectedCard = useSelector((state) => state.card.selectedCard)
+  const deck = useSelector(state => state.deck.cards)
+  if (!selectedCard || !deck) return null
+  let noRepeatDeck = [...new Set(deck)] //_.unique
+  let card = noRepeatDeck.find(({code}) => code === selectedCard)
+  return (
+    <div className="rules">
+      Placeholder. Selected card: {card.name}
+      I'm thinking of having options, like buttons that stay pressed to mark whhich one you pressed
+      [KEEP] [THROWN]
+    </div>
+  )
 }
