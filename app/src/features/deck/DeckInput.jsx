@@ -4,7 +4,7 @@ import {add} from "./deckSlice"
 
 export const DeckInput = () => {
   const dispatch = useDispatch()
-  const [label, setLabel] = useState("")
+  const [label, setLabel] = useState("CEBAIAIFB4WDANQIAEAQGDAUDAQSIJZUAIAQCBIFAEAQCBAA")
   
   const handleSubmit = (event) =>{
     event.preventDefault()

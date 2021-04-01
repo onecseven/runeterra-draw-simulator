@@ -12,8 +12,8 @@ class App extends Component {
         <Provider store={store}>
           <div className="grid-container">
             <div className="deck">
-              <h1> Submit deck code </h1>
-              <DeckInput />
+              <h1> Submit deck code</h1>
+              <DeckInput />)
               <DeckList />
             </div>
           </div>
