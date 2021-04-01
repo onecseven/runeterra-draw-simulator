@@ -10,8 +10,8 @@ body {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "deck card rules"
-    "deck . rules";
+    "deck rules card"
+    "deck rules .";
 }
 .deck { grid-area: deck; }
 .card { grid-area: card; }

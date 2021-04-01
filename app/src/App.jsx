@@ -11,13 +11,13 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
+              <h1> Submit deck code</h1>
           <div className="grid-container">
             <div className="deck">
-              <h1> Submit deck code</h1>
               <DeckInput />)
               <DeckList />
-              <MulliganQueryBuilder/>
             </div>
+              <MulliganQueryBuilder/>
           </div>
         </Provider>
       </div>
