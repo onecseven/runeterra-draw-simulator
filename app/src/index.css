@@ -3,3 +3,16 @@ body {
   color: cyan;
   font-family: 'Ubuntu Mono', Helvetica, Arial, sans-serif;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "deck card rules"
+    "deck . rules";
+}
+.deck { grid-area: deck; }
+.card { grid-area: card; }
+.rules { grid-area: rules; }
