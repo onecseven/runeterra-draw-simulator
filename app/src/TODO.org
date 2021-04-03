@@ -12,3 +12,4 @@
 **** TODO Simple Queries with Placeholder cards
 **** TODO Simple Queries with real cards from the given deck
 **** TODO Nested queries.
+**** TODO Add a subcomponent to make a form to structure the rule.
