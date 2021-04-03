@@ -8,8 +8,8 @@
 *** DONE decklist in the store
 *** DONE decklist component
 ** TODO Query Builders
-*** TODO Write component that can write Mulligan Queries and send them to the store
-**** TODO Simple Queries with Placeholder cards
-**** TODO Simple Queries with real cards from the given deck
-**** TODO Nested queries.
-**** TODO Add a subcomponent to make a form to structure the rule.
+*** TODO Write component that can write MULTIPLE Mulligan Queries and send them to the store
+**** TODO Add a subcomponent to make a form to create a MulliganQuery.
+**** DONE Create subcomponent to handle the CONDITION part of the MulliganQuery
+**** TODO Create subcomponent to handle the ACTION part of the MulliganQuery
+**** TODO Create a subcumponent
