@@ -6,7 +6,7 @@ export const  Card = ({card}) => {
   const dispatch = useDispatch()
   console.log(card)
   const handleSelect = () => {
-    dispatch(selectCard(card.code))
+    dispatch(selectCard(card))
   }
 return (<div onClick={handleSelect}>
   <p>{card.name}</p>

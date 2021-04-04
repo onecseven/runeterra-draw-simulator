@@ -6,12 +6,12 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "deck rules"
-    "deck tag";
+    "deck rules ."
+    "deck tag .";
 }
 .deck { grid-area: deck; }
 .card { grid-area: tag; }
