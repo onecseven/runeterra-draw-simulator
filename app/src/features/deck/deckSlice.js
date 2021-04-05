@@ -26,7 +26,6 @@ export const deckSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { remove, add, update } = deckSlice.actions
 
 export default deckSlice.reducer

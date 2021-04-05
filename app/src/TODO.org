@@ -9,6 +9,8 @@
 *** DONE decklist component
 ** TODO Query Builders
 *** TODO Write component that can write MULTIPLE Mulligan Queries and send them to the store
+**** TODO MulliganRules should show the contents of state.mulligan.queries
+***** TODO it should also a [+] button to add more rules.
 **** DONE Add a subcomponent to make a form to create a MulliganQuery.
 **** DONE Create subcomponent to handle the CONDITION part of the MulliganQuery
 **** DONE Create subcomponent to handle the ACTION part of the MulliganQuery

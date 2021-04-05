@@ -13,7 +13,6 @@ export const cardSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { selectCard } = cardSlice.actions
 
 export default cardSlice.reducer

@@ -2,19 +2,6 @@ import React, { useState, useCallback } from "react"
 import { useSelector } from "react-redux"
 import { Dropdown } from "../utils/Dropdown"
 
-/*
-declare interface MulliganQuery {
-  card: [number]
-  priority: number
-  onHit: {
-    action: KEEP THROW
-    Condition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-    referenceCards: number[]
-  }
-}
-*/
-
-
 const CONDITIONS = [
   { value: "ALWAYS", name: "Always" },
   { value: "PRESENCE", name: "In the presence of another card" },
