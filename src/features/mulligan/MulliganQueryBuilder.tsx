@@ -1,6 +1,9 @@
 import React, { useState, useCallback } from "react"
 import { useAppSelector as useSelector } from "../../store/hooks"
+import { useAppDispatch as useDispatch } from "../../store/hooks"
 import { Dropdown } from "../utils/Dropdown"
+import { add } from "./mulliganSlice"
+import { clearSelection, selectCard } from "../card/cardSlice"
 
 const CONDITIONS = [
   { value: "ALWAYS", name: "Always" },
@@ -10,30 +13,40 @@ const CONDITIONS = [
 
 const ACTIONS = [
   { value: "KEEP", name: "Keep" },
-  { value: "THROW", name: "Thro" },
+  { value: "THROW", name: "Throw" },
 ]
 
-export const MulliganQueryBuilder = () => {
-  const selectedCard = useSelector((state) => state.card.selectedCard)
-  const deck = useSelector((state) => state.deck.cards) || null
+type BuilderProps = {
+  selectedCard: Card
+}
 
-  const [action, setAction] = useState(null)
-  const [condition, setCondition] = useState("ALWAYS")
-  const [referenceCard, setReferenceCard] = useState(null)
+export const MulliganQueryBuilder = ({ selectedCard }: BuilderProps) => {
+  const deck = useSelector((state) => state.deck.cards)
+  const dispatch = useDispatch()
+  const [action, setAction] = useState<mulliganAction | null>(null)
+  const [condition, setCondition] = useState<mulliganCondition | null>("ALWAYS")
+  const [referenceCard, setReferenceCard] = useState<Card["code"] | null>(null)
 
-  const conditionCallback = useCallback((condition) => setCondition(condition),[])
+  const conditionCallback = useCallback(
+    (condition) => setCondition(condition),
+    []
+  )
   const actionCallback = useCallback((action) => setAction(action), [])
-  const deckCallback = useCallback((card) =>  setReferenceCard(card), [])
+  const deckCallback = useCallback((card) => setReferenceCard(card), [])
 
-  if (!selectedCard || !deck) return null
+  const handleSubmit = () => {
+    dispatch(add({ action, condition, referenceCard, selectedCard }))
+    dispatch(clearSelection({payload: selectedCard}))
+  }
+
+  if (!deck || !selectedCard ) return null
 
   const deckOptions = [...new Set(deck)].map(({ name, code }) => {
     return { name: name, value: code }
   }) //_.uniqs the deck, and formats it in the way the dropdown expects
 
   return (
-    <div className="rules">
-      <h1>Selected card: {selectedCard.name}</h1>
+    <div>
       <br />
       <Dropdown
         options={ACTIONS}
@@ -52,6 +65,7 @@ export const MulliganQueryBuilder = () => {
           onSelectedChange={deckCallback}
         />
       )}
+      <button onClick={handleSubmit}>Submit mulligan rule</button>
     </div>
   )
 }

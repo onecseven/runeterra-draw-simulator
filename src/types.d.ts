@@ -1,14 +1,14 @@
 // declare type Card = number
-declare type Action = "KEEP" | "THROW"
-declare type Condition = "ALWAYS" | "ONLY" | "UNLESS"
-declare type Predicate = "PRESENCE" | "ABSENCE"
+
+declare type mulliganAction = "KEEP" | "THROW"
+declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
 declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD"
+
 //whatever UI element gathers these should be ordered by priority
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
 declare interface asset { gameAbsolutePath: string, fullAbsolutePath: string}
-
 
 declare interface Card {
   code: string
@@ -37,21 +37,15 @@ declare interface Counter {
   hits: Hand[]
 }
 
-//DEPRECATED AND CONFUSING PART OF THE APP
-
-declare interface AbstractDeck {
-  deck  : Card[]
-  // initialMulligan: () => {preMulligan: number[], mullFunc: getStartingHand}
-  // decorator: () => decoratedCard[]
-}
 
 declare interface MulliganQuery {
-  card: [number]
+  card: Card["code"]
   priority: number
   onHit: {
-    action: Action
-    condition: Condition
-    predicate: Predicate
-    referenceCards: number[]
+    action: mulliganAction,
+    condition: mulliganCondition,
+    referenceCards: Card["code"][]
   }
 }
+
+//DEPRECATED AND CONFUSING PART OF THE APP

@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
-import {deckCodeTranslation} from "./Deck-Code-Lookup.ts"
+import {deckCodeTranslation} from "./Deck-Code-Lookup"
 
+type initialState = {
+  code: string,
+  cards: Card[]
+}
+
+const initialState: initialState = {
+  code: "",
+  cards: []
+}
 
 export const deckSlice = createSlice({
   name: "deck",
-  initialState: {
-    code: "",
-    cards: []
-  },
+  initialState,
   reducers: {
     add: (state, action) => {
       let {code} = action.payload

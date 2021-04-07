@@ -7,6 +7,7 @@ import "./nes.min.css"
 import "./App.css"
 import { DeckList } from "./features/deck/DeckList"
 import { MulliganQueryBuilder } from "./features/mulligan/MulliganQueryBuilder"
+import { MulliganContainer } from "./features/mulligan/MulliganContainer"
 
 class App extends Component {
   render() {
@@ -14,13 +15,15 @@ class App extends Component {
       <div className="App">
         <Provider store={store}>
           <h1>Submit deck code</h1>
-          <br/>
+          <br />
           <div className="grid-container">
             <div className="deck">
               <DeckInput />
               <DeckList />
             </div>
-            <MulliganQueryBuilder />
+            <div className="rules">
+              <MulliganContainer/>
+            </div>
           </div>
         </Provider>
       </div>

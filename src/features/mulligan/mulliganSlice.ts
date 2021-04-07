@@ -1,21 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-/*
+declare type mulliganAction = "KEEP" | "THROW"
+declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
+
 declare interface MulliganQuery {
-  card: [number]
+  card: Card["code"]
   priority: number
   onHit: {
-    action: KEEP THROW
-    Condition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-    referenceCards: number[]
+    action: mulliganAction,
+    condition: mulliganCondition,
+    referenceCards: Card["code"][]
   }
 }
-*/
+
+const queries: MulliganQuery[] = []
+
 
 export const mulliganSlice = createSlice({
   name: "mulligan",
   initialState: {
-    queries: [],
+    queries
   },
   reducers: {
     add: (state, action) => {

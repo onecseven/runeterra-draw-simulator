@@ -4,7 +4,6 @@ import { Card } from "../card/Card"
 
 export const DeckList = () => {
   const deck = useSelector(state => state.deck.cards)
-  console.log(deck)
   if (!deck) return null
   return (<ol>
     {deck.map(card => {
