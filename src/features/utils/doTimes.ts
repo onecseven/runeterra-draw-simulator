@@ -6,5 +6,5 @@ export const doTimes = (iteratee: Function, n: number): boolean => {
     iteratee()
     n--
   }
-  return
+  return true
 }

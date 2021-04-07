@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background-color: #193549 ;
+  color: #ff9d00  ;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "deck rules ."
+    "deck tag .";
+}
+.deck { grid-area: deck; }
+.card { grid-area: tag; }
+.rules { grid-area: rules; }

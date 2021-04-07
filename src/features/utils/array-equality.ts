@@ -1,4 +1,4 @@
-export const checkArrays = function (arr1, arr2){
+export const checkArrays = function (arr1: any[], arr2: any[]){
   var nested = function(item){
     if (Array.isArray(item)){
       return true;

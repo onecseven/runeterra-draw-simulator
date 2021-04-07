@@ -7,11 +7,15 @@ declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD"
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
-declare type Hand = Card[]
+declare interface asset { gameAbsolutePath: string, fullAbsolutePath: string}
 
-declare interface preCard {
+
+declare interface Card {
   code: string
-  name?: string
+  name: string
+  assets: asset[]
+  region: string
+  cost: number
 }
 
 declare interface ActionTag {
@@ -21,7 +25,7 @@ declare interface ActionTag {
     timing?: "EXACT" | "RELATIVE"
   }
 }
-declare interface Card extends preCard {
+declare interface decoratedCard extends preCard {
   name?: string
   cardIndex: number
   tags?: ActionTag[]

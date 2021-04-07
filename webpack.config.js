@@ -1,45 +1,45 @@
-const path = require('path');
-const webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path")
+const webpack = require("webpack")
+var HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = (env, argv) => {
-  const dev = argv.mode === 'development';
+  const dev = argv.mode === "development"
 
-  const plugins = [new HtmlWebpackPlugin()];
+  const plugins = [new HtmlWebpackPlugin()]
 
   if (dev) {
-    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(new webpack.HotModuleReplacementPlugin())
   }
 
   return {
-    entry: './app/src/index.js',
-    devtool: dev ? 'source-map' : 'none',
-    mode: 'development',
+    entry: "./src/index.tsx",
+    devtool: "source-map",
+    mode: "development",
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.tsx?$/,
           exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader',
-          options: { presets: ['@babel/env'] }
+          loader: "ts-loader",
+          // options: { presets: ['@babel/env'] }
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
-        }
-      ]
+          use: ["style-loader", "css-loader"],
+        },
+      ],
     },
-    resolve: { extensions: ['*', '.js', '.jsx'] },
+    resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
     output: {
-      path: path.resolve(__dirname, 'dist/'),
-      filename: 'bundle.js'
+      path: path.resolve(__dirname, "dist/"),
+      filename: "bundle.js",
     },
     devServer: {
-      contentBase: path.join(__dirname, 'public/'),
+      contentBase: path.join(__dirname, "public/"),
       port: 3000,
-      publicPath: 'http://localhost:3000',
-      hotOnly: true
+      publicPath: "http://localhost:3000",
+      hotOnly: true,
     },
-    plugins
-  };
-};
+    plugins,
+  }
+}

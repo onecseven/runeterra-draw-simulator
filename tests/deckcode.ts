@@ -1,5 +1,5 @@
-import {deckCodeTranslation} from "../features/data-dragon/Deck-Code-Lookup"
+// import {deckCodeTranslation} from "../features/data-dragon/Deck-Code-Lookup"
 
-let test = deckCodeTranslation('CEBAIAIFB4WDANQIAEAQGDAUDAQSIJZUAIAQCBIFAEAQCBAA')
+// let test = deckCodeTranslation('CEBAIAIFB4WDANQIAEAQGDAUDAQSIJZUAIAQCBIFAEAQCBAA')
 
-console.log(JSON.stringify(test, null, 2))
+// console.log(JSON.stringify(test, null, 2))
