@@ -4,9 +4,8 @@ import { Provider } from "react-redux"
 import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
 import "./nes.min.css"
-import "./App.css"
+import "./App.css"  
 import { DeckList } from "./features/deck/DeckList"
-import { MulliganQueryBuilder } from "./features/mulligan/MulliganQueryBuilder"
 import { MulliganContainer } from "./features/mulligan/MulliganContainer"
 
 class App extends Component {

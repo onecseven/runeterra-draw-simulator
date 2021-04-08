@@ -4,7 +4,7 @@ type initialState = {
   selectedCard: Card | null
 }
 
-const initialState = {
+const initialState: initialState = {
   selectedCard: null
 }
 

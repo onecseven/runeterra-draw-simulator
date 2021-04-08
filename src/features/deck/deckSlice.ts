@@ -6,7 +6,7 @@ type initialState = {
   cards: Card[]
 }
 
-const initialState: initialState = {
+const initialState: initialState= {
   code: "",
   cards: []
 }

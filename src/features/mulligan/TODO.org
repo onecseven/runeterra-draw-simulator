@@ -3,3 +3,4 @@
 ** TODO Create a component that reads the Mulligan Queries and displays them
 ** TODO Create a component that has the [+] button that once pressed displays the MulliganQueryBuilder
 ** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
+** TODO IMPORTANT Make the add action on mulliganSlice ignore malformed actions

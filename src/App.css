@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
-  background-color: #193549 ;
-  color: #ff9d00  ;
-  font-family: 'Press Start 2P', cursive;
+  background-color: #193549;
+  color: hsl(37, 100%, 50%);
+  font-family: "Press Start 2P", cursive, 'Ubuntu Mono', Helvetica, Arial, sans-serif;
+}
+
+h1{
+  margin-left: 2%;
 }
 
 .grid-container {
@@ -15,6 +19,31 @@ body {
     "deck rules ."
     "deck tag .";
 }
-.deck { grid-area: deck; }
-.card { grid-area: tag; }
-.rules { grid-area: rules; }
+.deck {
+  grid-area: deck;
+
+  margin-left: 10%;
+}
+.deck-input {
+  margin-bottom: 5%;
+}
+    
+ol,
+ul {
+  list-style: none;
+}
+
+.card {
+  grid-area: tag;
+}
+.rules {
+  grid-area: rules;
+}
+
+option{
+  font-family: "Press Start 2P", 'Ubuntu Mono', Helvetica, Arial, sans-serif;
+}
+
+.selected{
+  background-color: #33698f ;
+}

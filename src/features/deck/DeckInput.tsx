@@ -12,7 +12,7 @@ export const DeckInput = () => {
   }
 
   return (
-    <div>
+    <div className="deck-input">
       <form onSubmit={handleSubmit}>
         <input 
         type="text"

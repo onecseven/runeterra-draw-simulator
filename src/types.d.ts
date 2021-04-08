@@ -13,9 +13,13 @@ declare interface asset { gameAbsolutePath: string, fullAbsolutePath: string}
 declare interface Card {
   code: string
   name: string
-  assets: asset[]
+  assets?: asset[]
   region: string
   cost: number
+}
+
+declare interface formattedCard extends Card {
+  count: number
 }
 
 declare interface ActionTag {
