@@ -8,7 +8,10 @@ declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD"
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
-declare interface asset { gameAbsolutePath: string, fullAbsolutePath: string}
+declare interface asset {
+  gameAbsolutePath: string
+  fullAbsolutePath: string
+}
 
 declare interface Card {
   code: string
@@ -20,6 +23,18 @@ declare interface Card {
 
 declare interface formattedCard extends Card {
   count: number
+}
+
+declare namespace Dropdown {
+  interface option {
+    name: string
+    value: string
+  }
+  interface props {
+    onSelectedChange: Function
+    options: option[]
+    name: string
+  }
 }
 
 declare interface ActionTag {
@@ -41,13 +56,12 @@ declare interface Counter {
   hits: Hand[]
 }
 
-
 declare interface MulliganQuery {
   card: Card["code"]
   priority: number
   onHit: {
-    action: mulliganAction,
-    condition: mulliganCondition,
+    action: mulliganAction
+    condition: mulliganCondition
     referenceCards: Card["code"][]
   }
 }

@@ -1,7 +1,8 @@
 import React, {useState} from "react"
 
-export const Dropdown = ({ onSelectedChange, options, name}) => {
-  const [localAction, setlocalAction] = useState("")
+
+export const Dropdown = ({ onSelectedChange, options, name}: Dropdown.props) => {
+  const [localAction, setlocalAction] = useState(options[0].value)
   const handleChange = (e) => {
     let condition = e.target.value
     setlocalAction(condition)

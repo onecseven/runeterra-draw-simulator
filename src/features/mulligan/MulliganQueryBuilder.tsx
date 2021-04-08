@@ -15,7 +15,7 @@ export const MulliganQueryBuilder = ({
 }: BuilderProps) => {
   const deck = useSelector((state) => state.deck.cards)
   const dispatch = useDispatch()
-  const [action, setAction] = useState<mulliganAction | null>(null)
+  const [action, setAction] = useState<mulliganAction | null>("KEEP")
   const [condition, setCondition] = useState<mulliganCondition | null>("ALWAYS")
   const [referenceCard, setReferenceCard] = useState<Card["code"] | null>(null)
 
@@ -25,7 +25,7 @@ export const MulliganQueryBuilder = ({
   const deckCallback = useCallback((card) => setReferenceCard(card), [])
 
   const handleSubmit = () => {
-    dispatch(add({ action, condition, referenceCard, Card: selectedCard.code }))
+    dispatch(add({mulliganAction: action, condition, reference: referenceCard, referent: selectedCard.code }))
     goDormant()
   }
 

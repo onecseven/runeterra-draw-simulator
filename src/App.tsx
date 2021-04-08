@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { hot } from "react-hot-loader"
+// import { hot } from "react-hot-loader"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
@@ -30,4 +30,5 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App)
+// export default hot(module)(App)
+export default App

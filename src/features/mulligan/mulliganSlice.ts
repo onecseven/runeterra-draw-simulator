@@ -1,28 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-declare type mulliganAction = "KEEP" | "THROW"
-
-declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-
-export const CONDITIONS = [
+export const CONDITIONS: Dropdown.option[] = [
   { value: "ALWAYS", name: "Always" },
   { value: "PRESENCE", name: "In the presence of another card" },
   { value: "ABSENCE", name: "In the absence of another card" },
 ]
 
-export const ACTIONS = [
+export const ACTIONS: Dropdown.option[] = [
   { value: "KEEP", name: "Keep" },
   { value: "THROW", name: "Throw" },
 ]
 
 declare interface MulliganQuery {
-  card: Card["code"]
+  referent: Card["code"]
   priority: number
   onHit: {
     action: mulliganAction,
     condition: mulliganCondition,
     referenceCards: Card["code"][]
   }
+}
+
+const validateMulligan = (
+  card: Card["code"],
+  action: mulliganAction,
+  condition: mulliganCondition,
+  reference: Card["code"]
+): boolean => {
+  if (card && action && condition) {
+    if (condition != "ALWAYS" && reference) {
+      return true
+    } else if (condition == "ALWAYS") {
+      return true
+    } else {
+      return false
+    }
+  } else return false
 }
 
 const queries: MulliganQuery[] = []
@@ -35,7 +48,19 @@ export const mulliganSlice = createSlice({
   },
   reducers: {
     add: (state, action) => {
-      state.queries.push(action.payload)
+      const  {mulliganAction, condition, referent, reference} = action.payload
+      if (validateMulligan(referent, mulliganAction, condition, reference)){
+        let query = {
+          referent,
+          priority: 1,
+          onHit: {
+            action: mulliganAction,
+            condition,
+            referenceCards: [reference]
+          }
+        }
+        state.queries.push(query)
+      }
       return state
     },
   },
