@@ -8,10 +8,6 @@ declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD"
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
-declare interface asset {
-  gameAbsolutePath: string
-  fullAbsolutePath: string
-}
 
 declare interface Card {
   code: string
@@ -20,6 +16,22 @@ declare interface Card {
   region: string
   cost: number
 }
+
+declare interface asset {
+  gameAbsolutePath: string
+  fullAbsolutePath: string
+}
+
+declare interface MulliganQuery {
+  referent: Card["code"]
+  priority: number
+  onHit: {
+    action: mulliganAction
+    condition: mulliganCondition
+    referenceCard: Card["code"]
+  }
+}
+
 
 declare interface formattedCard extends Card {
   count: number
@@ -44,11 +56,6 @@ declare interface ActionTag {
     timing?: "EXACT" | "RELATIVE"
   }
 }
-declare interface decoratedCard extends preCard {
-  name?: string
-  cardIndex: number
-  tags?: ActionTag[]
-}
 
 declare interface Counter {
   id: number
@@ -56,14 +63,5 @@ declare interface Counter {
   hits: Hand[]
 }
 
-declare interface MulliganQuery {
-  card: Card["code"]
-  priority: number
-  onHit: {
-    action: mulliganAction
-    condition: mulliganCondition
-    referenceCards: Card["code"][]
-  }
-}
 
 //DEPRECATED AND CONFUSING PART OF THE APP
