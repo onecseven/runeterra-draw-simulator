@@ -23,6 +23,6 @@
   },
   "include": [
     "src/**/*"
-, "src"  ],
+, "src", "features/deck handler/Deck-Creator.ts"  ],
   "exclude":["./dist","./node_modules"]
 }
