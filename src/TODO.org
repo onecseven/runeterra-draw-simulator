@@ -7,14 +7,15 @@
 *** DONE connected the typescript to the react what the fuck
 *** DONE decklist in the store
 *** DONE decklist component
-** TODO Query Builders
-*** TODO Write component that can write MULTIPLE Mulligan Queries and send them to the store
-**** TODO MulliganRules should show the contents of state.mulligan.queries
+** DONE Query Builders
+*** DONE Write component that can write MULTIPLE Mulligan Queries and send them to the store
+**** DONE MulliganRules should show the contents of state.mulligan.queries
 ***** TODO it should also a [+] button to add more rules.
 **** DONE Add a subcomponent to make a form to create a MulliganQuery.
 **** DONE Create subcomponent to handle the CONDITION part of the MulliganQuery
 **** DONE Create subcomponent to handle the ACTION part of the MulliganQuery
 **** DONE Create a subcumponent to handle the REFERENCECARD part of the Mulligan Query
-**** TODO Store connection
-*** TODO Write a component that can write MULTIPLE tags and send them to the store
-** TODO Migrate to typescript!!!
+**** DONE Store connection
+*** DONE Write a component that can write MULTIPLE tags and send them to the store
+** DONE Migrate to typescript!!!
+** TODO Create a DeckContainer

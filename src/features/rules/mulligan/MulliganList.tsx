@@ -1,5 +1,5 @@
 import React from "react"
-import { useAppSelector as useSelector } from "../../store/hooks"
+import { useAppSelector as useSelector } from "../../../store/hooks"
 import {ruleTranslator} from "./mulliganSlice"
 
 

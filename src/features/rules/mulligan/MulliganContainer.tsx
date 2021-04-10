@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react"
-import { useAppSelector as useSelector } from "../../store/hooks"
-import { selectCard } from "../card/cardSlice"
+import { useAppSelector as useSelector } from "../../../store/hooks"
+import { selectCard } from "../../card/cardSlice"
 import { MulliganQueryBuilder } from "./MulliganQueryBuilder"
 import { MulliganList } from "./MulliganList"
 

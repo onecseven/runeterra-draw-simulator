@@ -6,7 +6,7 @@ import { DeckInput } from "./features/deck/DeckInput"
 import "./nes.min.css"
 import "./App.css"  
 import { DeckList } from "./features/deck/DeckList"
-import { MulliganContainer } from "./features/mulligan/MulliganContainer"
+import { RulesContainer } from "./features/rules/RulesContainer"
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
               <DeckList />
             </div>
             <div className="rules">
-              <MulliganContainer/>
+              <RulesContainer/>
             </div>
           </div>
         </Provider>

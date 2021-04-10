@@ -11,8 +11,8 @@ we might make it so that we can abstract out its logic into the tag system.
 *** DONE use the Deck-Code-Lookup to get the names of the cards
 *** DONE run it through a transform, to turn into an array of [{code: '', name: ''}]
 *** DONE deck-code-lookup error handling
-*** TODO consolidate all the data dragons into one object
-*** TODO draw all the different screens or something
+*** DONE consolidate all the data dragons into one object
+*** DONE draw all the different screens or something
 *** example     
 input: shuffled array of numbers
 output: shuffled array of cards
