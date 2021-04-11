@@ -3,6 +3,7 @@ import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/Dropdown"
 import { add, CONDITIONS, ACTIONS } from "./mulliganSlice"
+import {RadioChoices} from "../../utils/RadioChoices"
 
 type BuilderProps = {
   selectedCard: Card
@@ -38,12 +39,12 @@ export const MulliganQueryBuilder = ({
   return (
     <div>
       <br />
-      <Dropdown
+      <RadioChoices
         options={ACTIONS}
         name={"actions"}
         onSelectedChange={actionCallback}
       />
-      <Dropdown
+      <RadioChoices
         options={CONDITIONS}
         name={"conditions"}
         onSelectedChange={conditionCallback}

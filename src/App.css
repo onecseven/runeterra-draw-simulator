@@ -4,6 +4,7 @@ body {
   background-color: #193549;
   color: hsl(37, 100%, 50%);
   font-family: "Press Start 2P", cursive, 'Ubuntu Mono', Helvetica, Arial, sans-serif;
+  --main-bg-color:  #193549;
 }
 
 h1{
@@ -19,6 +20,7 @@ h1{
     "deck rules ."
     "deck tag .";
 }
+
 .deck {
   grid-area: deck;
 
@@ -27,6 +29,7 @@ h1{
 .deck-input {
   margin-bottom: 5%;
 }
+
     
 ol,
 ul {
@@ -40,10 +43,15 @@ ul {
   grid-area: rules;
 }
 
+
+
 option{
   font-family: "Press Start 2P", 'Ubuntu Mono', Helvetica, Arial, sans-serif;
 }
 
 .selected{
   background-color: #33698f ;
+}
+.trans{
+  background-color: #193549 ;
 }
