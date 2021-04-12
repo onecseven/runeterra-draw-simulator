@@ -1,12 +1,17 @@
-// declare type Card = number
 
 declare type mulliganAction = "KEEP" | "THROW"
 declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD"
+declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "GROUP"
 
-//whatever UI element gathers these should be ordered by priority
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
+
+declare interface Hand {
+  code: Card["code"]
+  name: Card["name"]
+  ids: Counter["id"][]
+}
+
 
 
 declare interface Card {
@@ -32,7 +37,6 @@ declare interface MulliganQuery {
   }
 }
 
-
 declare interface formattedCard extends Card {
   count: number
 }
@@ -49,19 +53,17 @@ declare namespace Dropdown {
   }
 }
 
-declare interface ActionTag {
+declare interface Tag {
   type: TagType
-  payload: {
-    turn?: number
-    timing?: "EXACT" | "RELATIVE"
-  }
+  turn?: number
+  timing?: "EXACT" | "RELATIVE"
+  reference: Card
+  referents?: Card[]
+  groupName?: string
 }
 
 declare interface Counter {
   id: number
-  tag: ActionTag //maybe eventually we could have composite counter
+  tag: Tag //maybe eventually we could have composite counter
   hits: Hand[]
 }
-
-
-//DEPRECATED AND CONFUSING PART OF THE APP

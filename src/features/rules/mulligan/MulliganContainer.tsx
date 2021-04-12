@@ -18,7 +18,7 @@ export const MulliganContainer = () => {
   if (!selectedCard) return null
 
   return (
-    <div>
+    <>
       {builderVisibility ? (
         <MulliganQueryBuilder
           selectedCard={selectedCard}
@@ -28,6 +28,6 @@ export const MulliganContainer = () => {
         addButton
       )}
       <MulliganList />
-    </div>
+    </>
   )
 }
