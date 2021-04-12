@@ -4,6 +4,7 @@ import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/Dropdown"
 import { add, CONDITIONS, ACTIONS } from "./mulliganSlice"
 import {RadioChoices} from "../../utils/RadioChoices"
+import { deckFilter } from "../../utils/deckFilter"
 
 type BuilderProps = {
   selectedCard: Card
@@ -32,9 +33,7 @@ export const MulliganQueryBuilder = ({
 
   if (!deck || !selectedCard) return null
 
-  const deckOptions = [...new Set(deck)].map(({ name, code }) => {
-    return { name: name, value: code }
-  }) //_.uniqs the deck, and formats it in the way the dropdown expects
+  let deckOptions = deckFilter(deck)
 
   return (
     <div>

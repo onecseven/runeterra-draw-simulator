@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { MulliganContainer } from "./mulligan/MulliganContainer"
+import { TagContainer } from "./tags/TagContainer"
 
 type RULE_SWITCH = "MULLIGAN" | "TAG"
 
@@ -39,7 +40,7 @@ export const RulesContainer = () => {
         </label>
       </div>
       <div>
-        {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (null)}
+        {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (<TagContainer/>)}
       </div>
     </div>
   )

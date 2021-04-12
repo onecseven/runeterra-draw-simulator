@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
+import {TagQueryBuilder} from './TagQueryBuilder'
+import {TagList} from './TagList'
 
-export const MulliganContainer = () => {
+export const TagContainer = () => {
   const selectedCard = useSelector((state) => state.card.selectedCard)
   const [builderVisibility, setBuilderVisibility] = useState(false)
   const goDormant = useCallback(() => setBuilderVisibility(false), [])
 
   const addButton = (
     <button onClick={(e) => setBuilderVisibility(true)}>
-      Add Mulligan Rule
+      Add Tag
     </button>
   )
 
@@ -17,14 +19,14 @@ export const MulliganContainer = () => {
   return (
     <>
       {builderVisibility ? (
-        <MulliganQueryBuilder
+        <TagQueryBuilder
           selectedCard={selectedCard}
           goDormant={goDormant}
         />
       ) : (
         addButton
       )}
-      <MulliganList />
+      <TagList />
     </>
   )
 }

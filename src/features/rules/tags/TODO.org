@@ -15,5 +15,8 @@ The tag system is meant to be used in the following way:
 ** Types
 
 ** Tasklist
-*** TODO tagSlice
-****
+*** DONE tagSlice
+*** TODO tagContainer
+*** TODO tagQueryBuilder
+*** TODO tagList
+*** TODO Make abstract Container, QueryBuilder, and List components

@@ -24,7 +24,7 @@ export const SwappingContainer = (SwappingContainerProps: SwappingContainerProps
   return (
     <>
     {visibility ? SwappingContainerProps.default({swapBack}) : SwappingContainerProps.alternate({swapBack})}
-    {SwappingContainerProps.externalButton ? (<AddButton swapBack={swapBack} buttonText={SwappingContainerProps.externalButton.text} />) :}
+    {SwappingContainerProps.externalButton ? (<AddButton swapBack={swapBack} buttonText={SwappingContainerProps.externalButton.text} />) : null}
     </>
   )
 }
