@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
+import { deckFilter } from "../../utils/deckFilter"
 import { Dropdown } from "../../utils/Dropdown"
 import { RadioChoices } from "../../utils/RadioChoices"
 import { TAG_TYPES, add, TIMING} from "./tagSlice"
@@ -13,9 +14,9 @@ type BuilderProps = {
 export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
   const deck = useSelector((state) => state.deck.cards)
   const dispatch = useDispatch()
-  const [timing, setTiming] = useState<UIElementIterator>(TIMING[0])
-  const [type, setType] = useState<UIElementIterator>(TAG_TYPES[0])
-  const [referenceCard, setReferenceCard] = useState<Card["code"] | null>(null)
+  const [timing, setTiming] = useState<UIElementIterator["value"]>(TIMING.map(({value}) => value)[0])
+  const [type, setType] = useState<UIElementIterator["value"]>(TAG_TYPES.map(({value}) => value)[0])
+  const [reference, setReferenceCard] = useState<Card["code"] | null>(null)
   const timingCallback = useCallback((timing) => setTiming(timing), [])
   const typeCallback = useCallback((type) => setType(type), [])
   const deckCallback = useCallback((card) => setReferenceCard(card), [])
@@ -29,6 +30,8 @@ export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
     goDormant()
   }
 
+  let referenceVisibility = (type === "WITH" || type === "WITHOUT" || type === "SEQUENCE") 
+
   return (
     <div>
       <Dropdown
@@ -41,13 +44,13 @@ export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
         name={"timing"}
         onSelectedChange={timingCallback}
       />
-      {/* {condition === "ALWAYS" ? null : (
+       {referenceVisibility ? (
         <Dropdown
-          options={deckOptions}
+          options={deckFilter(deck)}
           name={"deck"}
           onSelectedChange={deckCallback}
         />
-      )} */}
+      ) : null}
       <button onClick={handleSubmit}>Submit mulligan rule</button>
     </div>
   )
