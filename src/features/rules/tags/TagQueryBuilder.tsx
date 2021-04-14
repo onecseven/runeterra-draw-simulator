@@ -3,6 +3,7 @@ import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { deckFilter } from "../../utils/deckFilter"
 import { Dropdown } from "../../utils/Dropdown"
+import { ExtensibleDropdown } from "../../utils/ExtensibleDropdown"
 import { RadioChoices } from "../../utils/RadioChoices"
 import { useStateCallback } from "../../utils/useStateCallback"
 import { TAG_TYPES, add, TIMING} from "./tagSlice"
@@ -17,14 +18,18 @@ export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
   const dispatch = useDispatch()
   const [timing, setTiming] = useStateCallback<UIElementIterator["value"]>(TIMING.map(({value}) => value)[0])
   const [type, setType] = useStateCallback<UIElementIterator["value"]>(TAG_TYPES.map(({value}) => value)[0])
-  const [reference, setReferenceCard] = useStateCallback<Card["code"] | null>(null)
+  const [reference, setReferenceCard] = useStateCallback<Card["code"][] | null>(null)
 
   if (!deck || !selectedCard) return null
   
   const handleSubmit = () => {
+    console.log(`
+    timing: ${timing}
+    type: ${type}
+    referece: ${reference}`)
     dispatch(add(
-      "?"
-    ))
+{      timing, type, reference
+}      ))
     goDormant()
   }
 
@@ -43,7 +48,7 @@ export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
         onSelectedChange={setTiming}
       />
        {referenceVisibility ? (
-        <Dropdown
+        <ExtensibleDropdown
           options={deckFilter(deck)}
           name={"deck"}
           onSelectedChange={setReferenceCard}

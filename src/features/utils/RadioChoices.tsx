@@ -22,8 +22,9 @@ const labelMaker = ({
   handleChange,
   localValue,
 }: labelMakerProps) => {
+  let key = Math.random() + "LABEL"
   return (
-    <label>
+    <label key={key}>
       <input
         type="radio"
         className="nes-radio"
