@@ -49,7 +49,7 @@ declare interface formattedCard extends Card {
 
 declare namespace Dropdown {
   interface props {
-    onSelectedChange: Function
+    onSelectedChange (arg: string|number|string[]|number[]): void
     options: UIElementIterator[]
     name: string
   }

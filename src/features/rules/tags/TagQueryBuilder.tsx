@@ -4,6 +4,7 @@ import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { deckFilter } from "../../utils/deckFilter"
 import { Dropdown } from "../../utils/Dropdown"
 import { RadioChoices } from "../../utils/RadioChoices"
+import { useStateCallback } from "../../utils/useStateCallback"
 import { TAG_TYPES, add, TIMING} from "./tagSlice"
 
 type BuilderProps = {
@@ -14,12 +15,9 @@ type BuilderProps = {
 export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
   const deck = useSelector((state) => state.deck.cards)
   const dispatch = useDispatch()
-  const [timing, setTiming] = useState<UIElementIterator["value"]>(TIMING.map(({value}) => value)[0])
-  const [type, setType] = useState<UIElementIterator["value"]>(TAG_TYPES.map(({value}) => value)[0])
-  const [reference, setReferenceCard] = useState<Card["code"] | null>(null)
-  const timingCallback = useCallback((timing) => setTiming(timing), [])
-  const typeCallback = useCallback((type) => setType(type), [])
-  const deckCallback = useCallback((card) => setReferenceCard(card), [])
+  const [timing, setTiming] = useStateCallback<UIElementIterator["value"]>(TIMING.map(({value}) => value)[0])
+  const [type, setType] = useStateCallback<UIElementIterator["value"]>(TAG_TYPES.map(({value}) => value)[0])
+  const [reference, setReferenceCard] = useStateCallback<Card["code"] | null>(null)
 
   if (!deck || !selectedCard) return null
   
@@ -37,18 +35,18 @@ export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
       <Dropdown
         options={TAG_TYPES}
         name={"types"}
-        onSelectedChange={typeCallback}
+        onSelectedChange={setType}
       />
       <RadioChoices
         options={TIMING}
         name={"timing"}
-        onSelectedChange={timingCallback}
+        onSelectedChange={setTiming}
       />
        {referenceVisibility ? (
         <Dropdown
           options={deckFilter(deck)}
           name={"deck"}
-          onSelectedChange={deckCallback}
+          onSelectedChange={setReferenceCard}
         />
       ) : null}
       <button onClick={handleSubmit}>Submit mulligan rule</button>
