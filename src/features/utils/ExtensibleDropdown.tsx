@@ -12,7 +12,8 @@ export const ExtensibleDropdown = ({
   name,
   onSelectedChange,
 }: Dropdown.props) => {
-  const [allDrops, setDrops] = useState([""])
+  let firstOption = options[0].value
+  const [allDrops, setDrops] = useState([firstOption])
 
   const callBackSetter = (id: number, edit: string) => {
     let newState = allDrops.slice().map((value, i) => (i === id ? edit : value))
@@ -27,16 +28,28 @@ export const ExtensibleDropdown = ({
 
   const increase = () => {
     let newState = allDrops.slice()
-    newState.push("")
+    newState.push(firstOption)
+    setDrops(newState)
+  }
+  
+  let decrease = (id: number) => {
+    let newState = allDrops.slice()
+    newState.splice(id, 1)
     setDrops(newState)
   }
 
   return (
     <>
-      {allDrops.slice().map((v, id) => {
+      {allDrops.map((v, id) => {
         let innerCb = memoizedCallback(id)
-        return <Dropdown options={options} name={name} onSelectedChange={innerCb} />
+        return (
+        <>
+        <Dropdown options={options} name={name} onSelectedChange={innerCb} />
+        <button onClick={() => decrease(id)}>-</button>
+        </>
+          )
       })}
+      <br/>
       <button onClick={increase}>x</button>
     </>
   )
