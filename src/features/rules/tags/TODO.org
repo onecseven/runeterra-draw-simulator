@@ -16,7 +16,9 @@ The tag system is meant to be used in the following way:
 
 ** Tasklist
 *** DONE tagSlice
-*** TODO tagContainer
-*** TODO tagQueryBuilder
+**** TODO tagSlice.add does not work yet
+**** TODO MAKE THE ADD COMPONENT WORK
+*** DONE tagContainer
+*** DONE tagQueryBuilder
 *** TODO tagList
 *** TODO Make abstract Container, QueryBuilder, and List components
