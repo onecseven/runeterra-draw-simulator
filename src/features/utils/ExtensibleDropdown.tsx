@@ -1,9 +1,6 @@
-import React, { useState, useCallback } from "react"
-import { connect } from "react-redux"
+import React, { useState } from "react"
 import { doTimes } from "./doTimes"
 import { Dropdown } from "./Dropdown"
-
-//how the fuck are we going to handle the multiple state cause by this?
 
 const Button = (clickHandler) => <button onClick={clickHandler}> + </button>
 
@@ -12,8 +9,8 @@ export const ExtensibleDropdown = ({
   name,
   onSelectedChange,
 }: Dropdown.props) => {
-  let firstOption = options[0].value
-  const [allDrops, setDrops] = useState([firstOption])
+  let [firstOption, secondOption] = options
+  const [allDrops, setDrops] = useState([firstOption.value, secondOption.value])
 
   const callBackSetter = (id: number, edit: string) => {
     let newState = allDrops.slice().map((value, i) => (i === id ? edit : value))
@@ -28,7 +25,7 @@ export const ExtensibleDropdown = ({
 
   const increase = () => {
     let newState = allDrops.slice()
-    newState.push(firstOption)
+    newState.push(firstOption.value)
     setDrops(newState)
   }
   

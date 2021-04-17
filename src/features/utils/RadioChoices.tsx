@@ -2,18 +2,15 @@ import React, { useState } from "react"
 
 export type RadioChoicesProps = {
   onSelectedChange(string): void
-  options: {
-    name: string
-    value: string
-  }[]
+  options: UIElementIterator[]
   name: string
 }
 
 type labelMakerProps = {
   name: string
-  value: string
+  value: string | number
   handleChange(event: { target: HTMLInputElement }): void
-  localValue: string
+  localValue: string | number
 }
 
 const labelMaker = ({

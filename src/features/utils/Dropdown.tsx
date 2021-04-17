@@ -15,7 +15,7 @@ export const Dropdown = ({
     <select name={name} value={localAction} onChange={handleChange}>
       {options.map((option) => {
         return (
-          <option value={option.value}>
+          <option key={option.value} value={option.value}>
             {option.name}
           </option>
         )

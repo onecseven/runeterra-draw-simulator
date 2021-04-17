@@ -1,59 +1,51 @@
-import React, { useState, useCallback } from "react"
-import { useAppSelector as useSelector } from "../../../store/hooks"
+import React from "react"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
-import { deckFilter } from "../../utils/deckFilter"
 import { Dropdown } from "../../utils/Dropdown"
-import { ExtensibleDropdown } from "../../utils/ExtensibleDropdown"
-import { RadioChoices } from "../../utils/RadioChoices"
 import { useStateCallback } from "../../utils/useStateCallback"
-import { TAG_TYPES, add, TIMING} from "./tagSlice"
+import { TAG_TYPES, add, TURNS } from "./tagSlice"
+import { TypeSwitcher } from "./typeSpecific/TypeSwitcher"
+import { isTagType } from "../../utils/typeGuards"
 
 type BuilderProps = {
   selectedCard: Card
   goDormant: Function
 }
 
-export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
-  const deck = useSelector((state) => state.deck.cards)
-  const dispatch = useDispatch()
-  const [timing, setTiming] = useStateCallback<UIElementIterator["value"]>(TIMING.map(({value}) => value)[0])
-  const [type, setType] = useStateCallback<UIElementIterator["value"]>(TAG_TYPES.map(({value}) => value)[0])
-  const [reference, setReferenceCard] = useStateCallback<Card["code"][] | null>(null)
+let TagTypes = TAG_TYPES.map(({ value }) => {
+  if (isTagType(value)) {
+    return value
+  }
+})
 
-  if (!deck || !selectedCard) return null
-  
+export const TagQueryBuilder = ({ selectedCard, goDormant }: BuilderProps) => {
+  const dispatch = useDispatch()
+  const [type, setType] = useStateCallback<TagType>(TagTypes[0])
+  const [turn, setTurn] = useStateCallback<UIElementIterator["value"]>(
+    TURNS.map(({ value }) => value)[0]
+  )
+  const [referents, setReferents] = useStateCallback<Card["code"][] | null>(
+    null
+  )
+  const [groupName, setGroupName] = useStateCallback<Card["code"][] | null>(
+    null
+  )
+
+  if (!selectedCard) return null
+
   const handleSubmit = () => {
-    console.log(`
-    timing: ${timing}
-    type: ${type}
-    referece: ${reference}`)
-    dispatch(add(
-{      timing, type, reference
-}      ))
+    dispatch(add({ type, referents, turn, groupName}))
     goDormant()
   }
 
-  let referenceVisibility = (type === "WITH" || type === "WITHOUT" || type === "SEQUENCE") 
-
   return (
     <div>
-      <Dropdown
-        options={TAG_TYPES}
-        name={"types"}
-        onSelectedChange={setType}
+      <Dropdown options={TAG_TYPES} name={"types"} onSelectedChange={setType} />
+      <Dropdown options={TURNS} name={"turns"} onSelectedChange={setTurn} />
+      <TypeSwitcher
+        referentsCallback={setReferents}
+        groupNameCallback={setGroupName}
+        tag={type}
       />
-      <RadioChoices
-        options={TIMING}
-        name={"timing"}
-        onSelectedChange={setTiming}
-      />
-       {referenceVisibility ? (
-        <ExtensibleDropdown
-          options={deckFilter(deck)}
-          name={"deck"}
-          onSelectedChange={setReferenceCard}
-        />
-      ) : null}
       <button onClick={handleSubmit}>Submit mulligan rule</button>
     </div>
   )

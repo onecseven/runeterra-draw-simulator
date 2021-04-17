@@ -1,8 +1,39 @@
-
 declare type mulliganAction = "KEEP" | "THROW"
 declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
 declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "GROUP"
 declare type TagTiming = "EXACT" | "RELATIVE"
+declare type KEYWORD =
+  | "Burst"
+  | "Quick Attack"
+  | "Fast"
+  | "Lifesteal"
+  | "Elusive"
+  | "Imbue"
+  | "Ephemeral"
+  | "Slow"
+  | "Skill"
+  | "Challenger"
+  | "Overwhelm"
+  | "Regeneration"
+  | "Can't Block"
+  | "Last Breath"
+  | "Fearsome"
+  | "Barrier"
+  | "Fleeting"
+  | "Tough"
+  | "Double Attack"
+  | "Trap"
+  | "Attune"
+  | "Deep"
+  | "Immobile"
+  | "Scout"
+  | "Missing Translation"
+  | "Vulnerable"
+  | "Focus"
+  | "Landmark"
+  | "SpellShield"
+  | "Fury"
+  | "Augment"
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
@@ -14,9 +45,8 @@ declare interface Hand {
 
 declare interface UIElementIterator {
   name: string
-  value: string
+  value: string | number
 }
-
 
 declare interface Card {
   code: string
@@ -49,17 +79,16 @@ declare interface formattedCard extends Card {
 
 declare namespace Dropdown {
   interface props {
-    onSelectedChange (arg: string|number|string[]|number[]): void
+    onSelectedChange(arg: (string | number) | (string| number)[]): void
     options: UIElementIterator[]
-    name: string
+    name: string,
+    defaultNumber?: number
   }
 }
 
 declare interface Tag {
   type: TagType
   turn: number
-  timing?: "EXACT" | "RELATIVE"
-  reference: Card
   referents?: Card[]
   groupName?: string
 }
