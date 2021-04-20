@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dropdown } from '../../../utils/Dropdown'
-import { KEYWORDS } from "../tagSlice"
+import { KEYWORDS } from "../../../../store/constants"
 
 let optionKeywords = KEYWORDS.map(keyword => {
   return {

@@ -9,7 +9,7 @@ export const MulliganList = () => {
   const queries = useSelector((state) => state.mulligan.queries)
   const deck = useSelector((state) => state.deck.cards)
 
-  if (Array.length == 0 || !selectedCard) return null
+  if (queries.length == 0 || !selectedCard) return null
   let {code} = selectedCard
   let ruleElements = queries.filter(({referent}) => referent === code)
   .map(rule => {

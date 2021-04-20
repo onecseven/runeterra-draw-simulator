@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import cardSlice from "../features/card/cardSlice"
 import deckReducer from "../features/deck/deckSlice"
 import mulliganSlice from "../features/rules/mulligan/mulliganSlice"
+import tagSlice from "../features/rules/tags/tagSlice"
 
 
 export const store =  configureStore({
@@ -9,6 +10,7 @@ export const store =  configureStore({
     deck: deckReducer,
     card: cardSlice,
     mulligan: mulliganSlice,
+    tags: tagSlice
   },
 })
 

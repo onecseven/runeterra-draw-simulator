@@ -1,28 +1,19 @@
 import React, { useState, useCallback } from "react"
-import { useAppSelector as useSelector } from "../../../store/hooks"
-import {TagQueryBuilder} from './TagQueryBuilder'
-import {TagList} from './TagList'
+import { TagQueryBuilder } from "./TagQueryBuilder"
+import { TagList } from "./TagList"
+import { useStateCallback } from "../../utils/useStateCallback"
 
 export const TagContainer = () => {
-  const selectedCard = useSelector((state) => state.card.selectedCard)
-  const [builderVisibility, setBuilderVisibility] = useState(false)
-  const goDormant = useCallback(() => setBuilderVisibility(false), [])
+  const [builderVisibility, setBuilderVisibility] = useStateCallback(false)
 
   const addButton = (
-    <button onClick={(e) => setBuilderVisibility(true)}>
-      Add Tag
-    </button>
+    <button onClick={(e) => setBuilderVisibility(true)}>Add Tag</button>
   )
-
-  if (!selectedCard) return null
 
   return (
     <>
       {builderVisibility ? (
-        <TagQueryBuilder
-          selectedCard={selectedCard}
-          goDormant={goDormant}
-        />
+        <TagQueryBuilder goDormant={() => setBuilderVisibility(false)} />
       ) : (
         addButton
       )}

@@ -1,17 +1,21 @@
 import React, { useState } from "react"
 import { MulliganContainer } from "./mulligan/MulliganContainer"
 import { TagContainer } from "./tags/TagContainer"
+import { useAppSelector as useSelector } from "../../store/hooks"
 
 type RULE_SWITCH = "MULLIGAN" | "TAG"
 
 export const RulesContainer = () => {
   const [ruleSwitch, setRuleSwitch] = useState<RULE_SWITCH>("MULLIGAN")
+  const deck = useSelector((state) => state.deck.cards)
   const handleChange = (event: { target: HTMLInputElement }) => {
-    console.log(event.target.value)
     if (event.target.value == "MULLIGAN" || event.target.value == "TAG") {
       setRuleSwitch(event.target.value)
     }
   }
+  let switchingElement = (<>
+        {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (<TagContainer/>)}
+      </>)
   return (
     <div className="nes-container is-rounded with-title">
       <div className="title" style={{ display: "flex", backgroundColor: "transparent"}} >
@@ -39,9 +43,7 @@ export const RulesContainer = () => {
           <span>Rules</span>
         </label>
       </div>
-      <div>
-        {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (<TagContainer/>)}
-      </div>
+      {deck.length > 0 ? switchingElement : null}
     </div>
   )
 }

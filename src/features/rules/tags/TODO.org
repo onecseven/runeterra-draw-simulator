@@ -16,10 +16,8 @@ The tag system is meant to be used in the following way:
 
 ** Tasklist
 *** DONE tagSlice
-**** TODO tagSlice.add does not work yet
-**** TODO MAKE THE ADD COMPONENT WORK
-**** TODO how to get the referents for a keyword add?
+**** DONE tagSlice.add does not work yet
+  works now
 *** DONE tagContainer
 *** DONE tagQueryBuilder
 *** TODO tagList
-*** TODO Make abstract Container, QueryBuilder, and List components

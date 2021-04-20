@@ -1,28 +1,22 @@
-import React, { useState, useCallback } from "react"
-import { useAppSelector as useSelector } from "../../../store/hooks"
-import { selectCard } from "../../card/cardSlice"
+import React from "react"
 import { MulliganQueryBuilder } from "./MulliganQueryBuilder"
 import { MulliganList } from "./MulliganList"
+import { useStateCallback } from "../../utils/useStateCallback"
 
 export const MulliganContainer = () => {
-  const selectedCard = useSelector((state) => state.card.selectedCard)
-  const [builderVisibility, setBuilderVisibility] = useState(false)
-  const goDormant = useCallback(() => setBuilderVisibility(false), [])
+  const [builderVisibility, setBuilderVisibility] = useStateCallback(false)
 
   const addButton = (
-    <button onClick={(e) => setBuilderVisibility(true)}>
+    <button onClick={() => setBuilderVisibility(true)}>
       Add Mulligan Rule
     </button>
   )
-
-  if (!selectedCard) return null
 
   return (
     <>
       {builderVisibility ? (
         <MulliganQueryBuilder
-          selectedCard={selectedCard}
-          goDormant={goDormant}
+          goDormant={() => setBuilderVisibility(false)}
         />
       ) : (
         addButton

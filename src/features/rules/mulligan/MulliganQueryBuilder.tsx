@@ -8,52 +8,51 @@ import { deckFilter } from "../../utils/deckFilter"
 import { useStateCallback } from "../../utils/useStateCallback"
 
 type BuilderProps = {
-  selectedCard: Card
   goDormant: Function
 }
 
 export const MulliganQueryBuilder = ({
-  selectedCard,
   goDormant,
 }: BuilderProps) => {
   const deck = useSelector((state) => state.deck.cards)
   const dispatch = useDispatch()
-  const [action, setAction] = useState<mulliganAction | null>("KEEP")
-  const [condition, setCondition] = useState<mulliganCondition | null>("ALWAYS")
-  const [referenceCard, setReferenceCard] = useState<Card["code"] | null>(null)
-
+  const [action, setAction] = useStateCallback<mulliganAction | null>("KEEP")
+  const [condition, setCondition] = useStateCallback<mulliganCondition | null>("ALWAYS")
+  const [referenceCard, setReferenceCard] = useStateCallback<Card["code"] | null>(null)
+  const [mainCard, setMainCard] = useStateCallback<Card["code"] | null>(null)
   // prettier-ignore
-  const conditionCallback = useCallback((condition) => setCondition(condition), [])
-  const actionCallback = useCallback((action) => setAction(action), [])
-  const deckCallback = useCallback((card) => setReferenceCard(card), [])
-
   const handleSubmit = () => {
-    dispatch(add({mulliganAction: action, condition, reference: referenceCard, referent: selectedCard.code }))
+    dispatch(add({mulliganAction: action, condition, reference: referenceCard, referent: mainCard }))
     goDormant()
   }
 
-  if (!deck || !selectedCard) return null
+  if (deck.length == 0) return null
 
   let deckOptions = deckFilter(deck)
 
   return (
     <div>
       <br />
+      <Dropdown
+          options={deckOptions}
+          name={"reference"}
+          onSelectedChange={setMainCard}
+        />
       <RadioChoices
         options={ACTIONS}
         name={"actions"}
-        onSelectedChange={actionCallback}
+        onSelectedChange={setAction}
       />
       <RadioChoices
         options={CONDITIONS}
         name={"conditions"}
-        onSelectedChange={conditionCallback}
+        onSelectedChange={setCondition}
       />
       {condition === "ALWAYS" ? null : (
         <Dropdown
           options={deckOptions}
           name={"deck"}
-          onSelectedChange={deckCallback}
+          onSelectedChange={setReferenceCard}
         />
       )}
       <button onClick={handleSubmit}>Submit mulligan rule</button>

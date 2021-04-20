@@ -1,4 +1,4 @@
-import {KEYWORDS} from "../rules/tags/tagSlice"
+import {KEYWORDS} from "../../store/constants"
 
 export const isKeyword = (str: KEYWORD | string): str is KEYWORD => {
   for (let keyword of KEYWORDS){
