@@ -1,8 +1,6 @@
 * Deck-Creator
-** TODO Initial Mulligan has got to be fixed.
-It still has the deprecated ~draw~ and we probably need to make it so it doesn't mutate the deck...
 * Mulliganer
-** TODO We need to componetize this
+** DONE We need to componetize this
 It's kind of like too big a system to understand in its entirety right now, but
 we might make it so that we can abstract out its logic into the tag system.
 * Runeterra Info Handler
@@ -21,6 +19,3 @@ ie.
 in: [2,13,20]
 out: [cards[2], cards[13], cards[20]]
 "cards" here being the translated deck from line 23
-
-* Tag System Brainstorm
-** TODO Think about this
