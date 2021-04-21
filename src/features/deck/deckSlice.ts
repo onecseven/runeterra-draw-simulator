@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import {deckCodeTranslation} from "./Deck-Code-Lookup"
+import {deckCodeTranslation} from "../utils/Deck-Code-Lookup"
 
 type initialState = {
   code: string,
