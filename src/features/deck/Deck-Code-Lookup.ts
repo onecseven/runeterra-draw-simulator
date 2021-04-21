@@ -43,6 +43,9 @@ export const CardLookup = (cardCode: string): Card => {
     assets: preCard.assets,
     region: preCard.region,
     cost: preCard.cost,
+    keywords: preCard.keywords,
+    type: preCard.keywords,
+    supertype: preCard.supertype
   }
   return card || null
 }

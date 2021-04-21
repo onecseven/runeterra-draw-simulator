@@ -10,7 +10,7 @@
 ** DONE Query Builders
 *** DONE Write component that can write MULTIPLE Mulligan Queries and send them to the store
 **** DONE MulliganRules should show the contents of state.mulligan.queries
-***** TODO it should also a [+] button to add more rules.
+***** DONE it should also a [+] button to add more rules.
 **** DONE Add a subcomponent to make a form to create a MulliganQuery.
 **** DONE Create subcomponent to handle the CONDITION part of the MulliganQuery
 **** DONE Create subcomponent to handle the ACTION part of the MulliganQuery
@@ -18,4 +18,5 @@
 **** DONE Store connection
 *** DONE Write a component that can write MULTIPLE tags and send them to the store
 ** DONE Migrate to typescript!!!
-** TODO Create a DeckContainer
+** TODO Start working on the shuffler/shuffling mechanism.
+** TODO Function that looks up cards given a card code. But from the decklist.

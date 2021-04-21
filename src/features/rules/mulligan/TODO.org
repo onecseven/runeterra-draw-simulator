@@ -3,5 +3,5 @@
 *** DONE IMPORTANT Make the add action on mulliganSlice ignore malformed actions
 ** DONE Create a component that reads the Mulligan Queries and displays them
 ** DONE Create a component that has the [+] button that once pressed displays the MulliganQueryBuilder
-** TODO IMPORTANT Get rid of requiring a "selected card" for the mulligan query builder to show up, instead use a dropdown
+** DONE IMPORTANT Get rid of requiring a "selected card" for the mulligan query builder to show up, instead use a dropdown
 ** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
