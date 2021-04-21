@@ -4,7 +4,7 @@ import { useAppSelector as useSelector } from "../../store/hooks"
 import {clearSelection, selectCard} from "./cardSlice"
 
 type CardProps = {
-  card: formattedCard
+  card: Card
 }
 
 export const  Card = ({card}: CardProps) => {

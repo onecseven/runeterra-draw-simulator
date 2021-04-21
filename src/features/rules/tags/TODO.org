@@ -21,3 +21,5 @@ The tag system is meant to be used in the following way:
 *** DONE tagContainer
 *** DONE tagQueryBuilder
 *** TODO tagList
+**** TODO Tag component
+**** TODO A thing that shows more like > and then it goes down (?)

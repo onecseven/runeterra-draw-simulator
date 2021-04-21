@@ -35,6 +35,37 @@ declare type KEYWORD =
   | "Fury"
   | "Augment"
 
+declare interface dataCards {
+  associatedCards: string[]
+  associatedCardRefs: []
+  assets: asset[]
+  region: string
+  regionRef: string
+  attack: number
+  cost: number
+  health: number
+  description: string
+  descriptionRaw: string
+  levelupDescription: string
+  levelupDescriptionRaw: string
+  flavorText: string
+  artistName: string
+  name: string
+  cardCode: string
+  keywords: KEYWORD[]
+  keywordRefs: string[]
+  spellSpeed: string
+  spellSpeedRef: string
+  rarity: string
+  rarityRef: string
+  subtype: string
+  subtypes: []
+  supertype: "Champion"
+  type: "Spell" | "Unit"
+  collectible: boolean
+  set: string
+}
+
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
 declare interface Hand {
@@ -54,6 +85,10 @@ declare interface Card {
   assets?: asset[]
   region: string
   cost: number
+  keywords: KEYWORD[]
+  type: dataCards.type
+  supertype: dataCards.supertype
+  count?: number
 }
 
 type cardProperties = "code" | "name" | "assets" | "region" | "cost"
@@ -73,15 +108,11 @@ declare interface MulliganQuery {
   }
 }
 
-declare interface formattedCard extends Card {
-  count: number
-}
-
 declare namespace Dropdown {
   interface props {
-    onSelectedChange(arg: (string | number) | (string| number)[]): void
+    onSelectedChange(arg: (string | number) | (string | number)[]): void
     options: UIElementIterator[]
-    name: string,
+    name: string
     defaultNumber?: number
   }
 }
@@ -89,12 +120,11 @@ declare namespace Dropdown {
 declare interface Tag {
   type: TagType
   turn: number
-  referents?: Card[]
+  referents?: Card["code"][]
   groupName?: string
 }
 
 declare interface Counter {
-  id: number
   tag: Tag //maybe eventually we could have composite counter
   hits: Hand[]
 }

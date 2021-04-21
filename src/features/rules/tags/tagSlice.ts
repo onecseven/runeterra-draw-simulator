@@ -24,13 +24,7 @@ const tagValidator = ({
   turn,
   referents = null,
   groupName = null,
-}: {
-  type: TagType
-  turn: number
-  reference: Card
-  referents: Card[]
-  groupName: string
-}): Tag => {
+}: Tag): Tag => {
   switch (type) {
     case "WITH": {
       if (referents) return { type, turn, referents }

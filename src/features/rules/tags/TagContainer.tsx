@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react"
 import { TagQueryBuilder } from "./TagQueryBuilder"
-import { TagList } from "./TagList"
+import { TagList } from "./tag displays/TagList"
 import { useStateCallback } from "../../utils/useStateCallback"
 
 export const TagContainer = () => {
