@@ -39,10 +39,8 @@ export const Tag = ({ tag }: { tag: Tag }) => {
       )
     }
     case "KEYWORD": {
-      return (
-        <p>
-          {`Every hand that contain any cards that have the keyword: ${tag.groupName}`}
-        </p>
+      return collapsable(
+          `Every hand that contain any cards that have the keyword: ${tag.groupName}`
       )
     }
     case "GROUP": {

@@ -15,12 +15,10 @@ const initialState: tagInitialState = {
   counters: {},
 }
 
-const tagValidator = ({
-  type,
-  turn,
-  referents = null,
-  groupName = null,
-}: Tag): Tag => {
+const tagValidator = (
+  { type, turn, referents = null, groupName = null }: Tag,
+  deck: Card[]
+): Tag => {
   switch (type) {
     case "WITH": {
       if (referents) return { type, turn, referents }
@@ -35,8 +33,10 @@ const tagValidator = ({
       break
     }
     case "KEYWORD": {
-      if (isKeyword(groupName))
+      if (isKeyword(groupName)) {
         return { type, turn, groupName, referents }
+      }
+
       break
     }
     case "GROUP": {
@@ -50,14 +50,14 @@ export const tagSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      let tag = tagValidator(action.payload)
+      let tag = tagValidator(action.payload, [])
       if (tag) {
         let id = Object.keys(state.counters).length + 1
         state.counters[id] = {
           tag,
-          hits: []
+          hits: [],
         }
-      return state
+        return state
       }
     },
   },

@@ -25,7 +25,7 @@ export const TypeSwitcher = ({
       />
     )
   } else if (tag === "KEYWORD") {
-    return <KeywordTagCreator onSelectedChange={groupNameCallback} />
+    return <KeywordTagCreator onSelectedChange={groupNameCallback} referentsCallback={referentsCallback} />
   } else {
     return (
       <ExtensibleDropdown

@@ -24,7 +24,7 @@ export const GroupTagCreator = ({
       <ExtensibleDropdown
         options={options}
         name={"group"}
-        onSelectedChange={onGroupChange}
+        onSelectedChange={onCardChange}
       />
     </>
   )
