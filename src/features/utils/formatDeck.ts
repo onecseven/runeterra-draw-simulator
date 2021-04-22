@@ -1,6 +1,6 @@
-export const formatDeck = (deck: Card[]): formattedCard[] => {
+export const formatDeck = (deck: Card[]): Card[] => {
   const register = {}
-  let remappedDeck: formattedCard[] = []
+  let remappedDeck: Card[] = []
   // there has to be a faster way to do this
 
   deck.forEach((card) => {

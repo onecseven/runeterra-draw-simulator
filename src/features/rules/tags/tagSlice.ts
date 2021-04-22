@@ -15,10 +15,6 @@ const initialState: tagInitialState = {
   counters: {},
 }
 
-const getNextId = (state: tagInitialState["counters"]): number => {
-  return Object.keys(state).length
-}
-
 const tagValidator = ({
   type,
   turn,
@@ -56,7 +52,7 @@ export const tagSlice = createSlice({
     add: (state, action) => {
       let tag = tagValidator(action.payload)
       if (tag) {
-        let id = getNextId(state)
+        let id = Object.keys(state.counters).length + 1
         state.counters[id] = {
           tag,
           hits: []

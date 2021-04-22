@@ -13,7 +13,7 @@ export const ExtensibleDropdown = ({
   const callBackSetter = (id: number, edit: string) => {
     let newState = allDrops.slice().map((value, i) => (i === id ? edit : value))
     setDrops(newState)
-    onSelectedChange(allDrops)
+    onSelectedChange(newState)
   }
   
   const memoizedCallback = (id: number) => (edit: string) => callBackSetter(id, edit)
