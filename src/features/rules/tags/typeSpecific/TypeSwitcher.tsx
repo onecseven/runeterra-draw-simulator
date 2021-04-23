@@ -16,6 +16,8 @@ export const TypeSwitcher = ({
 }) => {
   const deck = useSelector((state) => state.deck.cards)
   let deckOptions = deckFilter(deck)
+  deckOptions.unshift({ value: "", name: "Choose a card." })
+  
   if (tag === "GROUP") {
     return (
       <GroupTagCreator
