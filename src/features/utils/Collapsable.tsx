@@ -8,7 +8,7 @@ declare interface collapsableProps {
 }
 
 const Collapsable = ({ name, children, className = null, openedByDefault = true}: collapsableProps) => {
-  const [open, toggle] = useState(true)
+  const [open, toggle] = useState(openedByDefault)
   let sign = open ? "▼" : "▶"
   return (
     <>

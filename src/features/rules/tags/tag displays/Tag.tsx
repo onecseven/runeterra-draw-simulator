@@ -15,7 +15,7 @@ export const Tag = ({ tag }: { tag: Tag }) => {
   let collapsable = (title) => (
     <>
       <p>{title}</p>
-      <Collapsable name={"Cards"} openedByDefault={true} className={"link"}>
+      <Collapsable name={"Cards"} openedByDefault={false} className={"link"}>
         {cards.map((card) => {
           return <Card card={card} />
         })}
