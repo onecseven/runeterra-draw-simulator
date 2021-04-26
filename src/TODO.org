@@ -19,4 +19,4 @@
 *** DONE Write a component that can write MULTIPLE tags and send them to the store
 ** DONE Migrate to typescript!!!
 ** TODO Start working on the shuffler/shuffling mechanism.
-** TODO Function that looks up cards given a card code. But from the decklist.
+** DONE Function that looks up cards given a card code. But from the decklist.

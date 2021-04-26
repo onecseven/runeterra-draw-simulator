@@ -1,0 +1,7 @@
+* Simulating hands
+** INPUT: 40 card deck, a set of mulligan queries, 
+          a set of full hand queries,
+          and a number of simulations to be ran
+** OUTPUT: X number of simulated hands, interpreted through the queries to keep the matching ones.
+** TODO Step 1. We need an input component for the amount of hands that we need simulated.
+** TODO Step 2. Once we have that amount, we begin by shuffling once
