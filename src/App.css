@@ -17,8 +17,8 @@ h1{
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "deck rules ."
-    "deck tag .";
+    "deck rules sim"
+    "deck tag sim";
 }
 
 .deck {
@@ -43,6 +43,9 @@ ul {
   grid-area: rules;
 }
 
+.sim{
+  grid-area: sim;
+}
 
 
 option{

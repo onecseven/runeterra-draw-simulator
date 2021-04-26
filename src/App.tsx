@@ -7,6 +7,7 @@ import "./nes.min.css"
 import "./App.css"  
 import { DeckList } from "./features/deck/DeckList"
 import { RulesContainer } from "./features/rules/RulesContainer"
+import { NumberSimInput } from "./features/simulation/NumberSimInput"
 
 class App extends Component {
   render() {
@@ -22,6 +23,9 @@ class App extends Component {
             </div>
             <div className="rules">
               <RulesContainer/>
+            </div>
+            <div className="sim">
+              <NumberSimInput/>
             </div>
           </div>
         </Provider>

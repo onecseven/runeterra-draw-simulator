@@ -15,16 +15,13 @@ the shuffle algorithm is from stack overflow lol
 }
 */
 
-export const shuffle = (unshuffled: Card[], turns?: number) => {
+export const shuffle = (unshuffled: Card[]) => {
   let deck = unshuffled.slice() 
   for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1))
     let temp = deck[i]
     deck[i] = deck[j]
     deck[j] = temp
-  }
-  if (turns) {
-    return unshuffled.slice(0, 4+turns)
   }
   return deck
 }

@@ -14,7 +14,6 @@ const ACTIONS = [
 ]
 
 export const MulliganQueryBuilder = () => {
-  const selectedCard = useSelector((state) => state.card.selectedCard)
   const deck = useSelector((state) => state.deck.cards) || null
 
   const [action, setAction] = useState(null)
@@ -25,7 +24,7 @@ export const MulliganQueryBuilder = () => {
   const actionCallback = useCallback((action) => setAction(action), [])
   const deckCallback = useCallback((card) =>  setReferenceCard(card), [])
 
-  if (!selectedCard || !deck) return null
+  if (!deck) return null
 
   const deckOptions = [...new Set(deck)].map(({ name, code }) => {
     return { name: name, value: code }
