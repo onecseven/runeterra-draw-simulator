@@ -15,7 +15,7 @@ the shuffle algorithm is from stack overflow lol
 }
 */
 
-export const shuffle = (unshuffled: Card[]) => {
+export const shuffle = <A,>(unshuffled: A[]): A[] => {
   let deck = unshuffled.slice() 
   for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1))

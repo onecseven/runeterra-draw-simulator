@@ -1,7 +1,6 @@
 import data from "../../assets/cardInfo.json";
 
 export const CardLookup = (cardCode: string): Card => {
-  console.log(data);
   let preCard: dataCards = data[cardCode];
   if (!preCard)
     throw new Error("Card unavailable");
