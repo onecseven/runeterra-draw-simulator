@@ -3,8 +3,18 @@ import { CardLookup } from "../utils/CardLookup"
 import { doTimes } from "../utils/doTimes"
 import {shuffle} from "../utils/shuffler"
 import { mulligan } from "./mulliganReducer"
+import {tagInitialState} from "../rules/tags/tagSlice"
 
 let hands: Card[][] = []
+
+const getNumberOfTurns = (tags: tagInitialState["counters"]) => {
+  let highestTurn = 0
+  for (let index in tags) {
+    let counter = tags[index]
+    highestTurn = counter.tag.turn > highestTurn ? counter.tag.turn : highestTurn
+  }
+  return highestTurn
+}
 
 export const simulationSlice = createSlice({
   name: "simulation",
@@ -24,10 +34,13 @@ export const simulationSlice = createSlice({
         })
         hands.push(mulliganedDeck)
       }, numberOfSimulations)
+      let trimmedHands = hands.map(hand => hand.slice(0, getNumberOfTurns(tags)))
       return {
-        hands: hands.map(v => v.map(q => CardLookup(q)))
+        hands: trimmedHands
       }
     },
+    analyze: (state, action) => {d
+    }
   },
 })
 
