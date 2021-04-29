@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { isKeyword } from "../../utils/typeGuards"
 
-interface tagInitialState {
+export interface tagInitialState {
   counters: {
     [id: number]: {
       //should match Counter["id"]

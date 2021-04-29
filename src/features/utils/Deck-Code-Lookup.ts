@@ -9,7 +9,6 @@ export const deckCodeTranslation = (deckCode: string): Card[] => {
     let deck = decode(deckCode)
     deck.forEach(({ code, count }) => {
       let card = CardLookup(code)
-      console.log(card)
       doTimes(() => {
         newDeck.push(card)
       }, count)

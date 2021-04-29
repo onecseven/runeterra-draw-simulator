@@ -19,7 +19,6 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
   let kept = preMullHand
   switch (action) {
     case "THROW":
-      console.log(`THROWING ${referent} from ${preMullHand}`)
       thrown.concat(kept.splice(preMullHand.indexOf(referent)))
       break
     case "KEEP":

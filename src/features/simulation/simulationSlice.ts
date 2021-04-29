@@ -39,7 +39,7 @@ export const simulationSlice = createSlice({
         hands: trimmedHands
       }
     },
-    analyze: (state, action) => {d
+    analyze: (state, action) => {
     }
   },
 })
