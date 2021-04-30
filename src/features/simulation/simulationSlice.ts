@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { CardLookup } from "../utils/CardLookup"
 import { doTimes } from "../utils/doTimes"
 import {shuffle} from "../utils/shuffler"
 import { mulligan } from "./mulliganReducer"

@@ -1,18 +1,4 @@
-// declare interface MulliganQuery {
-//   referent: Card["code"]
-//   priority: number
-//   onHit: {
-//     action: mulliganAction
-//     condition: mulliganCondition
-//     referenceCard: Card["code"]
-//   }
-
-const isValueInArray = <T,>(array: T[], value: T): boolean => {
-  if (array.indexOf(value) > -1) {
-    return true
-  }
-  return false
-}
+import { isValueInArray } from "../utils/isValueInArray"
 
 let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
@@ -32,7 +18,6 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
 }
 
 
-// }
 export const mulligan = ({
   deck,
   mulliganQueries,
