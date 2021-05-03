@@ -23,15 +23,9 @@ export const deckSlice = createSlice({
       state.cards = cards
       return state
         },
-    remove: (state, action) => {
-      return state
-    },
-    update: (state, action) => {
-      return state
-    },
   },
 })
 
-export const { remove, add, update } = deckSlice.actions
+export const { add } = deckSlice.actions
 
 export default deckSlice.reducer
