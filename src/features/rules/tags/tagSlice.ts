@@ -6,7 +6,7 @@ export interface tagInitialState {
     [id: number]: {
       //should match Counter["id"]
       tag: Tag
-      hits: Hand[][]
+      hits: Card["code"][][]
     }
   }
 }
