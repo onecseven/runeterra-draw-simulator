@@ -68,11 +68,6 @@ declare interface dataCards {
 
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
-declare interface Hand {
-  code: Card["code"]
-  name: Card["name"]
-  ids: Counter["id"][]
-}
 
 declare interface UIElementIterator {
   name: string
@@ -126,5 +121,5 @@ declare interface Tag {
 
 declare interface Counter {
   tag: Tag //maybe eventually we could have composite counter
-  hits: Hand[]
+  hits: Card["code"][][]
 }
