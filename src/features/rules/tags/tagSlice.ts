@@ -15,7 +15,7 @@ const initialState: tagInitialState = {
   counters: {},
 }
 
-const tagValidator = (
+export const tagValidator = (
   { type, turn, referents = null, groupName = null }: Tag,
   deck: Card[]
 ): Tag => {

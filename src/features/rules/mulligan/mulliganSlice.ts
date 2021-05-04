@@ -12,7 +12,7 @@ export const ACTIONS: UIElementIterator[] = [
 ]
 
 
-const validateMulligan = (
+export const validateMulligan = (
   card: Card["code"],
   action: mulliganAction,
   condition: mulliganCondition,
