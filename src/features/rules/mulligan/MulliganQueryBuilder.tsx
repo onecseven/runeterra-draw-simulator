@@ -2,7 +2,8 @@ import React, { useState, useCallback } from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/Dropdown"
-import { add, CONDITIONS, ACTIONS } from "./mulliganSlice"
+import { CONDITIONS, ACTIONS } from "./mulliganSlice"
+import { addMulligan } from "../../../store/dataSlice"
 import { RadioChoices } from "../../utils/RadioChoices"
 import { deckFilter } from "../../utils/deckFilter"
 import { useStateCallback } from "../../utils/useStateCallback"
@@ -12,7 +13,7 @@ type BuilderProps = {
 }
 
 export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
-  const deck = useSelector((state) => state.deck.cards)
+  const deck = useSelector((state) => state.data.deck.cards)
   const dispatch = useDispatch()
   const [action, setAction] = useStateCallback<mulliganAction | null>("KEEP")
   const [condition, setCondition] = useStateCallback<mulliganCondition | null>(
@@ -24,7 +25,7 @@ export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
   const [mainCard, setMainCard] = useStateCallback<Card["code"] | null>(null)
   // prettier-ignore
   const handleSubmit = () => {
-    dispatch(add({mulliganAction: action, condition, reference: referenceCard, referent: mainCard }))
+    dispatch(addMulligan({mulliganAction: action, condition, reference: referenceCard, referent: mainCard }))
     goDormant()
   }
 

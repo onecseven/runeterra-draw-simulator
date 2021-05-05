@@ -78,6 +78,12 @@ export const dataSlice = createSlice({
   },
 }})
 
+
+export const { addDeck, addMulligan, addTag} = dataSlice.actions
+
+export default dataSlice.reducer
+
+
 /*
 TODO remove action for tags
 TODO remove action for mulligans

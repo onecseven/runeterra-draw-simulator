@@ -6,8 +6,8 @@ import {ruleTranslator} from "./mulliganSlice"
 
 
 export const MulliganList = () => {
-  const queries = useSelector((state) => state.mulligan.queries)
-  const deck = useSelector((state) => state.deck.cards)
+  const queries = useSelector((state) => state.data.mulliganQueries)
+  const deck = useSelector((state) => state.data.deck.cards)
 
   if (queries.length == 0) return null
   let ruleElements = queries.map(rule => {

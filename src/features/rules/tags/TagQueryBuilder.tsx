@@ -2,7 +2,7 @@ import React from "react"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/Dropdown"
 import { useStateCallback } from "../../utils/useStateCallback"
-import { add } from "./tagSlice"
+import { addTag } from "../../../store/dataSlice"
 import { TAG_TYPES, TURNS} from "../../../store/constants"
 import { TypeSwitcher } from "./typeSpecific/TypeSwitcher"
 import { isTagType } from "../../utils/typeGuards"
@@ -32,7 +32,7 @@ export const TagQueryBuilder = ({ goDormant }: BuilderProps) => {
 
 
   const handleSubmit = () => {
-    dispatch(add({ type, referents, turn, groupName}))
+    dispatch(addTag({ type, referents, turn, groupName}))
     goDormant()
   }
 

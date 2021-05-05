@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import { useAppDispatch as useDispatch } from "../../store/hooks"
-import {add} from "./deckSlice"
+import { addDeck } from "../../store/dataSlice"
 
 export const DeckInput = () => {
   const dispatch = useDispatch()
@@ -8,7 +8,7 @@ export const DeckInput = () => {
   
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(add({code: label}))
+    dispatch(addDeck({code: label}))
   }
 
   return (

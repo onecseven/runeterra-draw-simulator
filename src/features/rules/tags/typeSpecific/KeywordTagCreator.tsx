@@ -20,7 +20,7 @@ export const KeywordTagCreator = ({
   onSelectedChange: Dropdown.props["onSelectedChange"]
   referentsCallback: Dropdown.props["onSelectedChange"]
 }) => {
-  const deck = useSelector((state) => state.deck.cards)
+  const deck = useSelector((state) => state.data.deck.cards)
   const findCards = (userKeyword) => {
     return formatDeck(deck)
       .filter((card) => {

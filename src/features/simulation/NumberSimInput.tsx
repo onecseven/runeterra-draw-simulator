@@ -5,9 +5,9 @@ import {run} from "./simulationSlice"
 
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
-  const deck = useSelector((state) => state.deck.cards)
-  const mulliganQueries = useSelector((state) => state.mulligan.queries)
-  const tags = useSelector((state) => state.tags.counters)
+  const deck = useSelector((state) => state.data.deck.cards)
+  const mulliganQueries = useSelector((state) => state.data.mulliganQueries)
+  const tags = useSelector((state) => state.data.tags.counters)
 
   const [numberOfSims, setnumberOfSims] = useState(0)
   

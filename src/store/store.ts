@@ -1,20 +1,15 @@
-import { configureStore, ThunkAction, Action, } from "@reduxjs/toolkit"
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import cardSlice from "../features/card/cardSlice"
-import deckReducer from "../features/deck/deckSlice"
-import mulliganSlice from "../features/rules/mulligan/mulliganSlice"
-import tagSlice from "../features/rules/tags/tagSlice"
-import  simulationSlice from "../features/simulation/simulationSlice"
+import simulationSlice from "../features/simulation/simulationSlice"
+import dataSlice from "./dataSlice"
 
-
-export const store =  configureStore({
+export const store = configureStore({
   reducer: {
-    deck: deckReducer,
+    data: dataSlice,
     card: cardSlice,
-    mulligan: mulliganSlice,
-    tags: tagSlice,
-    simulations: simulationSlice
+    simulations: simulationSlice,
   },
-  middleware: []
+  middleware: [],
 })
 
 export type AppDispatch = typeof store.dispatch

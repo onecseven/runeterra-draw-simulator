@@ -6,7 +6,7 @@ import {formatDeck} from "../utils/formatDeck"
 
 
 export const DeckList = () => {
-  const deck = useSelector((state) => state.deck.cards)
+  const deck = useSelector((state) => state.data.deck.cards)
   if (!deck.length) return null
   let formattedDeck = formatDeck(deck)
   return (
