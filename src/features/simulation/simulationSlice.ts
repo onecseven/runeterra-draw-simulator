@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { doTimes } from "../utils/doTimes"
 import {shuffle} from "../utils/shuffler"
 import { mulligan } from "./mulliganReducer"
-import {tagInitialState} from "../rules/tags/tagSlice"
+import {tagInitialState} from "../../store/dataSlice"
 
 let hands: Card[][] = []
 

@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 import {deckCodeTranslation} from "../features/utils/Deck-Code-Lookup"
-import {tagValidator} from "../features/rules/tags/tagSlice"
-import {validateMulligan} from "../features/rules/mulligan/mulliganSlice"
+import { tagValidator } from "../features/rules/tags/tagValidator"
+import { validateMulligan } from "../features/rules/mulligan/validateMulligan"
 
-interface tagInitialState {
+export interface tagInitialState {
   counters: {
     [id: number]: {
       //should match Counter["id"]

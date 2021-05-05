@@ -1,7 +1,7 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import Collapsable from "../../utils/Collapsable"
-import {ruleTranslator} from "./mulliganSlice"
+import { ruleTranslator } from "./ruleTranslator"
 
 
 
