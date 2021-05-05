@@ -7,7 +7,7 @@ type RULE_SWITCH = "MULLIGAN" | "TAG"
 
 export const RulesContainer = () => {
   const [ruleSwitch, setRuleSwitch] = useState<RULE_SWITCH>("MULLIGAN")
-  const deck = useSelector((state) => state.deck.cards)
+  const deck = useSelector((state) => state.data.deck.cards)
   const handleChange = (event: { target: HTMLInputElement }) => {
     if (event.target.value == "MULLIGAN" || event.target.value == "TAG") {
       setRuleSwitch(event.target.value)

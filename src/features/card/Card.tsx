@@ -7,6 +7,8 @@ type CardProps = {
   card: Card
 }
 
+//TODO fix selector
+
 export const  Card = ({card}: CardProps) => {
   const dispatch = useDispatch()
   const selectedCard = useSelector(state => state.card.selectedCard)
