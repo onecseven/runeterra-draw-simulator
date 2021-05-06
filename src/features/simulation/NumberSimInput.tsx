@@ -1,19 +1,15 @@
 import React, { useState } from "react"
 import { useAppDispatch as useDispatch } from "../../store/hooks"
-import { useAppSelector as useSelector } from "../../store/hooks"
-import {run} from "./simulationSlice"
+import {runSim} from "../../store/dataSlice"
 
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
-  const deck = useSelector((state) => state.data.deck.cards)
-  const mulliganQueries = useSelector((state) => state.data.mulliganQueries)
-  const tags = useSelector((state) => state.data.tags.counters)
 
   const [numberOfSims, setnumberOfSims] = useState(0)
   
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(run({numberOfSimulations: numberOfSims, deck, mulliganQueries, tags}))
+    dispatch(runSim({numberOfSimulations: numberOfSims}))
   }
 
   return (

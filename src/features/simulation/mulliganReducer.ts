@@ -17,6 +17,8 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
   }
 }
 
+// TODO: IMPORTANT FIX mulligan is not outputting consistently sized hands. we're leaving out
+// some cards (sometimes 4 when we're only mulliganing 3 at most????)
 
 export const mulligan = ({
   deck,
@@ -31,13 +33,13 @@ export const mulligan = ({
     if (isValueInArray(handSoFar, referent)) {
       let {referenceCard, condition, action} = onHit
       if (condition === "ALWAYS") {
-        let {kept, thrown} = mulliganAction(onHit.action, handSoFar, referent)
+        let {kept, thrown} = mulliganAction(action, handSoFar, referent)
         rest.concat(thrown)
         handSoFar = kept
       } else {
         let presenceOrAbsence = condition === "PRESENCE"
         if (isValueInArray(handSoFar, referenceCard) == presenceOrAbsence) {
-          let {kept, thrown} = mulliganAction(onHit.action, handSoFar, referent)
+          let {kept, thrown} = mulliganAction(action, handSoFar, referent)
           rest.concat(thrown)
           handSoFar = kept
         }

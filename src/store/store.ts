@@ -1,13 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import cardSlice from "../features/card/cardSlice"
-import simulationSlice from "../features/simulation/simulationSlice"
 import dataSlice from "./dataSlice"
 
 export const store = configureStore({
   reducer: {
     data: dataSlice,
     card: cardSlice,
-    simulations: simulationSlice,
   },
   middleware: [],
 })

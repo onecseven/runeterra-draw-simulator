@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import {deckCodeTranslation} from "../features/utils/Deck-Code-Lookup"
+import { deckCodeTranslation } from "../features/utils/Deck-Code-Lookup"
 import { tagValidator } from "../features/rules/tags/tagValidator"
 import { validateMulligan } from "../features/rules/mulligan/validateMulligan"
+import { runSimulation } from "../features/simulation/runSimulation"
 
 export interface tagInitialState {
   counters: {
@@ -17,49 +18,53 @@ const tagInitialState: tagInitialState = {
   counters: {},
 }
 
+let hands: Card[][] = []
+
 const mulliganInitialState: MulliganQuery[] = []
 
 type deckInitialState = {
-  code: string,
+  code: string
   cards: Card[]
 }
 
 const deckInitialState: deckInitialState = {
   code: "",
-  cards: []
+  cards: [],
 }
-
 
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
     deck: {
       code: null,
-      cards: null
+      cards: [],
     },
     tags: tagInitialState,
-    mulliganQueries: mulliganInitialState
+    mulliganQueries: mulliganInitialState,
+    simulations: {
+      hands,
+    },
   },
   reducers: {
     addDeck: (state, action) => {
-      let {code} = action.payload
+      let { code } = action.payload
       //maybe have a verify clause here?
       let cards = deckCodeTranslation(code)
       state.deck.code = code
       state.deck.cards = cards
       return state
-        },
+    },
     addMulligan: (state, action) => {
-      const  {mulliganAction, condition, referent, reference} = action.payload
-      if (validateMulligan(referent, mulliganAction, condition, reference)){
+      const { mulliganAction, condition, referent, reference } = action.payload
+      if (validateMulligan(referent, mulliganAction, condition, reference)) {
         let query = {
           referent,
           priority: 1,
           onHit: {
             action: mulliganAction,
             condition,
-            referenceCard: reference
-          }
+            referenceCard: reference,
+          },
         }
         state.mulliganQueries.push(query)
       }
@@ -75,18 +80,27 @@ export const dataSlice = createSlice({
         }
         return state
       }
+    },
+    runSim: (state, action) => {
+      let { numberOfSimulations } = action.payload
+      let trimmedHands = runSimulation({
+        deck: state.deck.cards,
+        mulliganQueries: state.mulliganQueries,
+        tags: state.tags.counters,
+        numberOfSimulations,
+      })
+      state.simulations.hands = trimmedHands
+    },
   },
-}})
+})
 
-
-export const { addDeck, addMulligan, addTag} = dataSlice.actions
+export const { addDeck, addMulligan, addTag, runSim} = dataSlice.actions
 
 export default dataSlice.reducer
-
 
 /*
 TODO remove action for tags
 TODO remove action for mulligans
-TODO update selectors to use new paths for data
-TODO update store to use this slice
+DONE update selectors to use new paths for data
+DONE update store to use this slice
 */
