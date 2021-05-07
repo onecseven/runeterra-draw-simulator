@@ -18,9 +18,6 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
   }
 }
 
-// TODO: IMPORTANT FIX mulligan is not outputting consistently sized hands. we're leaving out
-// some cards (sometimes 4 when we're only mulliganing 3 at)
-
 export const mulligan = ({
   deck,
   mulliganQueries,
