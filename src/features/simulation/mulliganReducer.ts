@@ -2,13 +2,13 @@ import { isValueInArray } from "../utils/isValueInArray"
 
 let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
-  let kept = preMullHand
+  let kept = preMullHand.slice()
   switch (action) {
     case "THROW":
-      thrown.concat(kept.splice(preMullHand.indexOf(referent)))
+      thrown = kept.filter((code) => (code === referent))
+      kept = kept.filter((code) => (code !== referent))
       break
     case "KEEP":
-      kept = preMullHand
       break
   }
   return {
@@ -18,7 +18,7 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
 }
 
 // TODO: IMPORTANT FIX mulligan is not outputting consistently sized hands. we're leaving out
-// some cards (sometimes 4 when we're only mulliganing 3 at most????)
+// some cards (sometimes 4 when we're only mulliganing 3 at)
 
 export const mulligan = ({
   deck,
@@ -34,17 +34,18 @@ export const mulligan = ({
       let {referenceCard, condition, action} = onHit
       if (condition === "ALWAYS") {
         let {kept, thrown} = mulliganAction(action, handSoFar, referent)
-        rest.concat(thrown)
+        rest.push(...thrown)
         handSoFar = kept
       } else {
         let presenceOrAbsence = condition === "PRESENCE"
         if (isValueInArray(handSoFar, referenceCard) == presenceOrAbsence) {
           let {kept, thrown} = mulliganAction(action, handSoFar, referent)
-          rest.concat(thrown)
+          rest.push(...thrown)
           handSoFar = kept
         }
       }
     }
   })
-  return handSoFar.concat(rest)
+  let all = handSoFar.concat(rest)
+  return all
 }

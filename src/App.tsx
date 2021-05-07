@@ -8,6 +8,7 @@ import "./App.css"
 import { DeckList } from "./features/deck/DeckList"
 import { RulesContainer } from "./features/rules/RulesContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
+import { Test } from "./features/test/Test"
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <div className="grid-container">
             <div className="deck">
               <DeckInput />
+              <Test/>
               <DeckList />
             </div>
             <div className="rules">

@@ -29,11 +29,11 @@ export const runSimulation = ({
   let numberOfTurns = getNumberOfTurns(tags)
   doTimes(() => {
     let innerDeck = shuffle(codeDeck)
-    console.log(innerDeck.length)
     let mulliganedDeck = mulligan({
       deck: innerDeck,
       mulliganQueries,
     })
+    console.log(mulliganedDeck.length)
     hands.push(mulliganedDeck)
   }, numberOfSimulations)
   let trimmedHands = hands.map((hand) => hand.slice(0, numberOfTurns))
