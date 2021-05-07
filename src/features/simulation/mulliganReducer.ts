@@ -1,4 +1,5 @@
 import { isValueInArray } from "../utils/isValueInArray"
+import { shuffle } from "../utils/shuffler"
 
 let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
@@ -35,12 +36,14 @@ export const mulligan = ({
       if (condition === "ALWAYS") {
         let {kept, thrown} = mulliganAction(action, handSoFar, referent)
         rest.push(...thrown)
+        shuffle(rest)
         handSoFar = kept
       } else {
         let presenceOrAbsence = condition === "PRESENCE"
         if (isValueInArray(handSoFar, referenceCard) == presenceOrAbsence) {
           let {kept, thrown} = mulliganAction(action, handSoFar, referent)
           rest.push(...thrown)
+          shuffle(rest)
           handSoFar = kept
         }
       }
