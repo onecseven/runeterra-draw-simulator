@@ -1,5 +1,17 @@
 import { isValueInArray } from "../utils/isValueInArray"
+import { tagInitialState } from "../../store/dataSlice"
+import { doTimes } from "../utils/doTimes"
 import { shuffle } from "../utils/shuffler"
+
+export const getNumberOfTurns = (tags: tagInitialState["counters"]) => {
+  let highestTurn = 0
+  for (let index in tags) {
+    let counter = tags[index]
+    highestTurn =
+      counter.tag.turn > highestTurn ? counter.tag.turn : highestTurn
+  }
+  return highestTurn
+}
 
 let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
@@ -25,7 +37,7 @@ let insertAtRandom = <T,>(value: T, array: T[]) => {
   return newArray
 }
 
-export const mulligan = ({
+const mulligan = ({
   deck,
   mulliganQueries,
 }: {
@@ -57,4 +69,26 @@ export const mulligan = ({
   })
   let all = handSoFar.concat(rest)
   return all
+}
+
+
+export const getMulliganedHands = ({
+  deck,
+  numberOfSimulations,
+  mulliganQueries}: {
+  deck: Card[]
+  mulliganQueries: MulliganQuery[]
+  numberOfSimulations: number
+}) => {
+  let codeDeck: Card["code"][] = deck.map(({ code }) => code)
+  let hands = []
+  doTimes(() => {
+    let innerDeck = shuffle(codeDeck)
+    let mulliganedDeck = mulligan({
+      deck: innerDeck,
+      mulliganQueries,
+    })
+    hands.push(mulliganedDeck)
+  }, numberOfSimulations)
+  return hands
 }

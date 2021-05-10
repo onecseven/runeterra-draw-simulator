@@ -6,6 +6,10 @@ import { isSequenceInTarget } from "../utils/isSequenceInTarget"
 
 let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
   let { type, referents } = tag
+  console.log(`
+  referents: ${referents}
+  hand: ${hand}
+  `)
   switch (type) {
     case "WITH": {
       return every(referents, hand)

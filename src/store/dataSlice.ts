@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import { deckCodeTranslation } from "../features/utils/Deck-Code-Lookup"
 import { tagValidator } from "../features/rules/tags/tagValidator"
 import { validateMulligan } from "../features/rules/mulligan/validateMulligan"
-import { runSimulation } from "../features/simulation/runSimulation"
+import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/mulliganReducer"
+import { countTags } from "../features/simulation/tagReducer"
 
 export interface tagInitialState {
   counters: {
@@ -18,7 +19,7 @@ const tagInitialState: tagInitialState = {
   counters: {},
 }
 
-let hands: Card[][] = []
+let hands: Card["code"][][] = []
 
 const mulliganInitialState: MulliganQuery[] = []
 
@@ -81,26 +82,31 @@ export const dataSlice = createSlice({
         return state
       }
     },
-    runSim: (state, action) => {
+    runMulligan: (state, action) => {
       let { numberOfSimulations } = action.payload
-      let trimmedHands = runSimulation({
+      let hands = getMulliganedHands({
         deck: state.deck.cards,
         mulliganQueries: state.mulliganQueries,
-        tags: state.tags.counters,
         numberOfSimulations,
       })
+      let numberOfTurns = getNumberOfTurns(state.tags.counters)
+      let trimmedHands = hands.map((hand) => hand.slice(0, numberOfTurns))
       state.simulations.hands = trimmedHands
     },
+    runTags: (state, action) => {
+      state.tags.counters = countTags({
+        hands: state.simulations.hands,
+        tags: state.tags.counters
+      })
+    }
   },
 })
 
-export const { addDeck, addMulligan, addTag, runSim} = dataSlice.actions
+export const { addDeck, addMulligan, addTag, runMulligan, runTags} = dataSlice.actions
 
 export default dataSlice.reducer
 
 /*
 TODO remove action for tags
 TODO remove action for mulligans
-DONE update selectors to use new paths for data
-DONE update store to use this slice
 */
