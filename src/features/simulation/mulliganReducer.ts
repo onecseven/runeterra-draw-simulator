@@ -1,7 +1,7 @@
 import { isValueInArray } from "../utils/isValueInArray"
 import { shuffle } from "../utils/shuffler"
 
-let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
+let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
   let kept = preMullHand.slice()
   switch (action) {
@@ -18,6 +18,13 @@ let mulliganAction = (action: mulliganAction, preMullHand: Card["code"][], refer
   }
 }
 
+let insertAtRandom = <T,>(value: T, array: T[]) => {
+  let place = Math.floor(Math.random() * array.length)
+  let newArray = array.slice()
+  newArray.splice(place, 0, value)
+  return newArray
+}
+
 export const mulligan = ({
   deck,
   mulliganQueries,
@@ -31,16 +38,18 @@ export const mulligan = ({
     if (isValueInArray(handSoFar, referent)) {
       let {referenceCard, condition, action} = onHit
       if (condition === "ALWAYS") {
-        let {kept, thrown} = mulliganAction(action, handSoFar, referent)
-        rest.push(...thrown)
-        shuffle(rest)
+        let {kept, thrown} = doMulliganAction(action, handSoFar, referent)
+        thrown.forEach(thrownCard => {
+          rest = insertAtRandom(thrownCard, rest)
+        })
         handSoFar = kept
       } else {
-        let presenceOrAbsence = condition === "PRESENCE"
+        let presenceOrAbsence = condition === "PRESENCE" 
         if (isValueInArray(handSoFar, referenceCard) == presenceOrAbsence) {
-          let {kept, thrown} = mulliganAction(action, handSoFar, referent)
-          rest.push(...thrown)
-          shuffle(rest)
+          let {kept, thrown} = doMulliganAction(action, handSoFar, referent)
+          thrown.forEach(thrownCard => {
+            rest = insertAtRandom(thrownCard, rest)
+          })
           handSoFar = kept
         }
       }
