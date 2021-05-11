@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { deckCodeTranslation } from "../features/utils/Deck-Code-Lookup"
-import { tagValidator } from "../features/rules/tags/tagValidator"
-import { validateMulligan } from "../features/rules/mulligan/validateMulligan"
-import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/mulliganReducer"
-import { countTags } from "../features/simulation/tagReducer"
+import { tagValidator } from "../features/utils/tagValidator"
+import { validateMulligan } from "../features/utils/validateMulligan"
+import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/simulateMulligan"
+import { countTags } from "../features/simulation/simulateCounter"
 
 export interface tagInitialState {
   counters: {
@@ -106,7 +106,3 @@ export const { addDeck, addMulligan, addTag, runMulligan, runTags} = dataSlice.a
 
 export default dataSlice.reducer
 
-/*
-TODO remove action for tags
-TODO remove action for mulligans
-*/

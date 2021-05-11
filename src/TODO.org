@@ -22,3 +22,5 @@
 ** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
 ** TODO Add new component that displays how many hits each counters receive.[CounterDisplay.tsx]
 *** TODO And, if loaded, shows which cards the hand drew.
+** TODO remove action for tags
+** TODO remove action for mulligans

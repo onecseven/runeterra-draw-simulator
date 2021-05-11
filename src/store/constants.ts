@@ -49,3 +49,14 @@ export const TURNS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
     return { value: v, name: v.toString() }
   }
 )
+
+export const CONDITIONS: UIElementIterator[] = [
+  { value: "ALWAYS", name: "Always" },
+  { value: "PRESENCE", name: "In the presence of another card" },
+  { value: "ABSENCE", name: "In the absence of another card" },
+]
+
+export const ACTIONS: UIElementIterator[] = [
+  { value: "KEEP", name: "Keep" },
+  { value: "THROW", name: "Throw" },
+]

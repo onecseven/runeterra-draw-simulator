@@ -1,4 +1,4 @@
-import { doTimes } from "./doTimes"
+import { doTimes } from "./generic/doTimes"
 import { decode } from "lor-deckcode"
 import { CardLookup } from "./CardLookup"
 

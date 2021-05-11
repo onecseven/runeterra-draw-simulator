@@ -67,8 +67,7 @@ const mulligan = ({
       }
     }
   })
-  let all = handSoFar.concat(rest)
-  return all
+  return handSoFar.concat(rest)
 }
 
 

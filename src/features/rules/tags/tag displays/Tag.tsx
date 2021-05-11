@@ -1,8 +1,7 @@
 import React from "react"
 import { CardLookup } from "../../../utils/CardLookup"
 import { Card } from "../../../card/Card"
-import Collapsable from "../../../utils/Collapsable"
-//{"1":{"tag":{"type":"WITH","turn":1,"referents":["01SI015","01SI044"]},"hits":[]}}
+import Collapsable from "../../../utils/generic/UI/Collapsable"
 
 export const Tag = ({ tag }: { tag: Tag }) => {
   let { referents, turn, type } = tag

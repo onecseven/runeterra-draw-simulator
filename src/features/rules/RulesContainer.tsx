@@ -47,4 +47,3 @@ export const RulesContainer = () => {
     </div>
   )
 }
-//style={{ marginLeft: "45%" }}

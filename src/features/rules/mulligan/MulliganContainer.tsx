@@ -1,7 +1,7 @@
 import React from "react"
 import { MulliganQueryBuilder } from "./MulliganQueryBuilder"
 import { MulliganList } from "./MulliganList"
-import { useStateCallback } from "../../utils/useStateCallback"
+import { useStateCallback } from "../../utils/generic/useStateCallback"
 
 export const MulliganContainer = () => {
   const [builderVisibility, setBuilderVisibility] = useStateCallback(false)

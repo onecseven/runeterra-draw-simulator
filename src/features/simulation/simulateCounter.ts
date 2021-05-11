@@ -1,8 +1,6 @@
-import { isValueInArray } from "../utils/isValueInArray"
-import { every } from "../utils/every"
+import { every } from "../utils/generic/every"
 import { tagInitialState } from "../../store/dataSlice"
-import { checkArrays } from "../utils/array-equality"
-import { isSequenceInTarget } from "../utils/isSequenceInTarget"
+import { isSequenceInTarget } from "../utils/generic/isSequenceInTarget"
 
 let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
   let { type, referents } = tag
