@@ -1,7 +1,7 @@
-import { isValueInArray } from "../utils/isValueInArray"
+import { isValueInArray } from "../utils/generic/isValueInArray"
 import { tagInitialState } from "../../store/dataSlice"
-import { doTimes } from "../utils/doTimes"
-import { shuffle } from "../utils/shuffler"
+import { doTimes } from "../utils/generic/doTimes"
+import { shuffle } from "../utils/generic/shuffler"
 
 export const getNumberOfTurns = (tags: tagInitialState["counters"]) => {
   let highestTurn = 0
