@@ -1,12 +1,12 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
-import { Dropdown } from "../../utils/Dropdown"
-import { CONDITIONS, ACTIONS } from "./mulliganConstants"
+import { Dropdown } from "../../utils/generic/UI/Dropdown"
+import { CONDITIONS, ACTIONS } from "../../../store/constants"
 import { addMulligan } from "../../../store/dataSlice"
-import { RadioChoices } from "../../utils/RadioChoices"
+import { RadioChoices } from "../../utils/generic/UI/RadioChoices"
 import { deckFilter } from "../../utils/deckFilter"
-import { useStateCallback } from "../../utils/useStateCallback"
+import { useStateCallback } from "../../utils/generic/useStateCallback"
 
 type BuilderProps = {
   goDormant: Function
