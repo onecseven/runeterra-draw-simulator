@@ -18,5 +18,5 @@
 **** DONE Store connection
 *** DONE Write a component that can write MULTIPLE tags and send them to the store
 ** DONE Migrate to typescript!!!
-** TODO Start working on the shuffler/shuffling mechanism.
 ** DONE Function that looks up cards given a card code. But from the decklist.
+** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
