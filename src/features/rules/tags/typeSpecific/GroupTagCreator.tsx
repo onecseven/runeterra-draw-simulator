@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { ExtensibleDropdown } from "../../../utils/ExtensibleDropdown"
+import { ExtensibleDropdown } from "../../../utils/generic/UI/ExtensibleDropdown"
 
 export const GroupTagCreator = ({
   onGroupChange,

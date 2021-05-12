@@ -1,5 +1,5 @@
 import React from "react"
-import { Dropdown } from "../../../utils/Dropdown"
+import { Dropdown } from "../../../utils/generic/UI/Dropdown"
 import { KEYWORDS } from "../../../../store/constants"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
 import { formatDeck } from "../../../utils/formatDeck"

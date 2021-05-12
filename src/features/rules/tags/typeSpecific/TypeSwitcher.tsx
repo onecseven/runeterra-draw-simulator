@@ -2,7 +2,7 @@ import React from "react"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
 import { deckFilter } from "../../../utils/deckFilter"
 import { GroupTagCreator } from "./GroupTagCreator"
-import { ExtensibleDropdown } from "../../../utils/ExtensibleDropdown"
+import { ExtensibleDropdown } from "../../../utils/generic/UI/ExtensibleDropdown"
 import { KeywordTagCreator } from "./KeywordTagCreator"
 
 export const TypeSwitcher = ({

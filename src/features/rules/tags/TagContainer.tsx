@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react"
 import { TagQueryBuilder } from "./TagQueryBuilder"
 import { TagList } from "./tag displays/TagList"
-import { useStateCallback } from "../../utils/useStateCallback"
+import { useStateCallback } from "../../utils/generic/useStateCallback"
 
 export const TagContainer = () => {
   const [builderVisibility, setBuilderVisibility] = useStateCallback(false)

@@ -4,6 +4,7 @@ import { tagValidator } from "../features/utils/tagValidator"
 import { validateMulligan } from "../features/utils/validateMulligan"
 import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/simulateMulligan"
 import { countTags } from "../features/simulation/simulateCounter"
+import {checkArrays} from "../features/utils/generic/array-equality"
 
 export interface tagInitialState {
   counters: {
@@ -71,6 +72,10 @@ export const dataSlice = createSlice({
       }
       return state
     },
+    removeMulligan: (state,action) => {
+      let {index} = action.payload
+      state.mulliganQueries.splice(index, 1)
+    },
     addTag: (state, action) => {
       let tag = tagValidator(action.payload, [])
       if (tag) {
@@ -102,7 +107,7 @@ export const dataSlice = createSlice({
   },
 })
 
-export const { addDeck, addMulligan, addTag, runMulligan, runTags} = dataSlice.actions
+export const { addDeck, addMulligan, addTag, runMulligan, runTags, removeMulligan} = dataSlice.actions
 
 export default dataSlice.reducer
 
