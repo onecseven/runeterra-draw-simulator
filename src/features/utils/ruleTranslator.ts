@@ -1,3 +1,5 @@
+import { mulliganAction, mulliganCondition, Card } from "../../types"
+
 export const ruleTranslator = (
   referent: Card["code"],
   action: mulliganAction,

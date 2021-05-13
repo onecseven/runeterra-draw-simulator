@@ -5,6 +5,7 @@ import { validateMulligan } from "../features/utils/validateMulligan"
 import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/simulateMulligan"
 import { countTags } from "../features/simulation/simulateCounter"
 import {checkArrays} from "../features/utils/generic/array-equality"
+import { Actions, Card, MulliganQuery, Tag } from "../types"
 
 export interface tagInitialState {
   counters: {
@@ -34,6 +35,7 @@ const deckInitialState: deckInitialState = {
   cards: [],
 }
 
+
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
@@ -48,7 +50,7 @@ export const dataSlice = createSlice({
     },
   },
   reducers: {
-    addDeck: (state, action) => {
+    addDeck: (state, action: Actions.addDeck) => {
       let { code } = action.payload
       //maybe have a verify clause here?
       let cards = deckCodeTranslation(code)
@@ -56,7 +58,7 @@ export const dataSlice = createSlice({
       state.deck.cards = cards
       return state
     },
-    addMulligan: (state, action) => {
+    addMulligan: (state, action: Actions.addMulligan) => {
       const { mulliganAction, condition, referent, reference } = action.payload
       if (validateMulligan(referent, mulliganAction, condition, reference)) {
         let query = {
@@ -72,11 +74,11 @@ export const dataSlice = createSlice({
       }
       return state
     },
-    removeMulligan: (state,action) => {
+    removeMulligan: (state,action: Actions.removeMulligan) => {
       let {index} = action.payload
       state.mulliganQueries.splice(index, 1)
     },
-    addTag: (state, action) => {
+    addTag: (state, action: Actions.addTag) => {
       let tag = tagValidator(action.payload, [])
       if (tag) {
         let id = Object.keys(state.tags.counters).length + 1
@@ -87,7 +89,7 @@ export const dataSlice = createSlice({
         return state
       }
     },
-    runMulligan: (state, action) => {
+    runMulligan: (state, action: Actions.runMulligan) => {
       let { numberOfSimulations } = action.payload
       let hands = getMulliganedHands({
         deck: state.deck.cards,
@@ -98,7 +100,7 @@ export const dataSlice = createSlice({
       let trimmedHands = hands.map((hand) => hand.slice(0, numberOfTurns))
       state.simulations.hands = trimmedHands
     },
-    runTags: (state, action) => {
+    runTags: (state, action: Actions.runTags) => {
       state.tags.counters = countTags({
         hands: state.simulations.hands,
         tags: state.tags.counters
