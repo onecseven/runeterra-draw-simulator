@@ -1,7 +1,9 @@
 import React from "react"
-import { CardLookup } from "../../../utils/CardLookup"
+import {formatDeck} from "../../../utils/formatDeck"
 import { Card } from "../../../card/Card"
 import Collapsable from "../../../utils/generic/UI/Collapsable"
+import { useAppSelector as useSelector } from "../../../../store/hooks"
+
 
 export const tagLabel = (tag: Tag): string => {
   let {type, turn, groupName} = tag
@@ -26,13 +28,14 @@ export const tagLabel = (tag: Tag): string => {
 
 
 export const Tag = ({ tag, title = null}: { tag: Tag, title?: string}) => {
+  const deck = useSelector((state) => formatDeck(state.data.deck.cards))
   let { referents, turn, type } = tag
+
   title = title ? title : tagLabel(tag)
+
   let cards = referents
-    .map((card) => CardLookup(card))
-    .map((card) => {
-      card.count = 1
-      return card
+    .map((cardCode) => {
+      return deck.find(card => cardCode === card.code)
     })
 
   let collapsable = (title) => (
