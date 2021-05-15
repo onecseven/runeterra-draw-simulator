@@ -66,6 +66,11 @@ declare interface dataCards extends Card{
   set: string
 }
 
+type hand = {
+  read: boolean
+  cards: Card["code"][]
+}
+
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
 
 declare interface UIElementIterator {

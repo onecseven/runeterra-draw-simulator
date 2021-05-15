@@ -4,10 +4,6 @@ import { isSequenceInTarget } from "../utils/generic/isSequenceInTarget"
 
 let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
   let { type, referents } = tag
-  console.log(`
-  referents: ${referents}
-  hand: ${hand}
-  `)
   switch (type) {
     case "WITH": {
       return every(referents, hand)
@@ -31,16 +27,18 @@ export const countTags = ({
   hands,
   tags,
 }: {
-  hands: Card["code"][][]
+  hands: hand[]
   tags: tagInitialState["counters"]
 }): tagInitialState["counters"] => {
   for (let hand of hands) {
+    if (hand.read) break
     for (let index in tags) {
       let {tag, hits} = tags[index]
-      if (tagVerification(tag, hand)){
-        hits.push(hand)
+      if (tagVerification(tag, hand.cards)){
+        hits.push(hand.cards)
       }
     }
+    hand.read = true
   }
   return tags
 }

@@ -2,9 +2,12 @@ import { createSlice } from "@reduxjs/toolkit"
 import { deckCodeTranslation } from "../features/utils/Deck-Code-Lookup"
 import { tagValidator } from "../features/utils/tagValidator"
 import { validateMulligan } from "../features/utils/validateMulligan"
-import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/simulateMulligan"
+import {
+  getNumberOfTurns,
+  getMulliganedHands,
+} from "../features/simulation/simulateMulligan"
 import { countTags } from "../features/simulation/simulateCounter"
-import {checkArrays} from "../features/utils/generic/array-equality"
+import { checkArrays } from "../features/utils/generic/array-equality"
 
 export interface tagInitialState {
   counters: {
@@ -20,7 +23,7 @@ const tagInitialState: tagInitialState = {
   counters: {},
 }
 
-let hands: Card["code"][][] = []
+let hands: hand[] = []
 
 const mulliganInitialState: MulliganQuery[] = []
 
@@ -33,7 +36,6 @@ const deckInitialState: deckInitialState = {
   code: "",
   cards: [],
 }
-
 
 export const dataSlice = createSlice({
   name: "data",
@@ -73,8 +75,8 @@ export const dataSlice = createSlice({
       }
       return state
     },
-    removeMulligan: (state,action: Actions.removeMulligan) => {
-      let {index} = action.payload
+    removeMulligan: (state, action: Actions.removeMulligan) => {
+      let { index } = action.payload
       state.mulliganQueries.splice(index, 1)
     },
     addTag: (state, action: Actions.addTag) => {
@@ -97,18 +99,27 @@ export const dataSlice = createSlice({
       })
       let numberOfTurns = getNumberOfTurns(state.tags.counters)
       let trimmedHands = hands.map((hand) => hand.slice(0, numberOfTurns))
-      state.simulations.hands = trimmedHands
+
+      state.simulations.hands = trimmedHands.map((cards) => {
+        return { cards, read: false }
+      })
     },
     runTags: (state, action: Actions.runTags) => {
       state.tags.counters = countTags({
         hands: state.simulations.hands,
-        tags: state.tags.counters
+        tags: state.tags.counters,
       })
-    }
+    },
   },
 })
 
-export const { addDeck, addMulligan, addTag, runMulligan, runTags, removeMulligan} = dataSlice.actions
+export const {
+  addDeck,
+  addMulligan,
+  addTag,
+  runMulligan,
+  runTags,
+  removeMulligan,
+} = dataSlice.actions
 
 export default dataSlice.reducer
-
