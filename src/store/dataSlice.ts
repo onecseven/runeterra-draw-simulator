@@ -5,7 +5,6 @@ import { validateMulligan } from "../features/utils/validateMulligan"
 import { getNumberOfTurns, getMulliganedHands } from "../features/simulation/simulateMulligan"
 import { countTags } from "../features/simulation/simulateCounter"
 import {checkArrays} from "../features/utils/generic/array-equality"
-import { Actions, Card, MulliganQuery, Tag } from "../types"
 
 export interface tagInitialState {
   counters: {

@@ -1,5 +1,4 @@
 import { Card } from "lor-deckcode"
-import { mulliganAction, mulliganCondition } from "../../types"
 
 export const validateMulligan = (
   card: Card["code"],

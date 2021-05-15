@@ -20,13 +20,13 @@ let TagTypes = TAG_TYPES.map(({ value }) => {
 export const TagQueryBuilder = ({ goDormant }: BuilderProps) => {
   const dispatch = useDispatch()
   const [type, setType] = useStateCallback<TagType>(TagTypes[0])
-  const [turn, setTurn] = useStateCallback<UIElementIterator["value"]>(
+  const [turn, setTurn] = useStateCallback<number>(
     TURNS.map(({ value }) => value)[0]
   )
   const [referents, setReferents] = useStateCallback<Card["code"][] | null>(
     null
   )
-  const [groupName, setGroupName] = useStateCallback<Card["code"][] | null>(
+  const [groupName, setGroupName] = useStateCallback<string | null>(
     null
   )
 

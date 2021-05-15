@@ -8,6 +8,8 @@ import "./App.css"
 import { DeckList } from "./features/deck/DeckList"
 import { RulesContainer } from "./features/rules/RulesContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
+import { CounterList } from "./features/rules/tags/tag displays/CounterList"
+
 import { Test } from "./features/test/Test"
 
 class App extends Component {
@@ -28,6 +30,7 @@ class App extends Component {
             </div>
             <div className="sim">
               <NumberSimInput/>
+              <CounterList/>
             </div>
           </div>
         </Provider>

@@ -8,17 +8,17 @@ export const tagValidator = (
   switch (type) {
     case "WITH": {
       if (referents)
-        return { type, turn, referents };
+        return { type, turn, referents, groupName};
       break;
     }
     case "SEQUENCE": {
       if (referents)
-        return { type, turn, referents };
+        return { type, turn, referents , groupName};
       break;
     }
     case "WITHOUT": {
       if (referents)
-        return { type, turn, referents };
+        return { type, turn, referents , groupName};
       break;
     }
     case "KEYWORD": {

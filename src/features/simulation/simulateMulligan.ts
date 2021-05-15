@@ -2,6 +2,7 @@ import { isValueInArray } from "../utils/generic/isValueInArray"
 import { tagInitialState } from "../../store/dataSlice"
 import { doTimes } from "../utils/generic/doTimes"
 import { shuffle } from "../utils/generic/shuffler"
+import { insertAtRandom } from "../utils/generic/insertAtRandom"
 
 export const getNumberOfTurns = (tags: tagInitialState["counters"]) => {
   let highestTurn = 0
@@ -28,13 +29,6 @@ let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], ref
     kept,
     thrown
   }
-}
-
-let insertAtRandom = <T,>(value: T, array: T[]) => {
-  let place = Math.floor(Math.random() * array.length)
-  let newArray = array.slice()
-  newArray.splice(place, 0, value)
-  return newArray
 }
 
 const mulligan = ({
