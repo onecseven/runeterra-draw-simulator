@@ -31,7 +31,7 @@ export const countTags = ({
   tags: tagInitialState["counters"]
 }): tagInitialState["counters"] => {
   for (let hand of hands) {
-    if (hand.read) break
+    if (hand.read) continue
     for (let index in tags) {
       let {tag, hits} = tags[index]
       if (tagVerification(tag, hand.cards)){

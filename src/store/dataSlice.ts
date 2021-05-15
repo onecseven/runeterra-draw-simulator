@@ -98,11 +98,10 @@ export const dataSlice = createSlice({
         numberOfSimulations,
       })
       let numberOfTurns = getNumberOfTurns(state.tags.counters)
-      let trimmedHands = hands.map((hand) => hand.slice(0, numberOfTurns))
-
-      state.simulations.hands = trimmedHands.map((cards) => {
+      let formattedHands = hands.map((hand) => hand.slice(0, numberOfTurns)).map((cards) => {
         return { cards, read: false }
       })
+      state.simulations.hands = state.simulations.hands.concat(formattedHands)
     },
     runTags: (state, action: Actions.runTags) => {
       state.tags.counters = countTags({
