@@ -56,7 +56,7 @@ const mulligan = ({
           thrown.forEach(thrownCard => {
             rest = insertAtRandom(thrownCard, rest)
           })
-          handSoFar = kept
+          handSoFar = keptq
         }
       }
     }
