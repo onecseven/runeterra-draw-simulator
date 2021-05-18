@@ -4,7 +4,6 @@ type CardProps = {
   card: Card
 }
 
-
 export const  Card = ({card}: CardProps) => {
   if (!card) return null
 
