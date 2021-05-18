@@ -145,8 +145,8 @@ declare namespace Actions {
       index: number
     }
   }
-  type removeMulligan = {
-    type: "data/removeMulligan"
+  type removeTag = {
+    type: "data/removeTag"
     payload: {
       index: number
     }
