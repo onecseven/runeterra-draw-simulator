@@ -150,6 +150,12 @@ declare namespace Actions {
       index: number
     }
   }
+  type removeTag = {
+    type: "data/removeTag"
+    payload: {
+      index: number
+    }
+  }
   type addTag = {
     type: "data/addTag"
     payload: {
