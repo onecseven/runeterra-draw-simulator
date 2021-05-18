@@ -35,7 +35,7 @@ declare type KEYWORD =
   | "Fury"
   | "Augment"
 
-declare interface dataCards extends Card{
+declare interface dataCards {
   associatedCards: string[]
   associatedCardRefs: []
   assets: asset[]
@@ -66,12 +66,13 @@ declare interface dataCards extends Card{
   set: string
 }
 
-type hand = {
-  read: boolean
-  cards: Card["code"][]
-}
-
 declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
+
+declare interface Hand {
+  code: Card["code"]
+  name: Card["name"]
+  ids: Counter["id"][]
+}
 
 declare interface UIElementIterator {
   name: string
@@ -85,8 +86,8 @@ declare interface Card {
   region: string
   cost: number
   keywords: KEYWORD[]
-  type?: "Spell" | "Unit"
-  supertype?: "Champion"
+  type: dataCards.type
+  supertype: dataCards.supertype
   count?: number
 }
 
@@ -125,54 +126,5 @@ declare interface Tag {
 
 declare interface Counter {
   tag: Tag //maybe eventually we could have composite counter
-  hits: Card["code"][][]
-}
-
-declare namespace Actions {
-  type addDeck = {
-    type: "data/addDeck"
-    payload: {
-      code: string
-    }
-  }
-  type addMulligan = {
-    type: "data/addMulligan"
-    payload: {
-      mulliganAction: mulliganAction
-      condition: mulliganCondition
-      referent: Card["code"]
-      reference: Card["code"]
-    }
-  }
-  type removeMulligan = {
-    type: "data/removeMulligan"
-    payload: {
-      index: number
-    }
-  }
-  type removeTag = {
-    type: "data/removeTag"
-    payload: {
-      index: number
-    }
-  }
-  type addTag = {
-    type: "data/addTag"
-    payload: {
-      type: TagType
-      turn: number
-      referents?: Card["code"][]
-      groupName?: string
-    }
-  }
-  type runMulligan = {
-    type: "data/runMulligan"
-    payload: {
-      numberOfSimulations: number
-    }
-  }
-  type runTags = {
-    type: "data/runTags"
-    payload: {}
-  }
+  hits: Hand[]
 }
