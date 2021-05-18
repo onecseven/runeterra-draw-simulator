@@ -1,5 +1,6 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
+import { RemoveButton } from "../../../utils/RemoveButton"
 import {Tag} from "./Tag"
 
 export const TagList = () => {
@@ -12,10 +13,11 @@ export const TagList = () => {
   }
 
   return (<ul>
-    {...queryElements.map((query) => {
+    {...queryElements.map((query, index) => {
       return (
         <li>
           <Tag tag={query}/>
+          <RemoveButton type="TAG" index={index}/>
         </li>
       )
     })}

@@ -82,7 +82,7 @@ export const dataSlice = createSlice({
     addTag: (state, action: Actions.addTag) => {
       let tag = tagValidator(action.payload, [])
       if (tag) {
-        let id = Object.keys(state.tags.counters).length + 1
+        let id = Object.keys(state.tags.counters).length
         state.tags.counters[id] = {
           tag,
           hits: [],
@@ -109,7 +109,20 @@ export const dataSlice = createSlice({
         tags: state.tags.counters,
       })
     },
-  },
+    removeTag: (state, action) => {
+      let {index} = action.payload
+      let newTags = {}
+      for (let key in state.tags.counters) {
+        if (key === index.toString()) continue
+        let id = Object.keys(newTags).length
+        newTags[id] = {
+          tag: state.tags.counters[id].tag,
+          hits: state.tags.counters[id].hits,
+        }
+      }
+      state.tags.counters = newTags
+    },
+  }
 })
 
 export const {
@@ -119,6 +132,7 @@ export const {
   runMulligan,
   runTags,
   removeMulligan,
+  removeTag
 } = dataSlice.actions
 
 export default dataSlice.reducer
