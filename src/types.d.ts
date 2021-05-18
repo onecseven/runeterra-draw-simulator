@@ -35,7 +35,7 @@ declare type KEYWORD =
   | "Fury"
   | "Augment"
 
-declare interface dataCards {
+declare interface dataCards extends Card{
   associatedCards: string[]
   associatedCardRefs: []
   assets: asset[]
@@ -66,14 +66,10 @@ declare interface dataCards {
   set: string
 }
 
-declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
-
-declare interface Hand {
-  code: Card["code"]
-  name: Card["name"]
-  ids: Counter["id"][]
+type hand = {
+  read: boolean
+  cards: Card["code"][]
 }
-
 declare interface UIElementIterator {
   name: string
   value: string | number
@@ -86,12 +82,10 @@ declare interface Card {
   region: string
   cost: number
   keywords: KEYWORD[]
-  type: dataCards.type
-  supertype: dataCards.supertype
+  type?: "Spell" | "Unit"
+  supertype?: "Champion"
   count?: number
 }
-
-type cardProperties = "code" | "name" | "assets" | "region" | "cost"
 
 declare interface asset {
   gameAbsolutePath: string
@@ -126,5 +120,54 @@ declare interface Tag {
 
 declare interface Counter {
   tag: Tag //maybe eventually we could have composite counter
-  hits: Hand[]
+  hits: Card["code"][][]
+}
+
+declare namespace Actions {
+  type addDeck = {
+    type: "data/addDeck"
+    payload: {
+      code: string
+    }
+  }
+  type addMulligan = {
+    type: "data/addMulligan"
+    payload: {
+      mulliganAction: mulliganAction
+      condition: mulliganCondition
+      referent: Card["code"]
+      reference: Card["code"]
+    }
+  }
+  type removeMulligan = {
+    type: "data/removeMulligan"
+    payload: {
+      index: number
+    }
+  }
+  type removeMulligan = {
+    type: "data/removeMulligan"
+    payload: {
+      index: number
+    }
+  }
+  type addTag = {
+    type: "data/addTag"
+    payload: {
+      type: TagType
+      turn: number
+      referents?: Card["code"][]
+      groupName?: string
+    }
+  }
+  type runMulligan = {
+    type: "data/runMulligan"
+    payload: {
+      numberOfSimulations: number
+    }
+  }
+  type runTags = {
+    type: "data/runTags"
+    payload: {}
+  }
 }

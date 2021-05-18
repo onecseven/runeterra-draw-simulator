@@ -7,7 +7,7 @@ type RULE_SWITCH = "MULLIGAN" | "TAG"
 
 export const RulesContainer = () => {
   const [ruleSwitch, setRuleSwitch] = useState<RULE_SWITCH>("MULLIGAN")
-  const deck = useSelector((state) => state.data.deck.cards)
+  const deckLength = useSelector((state) => state.data.deck.cards.length)
   const handleChange = (event: { target: HTMLInputElement }) => {
     if (event.target.value == "MULLIGAN" || event.target.value == "TAG") {
       setRuleSwitch(event.target.value)
@@ -16,6 +16,7 @@ export const RulesContainer = () => {
   let switchingElement = (<>
         {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (<TagContainer/>)}
       </>)
+
   return (
     <div className="nes-container is-rounded with-title">
       <div className="title" style={{ display: "flex", backgroundColor: "transparent"}} >
@@ -43,7 +44,7 @@ export const RulesContainer = () => {
           <span>Rules</span>
         </label>
       </div>
-      {deck.length > 0 ? switchingElement : null}
+      {deckLength > 0 ? switchingElement : null}
     </div>
   )
 }
