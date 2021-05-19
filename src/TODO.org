@@ -27,8 +27,13 @@
 ** DONE remove action for mulligans
 ** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
 ** TODO Non-destructive Update deck
-
+*** TODO Deck Update action
+**** Deck Update should include code that sanitizes tags/mulligans if they combinations
+**** cards that are no longer present and delete them if necessary
+*** TODO Override modal?
 
 * New UI Design
 ** TODO Design New Workflow / Views
 *** Keep USABILITY in mind.
+*** Use canvas?
+** TODO Maybe a HELP component
