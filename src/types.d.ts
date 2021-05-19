@@ -70,9 +70,6 @@ type hand = {
   read: boolean
   cards: Card["code"][]
 }
-
-declare type getStartingHand = (keep: number[], sendBack?: number[]) => number[]
-
 declare interface UIElementIterator {
   name: string
   value: string | number
@@ -89,8 +86,6 @@ declare interface Card {
   supertype?: "Champion"
   count?: number
 }
-
-type cardProperties = "code" | "name" | "assets" | "region" | "cost"
 
 declare interface asset {
   gameAbsolutePath: string
@@ -146,6 +141,12 @@ declare namespace Actions {
   }
   type removeMulligan = {
     type: "data/removeMulligan"
+    payload: {
+      index: number
+    }
+  }
+  type removeTag = {
+    type: "data/removeTag"
     payload: {
       index: number
     }

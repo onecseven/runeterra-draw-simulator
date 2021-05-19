@@ -109,7 +109,7 @@ export const dataSlice = createSlice({
         tags: state.tags.counters,
       })
     },
-    removeTag: (state, action) => {
+    removeTag: (state, action: Actions.removeTag) => {
       let {index} = action.payload
       let newTags = {}
       for (let key in state.tags.counters) {

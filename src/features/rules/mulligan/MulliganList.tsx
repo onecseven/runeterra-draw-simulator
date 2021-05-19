@@ -2,19 +2,11 @@ import React from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import Collapsable from "../../utils/generic/UI/Collapsable"
 import { ruleTranslator } from "../../utils/ruleTranslator"
-import { useAppDispatch as useDispatch } from "../../../store/hooks"
-import { removeMulligan } from "../../../store/dataSlice"
 import { RemoveButton } from "../../utils/RemoveButton"
 
 export const MulliganList = () => {
   const queries = useSelector((state) => state.data.mulliganQueries)
   const deck = useSelector((state) => state.data.deck.cards)
-  const dispatch = useDispatch()
-
-  const handleRemove = (event) => {
-    event.preventDefault()
-    dispatch(removeMulligan({index: event.target.value}))
-  }
 
   if (queries.length == 0) return null
   let ruleElements = queries.map((rule, index) => {
