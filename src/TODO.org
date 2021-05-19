@@ -1,4 +1,4 @@
-* UI Tasklist
+* Tasklist
 ** DONE Receive decklists
 *** DONE Input field for deck code
 *** DONE Deck code validity checker? Or does the lor-decode package contain that?
@@ -23,5 +23,12 @@
 ** DONE Add new component that displays how many hits each counters receive.[CounterDisplay.tsx]
 *** TODO And, if loaded, shows which cards the hand drew.
 ** DONE remove action for tags
-*** TODO think about how to approach this
+*** DONE think about how to approach this
 ** DONE remove action for mulligans
+** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
+** TODO Non-destructive Update deck
+
+
+* New UI Design
+** TODO Design New Workflow / Views
+*** Keep USABILITY in mind.
