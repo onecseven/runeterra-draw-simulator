@@ -24,6 +24,7 @@ let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], ref
       break
     case "KEEP":
       break
+    // TODO, add cases "KEEP ALL", "KEEP ONE", "KEEP TWOS"
   }
   return {
     kept,
