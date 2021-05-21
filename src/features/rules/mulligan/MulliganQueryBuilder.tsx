@@ -15,7 +15,7 @@ type BuilderProps = {
 export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
   const deck = useSelector((state) => state.data.deck.cards)
   const dispatch = useDispatch()
-  const [action, setAction] = useStateCallback<mulliganAction | null>("KEEP")
+  const [action, setAction] = useStateCallback<mulliganAction | null>("KEEP_ALL")
   const [condition, setCondition] = useStateCallback<mulliganCondition | null>(
     "ALWAYS"
   )

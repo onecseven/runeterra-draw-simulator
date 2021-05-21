@@ -22,10 +22,16 @@ let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], ref
       thrown = kept.filter((code) => (code === referent))
       kept = kept.filter((code) => (code !== referent))
       break
-    case "KEEP":
+    default:
+      if (action === "KEEP_ALL") break
+      let max = action === "KEEP_TWO" ? 2 : 1 //if it's not keep all or keep two it must be keep one
+      thrown = kept.filter((code) => (code === referent))
+      kept = kept.filter((code) => (code !== referent))
+      doTimes(() => {
+        if (thrown.length > 0) kept.push(thrown.pop())
+      }, max)
       break
-    // TODO, add cases "KEEP ALL", "KEEP ONE", "KEEP TWOS"
-  }
+    }
   return {
     kept,
     thrown

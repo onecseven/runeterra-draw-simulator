@@ -57,6 +57,8 @@ export const CONDITIONS: UIElementIterator[] = [
 ]
 
 export const ACTIONS: UIElementIterator[] = [
-  { value: "KEEP", name: "Keep" },
+  { value: "KEEP_ALL", name: "Keep all copies that show up" },
+  { value: "KEEP_ONE", name: "Keep only one copy" },
+  { value: "KEEP_TWO", name: "Keep two copies (will keep at least one)" },
   { value: "THROW", name: "Throw" },
 ]
