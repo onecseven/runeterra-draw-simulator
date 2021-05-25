@@ -1,6 +1,6 @@
 {
   "name": "draw_simulator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a draw simulator for runeterra with custom queries",
   "main": "./dist/app/src/index.js",
   "dependencies": {
