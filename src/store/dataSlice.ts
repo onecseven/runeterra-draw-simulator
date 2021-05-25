@@ -5,8 +5,8 @@ import { validateMulligan } from "../features/utils/validateMulligan"
 import {
   getNumberOfTurns,
   getMulliganedHands,
-} from "../features/simulation/simulateMulligan"
-import { countTags } from "../features/simulation/simulateCounter"
+} from "../features/utils/simulateMulligan"
+import { countTags } from "../features/utils/simulateCounter"
 import { checkArrays } from "../features/utils/generic/array-equality"
 
 export interface tagInitialState {
