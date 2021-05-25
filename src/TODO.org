@@ -36,6 +36,9 @@
  
 * New UI Design
 ** TODO Design New Workflow / Views
+*** TODO Replace the DeckList component with a box with the card images
+*** TODO Replace the RadioChoices component with a list Radio Choice component that looks like this:
+![radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
 *** Keep USABILITY in mind.
 *** Use canvas? 
 ** TODO Maybe a HELP component
