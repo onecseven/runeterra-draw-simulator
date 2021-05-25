@@ -27,18 +27,20 @@
 ** DONE remove action for tags
 *** DONE think about how to approach this
 ** DONE remove action for mulligans
-** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
-** TODO Non-destructive Update deck
+** WAIT Export/Import JSON of Mulligan/Tag/Deck combinations
+** WAIT Non-destructive Update deck
 *** TODO Deck Update action
 **** Deck Update should include code that sanitizes tags/mulligans if they combinations
 **** cards that are no longer present and delete them if necessary
 *** TODO Override modal?
  
+ 
 * New UI Design
-** TODO Design New Workflow / Views
-*** TODO Replace the DeckList component with a box with the card images
-*** TODO Replace the RadioChoices component with a list Radio Choice component that looks like this:
-![radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
+** NOW Design New Workflow / Views
+*** NEXT Replace the DeckList component with a box with the card images 
+SCHEDULED: <2021-05-26 Wed>
+*** NOW Replace the RadioChoices component with a list Radio Choice component that looks like this:
+  [radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
 *** Keep USABILITY in mind.
 *** Use canvas? 
 ** TODO Maybe a HELP component
