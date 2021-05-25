@@ -19,9 +19,9 @@
 *** DONE Write a component that can write MULTIPLE tags and send them to the store
 ** DONE Migrate to typescript!!!
 ** DONE Function that looks up cards given a card code. But from the decklist.
-** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
-*** TODO Add a new mulligan action, "KEEP_ONE" and "KEEP_TWO"
-*** TODO Replace "KEEP" with "KEEP_ALL"
+** DONE Add the ability to "KEEP" all copies, 2 or 1 ofs.
+*** DONE Add a new mulligan action, "KEEP_ONE" and "KEEP_TWO"
+*** DONE Replace "KEEP" with "KEEP_ALL"
 ** DONE Add new component that displays how many hits each counters receive.[CounterDisplay.tsx]
 *** TODO And, if loaded, shows which cards the hand drew.
 ** DONE remove action for tags
