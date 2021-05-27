@@ -37,9 +37,11 @@
  
 * New UI Design
 ** NOW Design New Workflow / Views
-*** NEXT Replace the DeckList component with a box with the card images 
-SCHEDULED: <2021-05-26 Wed>
-*** NOW Replace the RadioChoices component with a list Radio Choice component that looks like this:
+*** DONE Replace the DeckList component with a box with the card images 
+**** TODO Give it a border
+**** TODO Make an UI store
+**** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
+*** NEXT Replace the RadioChoices component with a list Radio Choice component that looks like this:
   [radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
 *** Keep USABILITY in mind.
 *** Use canvas? 
