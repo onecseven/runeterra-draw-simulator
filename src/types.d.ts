@@ -38,7 +38,6 @@ declare type KEYWORD =
 declare interface dataCards extends Card{
   associatedCards: string[]
   associatedCardRefs: []
-  assets: asset[]
   region: string
   regionRef: string
   attack: number
@@ -78,7 +77,10 @@ declare interface UIElementIterator {
 declare interface Card {
   code: string
   name: string
-  assets?: asset[]
+  assets?: {
+    gameAbsolutePath: string,
+    fullAbsolutePath: string
+}[]
   region: string
   cost: number
   keywords: KEYWORD[]
