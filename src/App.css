@@ -93,3 +93,18 @@ option{
   height: 80%;
   width: 60%;
 }
+
+.actions {
+  display: grid;
+  grid-template-columns: 0.2fr 1.8fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". ."
+    ". .";
+}
+
+.actions > p {
+  margin-top: auto;
+}
