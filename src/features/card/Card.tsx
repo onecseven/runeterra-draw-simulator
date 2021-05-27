@@ -6,8 +6,10 @@ type CardProps = {
 
 export const  Card = ({card}: CardProps) => {
   if (!card) return null
+  console.log(card.assets)
 
-return (<div >
-  <span>({card.cost}) {card.name} [{card.count}]</span> 
+return (<div className={"cardContainer"} >
+  <img className={"card"} src={card.assets[0].gameAbsolutePath} alt={card.name}/>
+  <span>x[{card.count}]</span> 
 </div>)
 }

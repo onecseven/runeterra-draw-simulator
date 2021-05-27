@@ -10,14 +10,12 @@ export const DeckList = () => {
   if (!deck.length) return null
   let formattedDeck = formatDeck(deck)
   return (
-    <Collapsable name={"Deck"} openedByDefault={false} className="  " >
-     <>
+     <div className={"deckbox"}>
       {formattedDeck.map((card) => {
         return (
             <Card card={card} />
         )
       })}
-      </>
-    </Collapsable>
+      </div>
   )
 }
