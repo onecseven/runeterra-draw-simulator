@@ -18,8 +18,8 @@ export const DeckInput = () => {
         type="text"
         value={label}
         onChange={(e) => setLabel(e.target.value)}
-        ></input>
-        <button type="submit">Submit</button>
+        ></input> 
+        <button className="button_slide" type="submit">Submit</button>
       </form>
     </div>
   )
