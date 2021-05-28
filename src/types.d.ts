@@ -172,4 +172,10 @@ declare namespace Actions {
     type: "data/runTags"
     payload: {}
   }
+  type setMulliganAction = {
+    type: "ui/setMulliganaction"
+    payload: {
+      mulliganAction: mulliganAction
+    }
+  }
 }
