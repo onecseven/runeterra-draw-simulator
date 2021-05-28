@@ -7,7 +7,6 @@ import {
   getMulliganedHands,
 } from "../features/utils/simulateMulligan"
 import { countTags } from "../features/utils/simulateCounter"
-import { checkArrays } from "../features/utils/generic/array-equality"
 
 export interface tagInitialState {
   counters: {
