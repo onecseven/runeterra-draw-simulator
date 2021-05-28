@@ -47,7 +47,8 @@
 **** TODO Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
      will be able to accomplish the above change, but I feel that it is warranted that we break
      up MulliganQueryBuilder into subcomponents for further fine-tuning.
-SCHEDULED: <2021-05-28 Fri>
+*** TODO Replace RulesContainer with the following tab system
+  https://codepen.io/wallaceerick/pen/ojtal
 *** Keep USABILITY in mind.
 *** Use canvas? 
 ** TODO Maybe a HELP component
