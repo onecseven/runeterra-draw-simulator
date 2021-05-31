@@ -1,20 +1,20 @@
 import React from 'react'
-import { ACTIONS } from '../../../../store/constants'
+import { CONDITIONS } from '../../../../store/constants'
 import { RadioChoices } from '../../../utils/generic/UI/RadioChoices'
 import { useAppDispatch as useDispatch } from "../../../../store/hooks"
-import { setMulliganAction } from '../../../../store/uiSlice'
+import { setMulliganCondition } from '../../../../store/uiSlice'
 
 
-export const MulliganActionRadio = () => {
+export const MulliganConditionRadio = () => {
   const dispatch = useDispatch()
   const handleChange = (action) => {
-    dispatch(setMulliganAction(action))
+    dispatch(setMulliganCondition(action))
   }
   
   return (
        <RadioChoices
-        options={ACTIONS}
-        name={"actions radio"}
+        options={CONDITIONS}
+        name={"conditions radio"}
         onSelectedChange={handleChange}
       />
   )

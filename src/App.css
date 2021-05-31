@@ -92,7 +92,7 @@ option{
   width: 60%;
 }
 
-.actions {
+.radio {
   display: grid;
   grid-template-columns: 0.2fr 1.8fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -103,7 +103,7 @@ option{
     ". .";
 }
 
-.actions > p {
+.radio > p {
   margin-top: auto;
   margin-bottom:auto;
 }
