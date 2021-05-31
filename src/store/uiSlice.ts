@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { stat } from "node:fs"
 
 let initialMulliganQuery: MulliganQuery = {
   referent: null,
@@ -16,19 +15,28 @@ export const uiSlice = createSlice({
   initialState: {
     mulliganQuery: initialMulliganQuery,
     tagQuery: {
-
     },
   },
   reducers: {
     setMulliganAction: (state, action: Actions.setMulliganAction) => {
       let {mulliganAction} = action.payload
       state.mulliganQuery.onHit.action = mulliganAction
+    },
+    setMulliganCondition: (state, action: Actions.setMulliganCondition) => {
+      let {mulliganCondition} = action.payload
+      state.mulliganQuery.onHit.condition = mulliganCondition
+    },
+    setMulliganReferent: (state, action: Actions.setMulliganReferent) => {
+      let {mulliganReferent} = action.payload
+      state.mulliganQuery.referent = mulliganReferent
     }
   }
 })
 
 export const {
-  setMulliganAction
+  setMulliganAction,
+  setMulliganCondition,
+  setMulliganReferent
 } = uiSlice.actions
 
 export default uiSlice.reducer

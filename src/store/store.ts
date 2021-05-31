@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import dataSlice from "./dataSlice"
+import uiSlice  from "./uiSlice"
 
 export const store = configureStore({
   reducer: {
     data: dataSlice,
+    ui: uiSlice,
   },
   middleware: [],
 })
