@@ -10,13 +10,17 @@ import { NumberSimInput } from "./features/simulation/NumberSimInput"
 import { CounterList } from "./features/rules/tags/tag displays/CounterList"
 
 import { Test } from "./features/test/Test"
+import { MulliganActionRadio } from "./features/rules/mulligan/mulliganQueryComponents/MulliganActionRadio"
+import { MulliganConditionRadio } from "./features/rules/mulligan/mulliganQueryComponents/MulliganConditionRadio"
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Provider store={store}>
-          <h1>Submit deck code</h1>
+        <MulliganActionRadio/>
+        <MulliganConditionRadio/> 
+          {/* <h1>Submit deck code</h1>
           <br />
           <div className="grid-container">
             <div className="deck">
@@ -31,7 +35,7 @@ class App extends Component {
               <NumberSimInput/>
               <CounterList/>
             </div>
-          </div>
+          </div> */}
         </Provider>
       </div>
     )

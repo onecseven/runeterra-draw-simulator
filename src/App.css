@@ -101,6 +101,7 @@ option{
     ". ."
     ". ."
     ". .";
+  border: 3px solid #723822;
 }
 
 .radio > p {

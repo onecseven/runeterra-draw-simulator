@@ -19,16 +19,20 @@ export const uiSlice = createSlice({
   },
   reducers: {
     setMulliganAction: (state, action: Actions.setMulliganAction) => {
-      let {mulliganAction} = action.payload
+      let mulliganAction = action.payload
       state.mulliganQuery.onHit.action = mulliganAction
     },
     setMulliganCondition: (state, action: Actions.setMulliganCondition) => {
-      let {mulliganCondition} = action.payload
+      let mulliganCondition = action.payload
       state.mulliganQuery.onHit.condition = mulliganCondition
     },
     setMulliganReferent: (state, action: Actions.setMulliganReferent) => {
-      let {mulliganReferent} = action.payload
+      let mulliganReferent = action.payload
       state.mulliganQuery.referent = mulliganReferent
+    },
+    setMulliganReference: (state, action: Actions.setMulliganReference) => {
+      let mulliganReference = action.payload
+      state.mulliganQuery.referent = mulliganReference
     }
   }
 })
@@ -36,7 +40,8 @@ export const uiSlice = createSlice({
 export const {
   setMulliganAction,
   setMulliganCondition,
-  setMulliganReferent
+  setMulliganReferent,
+  setMulliganReference
 } = uiSlice.actions
 
 export default uiSlice.reducer

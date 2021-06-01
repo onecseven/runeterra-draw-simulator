@@ -47,20 +47,22 @@ declare namespace Actions {
   }
   type setMulliganAction = {
     type: "ui/setMulliganaction"
-    payload: {
-      mulliganAction: mulliganAction
-    }
+    payload: mulliganAction
   }
   type setMulliganCondition = {
     type: "ui/setMulliganCondition"
-    payload: {
-      mulliganCondition: mulliganCondition
-    }
+    payload: mulliganCondition
   }
   type setMulliganReferent = {
     type: "ui/setMulliganReferent"
-    payload: {
-      mulliganReferent: Card["code"]
-    }
+    payload: Card["code"]
+  }
+  type setMulliganReferent = {
+    type: "ui/setMulliganReferent"
+    payload: Card["code"]
+  }
+  type setMulliganReference = {
+    type: "ui/setMulliganReference"
+    payload: Card["code"]
   }
 }

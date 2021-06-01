@@ -37,7 +37,7 @@ const labelMaker = ({
 export const RadioChoices = ({
   onSelectedChange,
   options,
-  name,
+  name
 }: RadioChoicesProps) => {
   const [localValue, setlocalValue] = useState(options[0].value)
   const handleChange = (event: { target: HTMLInputElement }) => {

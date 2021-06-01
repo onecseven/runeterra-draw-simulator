@@ -7,8 +7,8 @@ import { setMulliganCondition } from '../../../../store/uiSlice'
 
 export const MulliganConditionRadio = () => {
   const dispatch = useDispatch()
-  const handleChange = (action) => {
-    dispatch(setMulliganCondition(action))
+  const handleChange = (condition) => {
+    dispatch(setMulliganCondition(condition))
   }
   
   return (
