@@ -1,13 +1,11 @@
 import { Card } from "lor-deckcode"
 
-export const validateMulligan = (
-  card: Card["code"],
-  action: mulliganAction,
-  condition: mulliganCondition,
-  reference: Card["code"]
-): boolean => {
+export const validateMulligan = (potentialQuery
+): potentialQuery is MulliganQuery => {
+  let card = potentialQuery.referent
+  let {action, condition, referenceCard} = potentialQuery.onHit
   if (card && action && condition) {
-    if (condition != "ALWAYS" && reference) {
+    if (condition != "ALWAYS" && referenceCard) {
       return true
     } else if (condition == "ALWAYS") {
       return true
