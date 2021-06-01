@@ -1,24 +1,29 @@
 import React, { useState } from "react"
+import { isValueInArray } from "../isValueInArray"
 
-export type RadioChoicesProps = {
-  onSelectedChange(string): void
-  options: UIElementIterator[]
+export type RadioChoicesProps<Z> = {
+  onSelectedChange(Z): void
+  options: UIElementIterator<Z>[]
   name: string
 }
 
-type labelMakerProps = {
+export type Constraint = {
+  length: number
+}
+
+type labelMakerProps<Z> = {
   name: string
-  value: string | number
+  value: Z
   handleChange(event: { target: HTMLInputElement }): void
-  localValue: string | number
+  localValue: Z
 }
 
-const labelMaker = ({
+const labelMaker = <Q extends Constraint>({
   name,
   value,
   handleChange,
   localValue,
-}: labelMakerProps) => {
+}: labelMakerProps<Q>) => {
   let key = Math.random() + "LABEL"
   return (
     <>
@@ -27,22 +32,30 @@ const labelMaker = ({
         onChange={handleChange}
         checked={localValue === value}
         name={name}
-        value={value}
+        value={value as any}
       />
       <p>{name}</p>
-  </>
+    </>
   )
 }
 
-export const RadioChoices = ({
+export const RadioChoices = <A extends Constraint>({
   onSelectedChange,
   options,
-  name
-}: RadioChoicesProps) => {
-  const [localValue, setlocalValue] = useState(options[0].value)
+  name,
+}: RadioChoicesProps<A>) => {
+  const [localValue, setlocalValue] = useState<A>(options[0].value)
   const handleChange = (event: { target: HTMLInputElement }) => {
-    setlocalValue(event.target.value)
-    onSelectedChange(event.target.value)
+    let { value } = event.target
+    if (
+      isValueInArray(
+        options.map(({ value }) => value),
+        value
+      )
+    ) {
+      setlocalValue(value)
+      onSelectedChange(value)
+    }
   }
   return (
     <div className={name}>

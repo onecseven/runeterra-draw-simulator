@@ -32,16 +32,12 @@ export const KEYWORDS = [
   "Augment",
 ]
 
-export const TAG_TYPES: UIElementIterator[] = [
+export const TAG_TYPES: UIElementIterator<TagType>[] = [
   { name: "Sequence", value: "SEQUENCE" },
   { name: "Link", value: "WITH" },
   { name: "Exclusive", value: "WITHOUT" },
   { name: "Keyword", value: "KEYWORD" },
   { name: "Custom Grouping", value: "GROUP" },
-]
-export const TIMING: UIElementIterator[] = [
-  { name: "Strict", value: "EXACT" },
-  { name: "Relative", value: "RELATIVE" },
 ]
 
 export const TURNS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
@@ -50,13 +46,13 @@ export const TURNS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
   }
 )
 
-export const CONDITIONS: UIElementIterator[] = [
+export const CONDITIONS: UIElementIterator<mulliganCondition>[] = [
   { value: "ALWAYS", name: "Always" },
   { value: "PRESENCE", name: "In the presence of another card" },
   { value: "ABSENCE", name: "In the absence of another card" },
 ]
 
-export const ACTIONS: UIElementIterator[] = [
+export const ACTIONS: UIElementIterator<mulliganAction>[] = [
   { value: "KEEP_ALL", name: "Keep all copies that show up" },
   { value: "KEEP_ONE", name: "Keep only one copy" },
   { value: "KEEP_TWO", name: "Keep two copies (will keep at least one)" },
