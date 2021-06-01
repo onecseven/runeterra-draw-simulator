@@ -2,11 +2,11 @@ import React from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/generic/UI/Dropdown"
-import { CONDITIONS, ACTIONS } from "../../../store/constants"
-import { addMulligan } from "../../../store/dataSlice"
-import { RadioChoices } from "../../utils/generic/UI/RadioChoices"
 import { deckFilter } from "../../utils/deckFilter"
-import { useStateCallback } from "../../utils/generic/useStateCallback"
+import { setMulliganReference, setMulliganReferent } from "../../../store/uiSlice"
+import {addMulligan} from "../../../store/dataSlice"
+import { MulliganActionRadio } from "./mulliganQueryComponents/MulliganActionRadio"
+import { MulliganConditionRadio } from "./mulliganQueryComponents/MulliganConditionRadio"
 
 type BuilderProps = {
   goDormant: Function
@@ -14,18 +14,12 @@ type BuilderProps = {
 
 export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
   const deck = useSelector((state) => state.data.deck.cards)
+  const query = useSelector((state) => state.ui.mulliganQuery)
   const dispatch = useDispatch()
-  const [action, setAction] = useStateCallback<mulliganAction | null>("KEEP_ALL")
-  const [condition, setCondition] = useStateCallback<mulliganCondition | null>(
-    "ALWAYS"
-  )
-  const [referenceCard, setReferenceCard] = useStateCallback<
-    Card["code"] | null
-  >(null)
-  const [mainCard, setMainCard] = useStateCallback<Card["code"] | null>(null)
+  
   // prettier-ignore
   const handleSubmit = () => {
-    dispatch(addMulligan({mulliganAction: action, condition, reference: referenceCard, referent: mainCard }))
+    dispatch(addMulligan(query))
     goDormant()
   }
 
@@ -39,23 +33,15 @@ export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
       <Dropdown
         options={deckOptions}
         name={"reference"}
-        onSelectedChange={setMainCard}
+        onSelectedChange={(cardCode) => dispatch(setMulliganReferent(cardCode))}
       />
-      <RadioChoices
-        options={ACTIONS}
-        name={"actions"}
-        onSelectedChange={setAction}
-      />
-      <RadioChoices
-        options={CONDITIONS}
-        name={"conditions"}
-        onSelectedChange={setCondition}
-      />
-      {condition === "ALWAYS" ? null : (
+      <MulliganActionRadio/>
+      <MulliganConditionRadio/>
+      {query.onHit.condition === "ALWAYS" ? null : (
         <Dropdown
           options={deckOptions}
           name={"deck"}
-          onSelectedChange={setReferenceCard}
+          onSelectedChange={(cardCode) => dispatch(setMulliganReference(cardCode))}
         />
       )}
       <button onClick={handleSubmit}>Submit mulligan rule</button>
