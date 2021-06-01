@@ -1,4 +1,4 @@
-export const KEYWORDS = [
+export const KEYWORDS: KEYWORD[] = [
   "Burst",
   "Quick Attack",
   "Fast",

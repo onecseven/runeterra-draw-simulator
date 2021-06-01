@@ -2,21 +2,21 @@ import React, { useState } from "react"
 import { Dropdown } from "./Dropdown"
 
 
-export const ExtensibleDropdown = ({
+export const ExtensibleDropdown = <Q extends string>({
   options,
   name,
   onSelectedChange,
-}: Dropdown.props) => {
+}: Dropdown.props<Q>) => {
   let [firstOption, secondOption] = options
   const [allDrops, setDrops] = useState([firstOption.value, secondOption.value])
 
-  const callBackSetter = (id: number, edit: string) => {
-    let newState = allDrops.slice().map((value, i) => (i === id ? edit : value))
+  const callBackSetter = (id: number, edit: Q) => {
+    let newState: Q[] = allDrops.slice().map((value, i) => (i === id ? edit : value))
     setDrops(newState)
     onSelectedChange(newState)
   }
   
-  const memoizedCallback = (id: number) => (edit: string) => callBackSetter(id, edit)
+  const memoizedCallback = (id: number) => (edit: Q) => callBackSetter(id, edit)
 
   const increase = () => {
     let newState = allDrops.slice()

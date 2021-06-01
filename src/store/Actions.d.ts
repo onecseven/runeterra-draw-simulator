@@ -7,12 +7,7 @@ declare namespace Actions {
   }
   type addMulligan = {
     type: "data/addMulligan"
-    payload: {
-      mulliganAction: mulliganAction
-      condition: mulliganCondition
-      referent: Card["code"]
-      reference: Card["code"]
-    }
+    payload: MulliganQuery
   }
   type removeMulligan = {
     type: "data/removeMulligan"

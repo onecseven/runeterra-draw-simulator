@@ -59,18 +59,9 @@ export const dataSlice = createSlice({
       return state
     },
     addMulligan: (state, action: Actions.addMulligan) => {
-      const { mulliganAction, condition, referent, reference } = action.payload
-      if (validateMulligan(referent, mulliganAction, condition, reference)) {
-        let query = {
-          referent,
-          priority: 1,
-          onHit: {
-            action: mulliganAction,
-            condition,
-            referenceCard: reference,
-          },
-        }
-        state.mulliganQueries.push(query)
+      const mulliganQuery = action.payload
+      if (validateMulligan(mulliganQuery)) {
+        state.mulliganQueries.push(mulliganQuery)
       }
       return state
     },

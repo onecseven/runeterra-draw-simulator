@@ -32,7 +32,7 @@ export const uiSlice = createSlice({
     },
     setMulliganReference: (state, action: Actions.setMulliganReference) => {
       let mulliganReference = action.payload
-      state.mulliganQuery.referent = mulliganReference
+      state.mulliganQuery.onHit.referenceCard = mulliganReference
     }
   }
 })
