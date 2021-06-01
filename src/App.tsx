@@ -18,9 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-        <MulliganActionRadio/>
-        <MulliganConditionRadio/> 
-          {/* <h1>Submit deck code</h1>
+          <h1>Submit deck code</h1>
           <br />
           <div className="grid-container">
             <div className="deck">
@@ -35,7 +33,7 @@ class App extends Component {
               <NumberSimInput/>
               <CounterList/>
             </div>
-          </div> */}
+          </div>
         </Provider>
       </div>
     )

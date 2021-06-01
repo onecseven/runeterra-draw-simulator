@@ -106,9 +106,9 @@ declare interface MulliganQuery {
 }
 
 declare namespace Dropdown {
-  interface props {
-    onSelectedChange(arg: (string | number) | (string | number)[]): void
-    options: UIElementIterator[]
+  interface props <Z> {
+    onSelectedChange(Z): void
+    options: UIElementIterator<Z>[]
     name: string
     defaultNumber?: number
   }
