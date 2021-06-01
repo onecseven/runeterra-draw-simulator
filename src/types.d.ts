@@ -70,9 +70,9 @@ type hand = {
   read: boolean
   cards: Card["code"][]
 }
-declare interface UIElementIterator {
+declare interface UIElementIterator <Q> {
   name: string
-  value: string | number
+  value: Q
 }
 
 declare interface Card {
