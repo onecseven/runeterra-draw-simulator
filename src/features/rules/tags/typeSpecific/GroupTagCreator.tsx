@@ -6,9 +6,9 @@ export const GroupTagCreator = ({
   onCardChange,
   options,
 }: {
-  onGroupChange: Dropdown.props["onSelectedChange"]
-  onCardChange: Dropdown.props["onSelectedChange"]
-  options: Dropdown.props["options"]
+  onGroupChange: Dropdown.props<string>["onSelectedChange"]
+  onCardChange: Dropdown.props<string>["onSelectedChange"]
+  options: Dropdown.props<string>["options"]
 }) => {
   const [label, setLabel] = useState("")
 

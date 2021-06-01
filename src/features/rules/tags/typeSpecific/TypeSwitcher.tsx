@@ -10,8 +10,8 @@ export const TypeSwitcher = ({
   groupNameCallback,
   tag,
 }: {
-  referentsCallback: Dropdown.props["onSelectedChange"]
-  groupNameCallback: Dropdown.props["onSelectedChange"]
+  referentsCallback: Dropdown.props<Card["code"]>["onSelectedChange"]
+  groupNameCallback: Dropdown.props<Card["code"]>["onSelectedChange"]
   tag: TagType
 }) => {
   const deck = useSelector((state) => state.data.deck.cards)

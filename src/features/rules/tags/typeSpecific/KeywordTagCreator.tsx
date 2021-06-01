@@ -4,21 +4,21 @@ import { KEYWORDS } from "../../../../store/constants"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
 import { formatDeck } from "../../../utils/formatDeck"
 
-let optionKeywords = KEYWORDS.map((keyword) => {
+let optionKeywords: UIElementIterator<KEYWORD>[] = KEYWORDS.map((keyword) => {
   return {
     value: keyword,
     name: keyword,
   }
 })
 
-optionKeywords.unshift({value: "", name: "Choose a keyword"})
+optionKeywords.unshift({value: null, name: "Choose a keyword"})
 
 export const KeywordTagCreator = ({
   onSelectedChange,
   referentsCallback,
 }: {
-  onSelectedChange: Dropdown.props["onSelectedChange"]
-  referentsCallback: Dropdown.props["onSelectedChange"]
+  onSelectedChange: Dropdown.props<KEYWORD>["onSelectedChange"]
+  referentsCallback: Dropdown.props<KEYWORD>["onSelectedChange"]
 }) => {
   const deck = useSelector((state) => state.data.deck.cards)
   const findCards = (userKeyword) => {
