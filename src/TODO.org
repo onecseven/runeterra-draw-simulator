@@ -42,15 +42,19 @@
 
 **** TODO Make an UI store
 **** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
-*** NOW Replace the RadioChoices component with a list Radio Choice component that looks like this:
+*** DONE Replace the RadioChoices component with a list Radio Choice component that looks like this:
   [radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
-**** TODO Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
+**** DONE Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
      will be able to accomplish the above change, but I feel that it is warranted that we break
      up MulliganQueryBuilder into subcomponents for further fine-tuning.
-*** TODO Replace RulesContainer with the following tab system
-  https://codepen.io/wallaceerick/pen/ojtal
-*** Keep USABILITY in mind.
-*** Use canvas? 
+*** NEXT Replace RulesContainer with the following tab system
+  https://codepen.io/wallaceerick/pen/
+SCHEDULED: <2021-06-03 Thu>
+*** TODO Take TagList and MulliganList out of MulliganContainer/Tag Container and put it below it in its own div. It
+    might be necessary to odo this before replacing RulesContainer with the tab system. It might even be necessary to
+    rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
+    uiSlice to handle switching between components.
+*** TODO Find a nice drop down.
 ** TODO Maybe a HELP component
 ** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
 unless they have another   
