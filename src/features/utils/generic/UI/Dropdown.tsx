@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export const Dropdown = <Z extends string>({
+export const Dropdown = <Z extends string|number>({
   onSelectedChange,
   options,
   name

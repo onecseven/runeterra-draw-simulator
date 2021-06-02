@@ -39,7 +39,7 @@ export const TagQueryBuilder = ({ goDormant }: BuilderProps) => {
   return (
     <div>
       <Dropdown options={TAG_TYPES} name={"types"} onSelectedChange={setType} />
-      {/* <Dropdown options={TURNS} name={"turns"} onSelectedChange={setTurn} /> */}
+      <Dropdown options={TURNS} name={"turns"} onSelectedChange={setTurn} />
       <TypeSwitcher
         referentsCallback={setReferents}
         groupNameCallback={setGroupName}
