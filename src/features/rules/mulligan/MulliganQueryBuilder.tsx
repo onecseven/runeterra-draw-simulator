@@ -30,6 +30,7 @@ export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
   return (
     <div>
       <br />
+      <p>Pick a card to add a mulligan rule:</p>
       <Dropdown
         options={deckOptions}
         name={"reference"}
@@ -38,13 +39,16 @@ export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
       <MulliganActionRadio/>
       <MulliganConditionRadio/>
       {query.onHit.condition === "ALWAYS" ? null : (
+        <div>
+        <p>Which card?</p>
         <Dropdown
           options={deckOptions}
           name={"deck"}
           onSelectedChange={(cardCode) => dispatch(setMulliganReference(cardCode))}
         />
+        </div>
       )}
-      <button onClick={handleSubmit}>Submit mulligan rule</button>
+      <button className={'button_slide'} style={{marginTop: "20px"}} onClick={handleSubmit}>Submit mulligan rule</button>
     </div>
   )
 }

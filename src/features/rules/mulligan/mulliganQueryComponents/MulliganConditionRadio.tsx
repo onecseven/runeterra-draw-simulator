@@ -12,10 +12,13 @@ export const MulliganConditionRadio = () => {
   }
   
   return (
-       <RadioChoices
+    <>
+      <p>Under what conditions should the mulligan action be taken?</p>
+      <RadioChoices
         options={CONDITIONS}
         name={"conditions radio"}
         onSelectedChange={handleChange}
       />
+    </>
   )
 }

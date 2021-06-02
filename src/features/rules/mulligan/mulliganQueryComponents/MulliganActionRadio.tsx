@@ -12,10 +12,13 @@ export const MulliganActionRadio = () => {
   }
   
   return (
-       <RadioChoices
+    <>
+      <p>How should this card be mulliganed?</p>
+      <RadioChoices
         options={ACTIONS}
         name={"actions radio"}
         onSelectedChange={handleChange}
       />
+    </>
   )
 }
