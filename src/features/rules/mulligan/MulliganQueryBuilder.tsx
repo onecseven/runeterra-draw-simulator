@@ -1,34 +1,33 @@
-import React from "react"
+import React, { useState } from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/generic/UI/Dropdown"
+import { useReset } from "../../utils/generic/useReset"
 import { deckFilter } from "../../utils/deckFilter"
 import { setMulliganReference, setMulliganReferent } from "../../../store/uiSlice"
 import {addMulligan} from "../../../store/dataSlice"
 import { MulliganActionRadio } from "./mulliganQueryComponents/MulliganActionRadio"
 import { MulliganConditionRadio } from "./mulliganQueryComponents/MulliganConditionRadio"
+import {NoDeck} from "./../../NoDeck"
 
-type BuilderProps = {
-  goDormant: Function
-}
-
-export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
+export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
   const query = useSelector((state) => state.ui.mulliganQuery)
+  const [formKey, refresh] = useReset() 
   const dispatch = useDispatch()
-  
-  // prettier-ignore
-  const handleSubmit = () => {
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
     dispatch(addMulligan(query))
-    goDormant()
+    refresh()
   }
 
-  if (deck.length == 0) return null
+  if (deck.length == 0) return (<NoDeck/>)
 
   let deckOptions = deckFilter(deck)
   deckOptions.unshift({ value: "", name: "Choose a card." })
   return (
-    <div>
+    <form onSubmit={handleSubmit} key={formKey}>
       <br />
       <p>Pick a card to add a mulligan rule:</p>
       <Dropdown
@@ -48,7 +47,7 @@ export const MulliganQueryBuilder = ({ goDormant }: BuilderProps) => {
         />
         </div>
       )}
-      <button className={'button_slide'} style={{marginTop: "20px"}} onClick={handleSubmit}>Submit mulligan rule</button>
-    </div>
+      <button className={'button_slide'} style={{marginTop: "20px"}} type="submit">Submit mulligan rule</button>
+    </form>
   )
 }

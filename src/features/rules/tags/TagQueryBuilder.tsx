@@ -1,15 +1,13 @@
 import React from "react"
-import { useAppDispatch as useDispatch } from "../../../store/hooks"
+import { useAppDispatch as useDispatch, useAppSelector as useSelector } from "../../../store/hooks"
 import { Dropdown } from "../../utils/generic/UI/Dropdown"
 import { useStateCallback } from "../../utils/generic/useStateCallback"
 import { addTag } from "../../../store/dataSlice"
 import { TAG_TYPES, TURNS} from "../../../store/constants"
 import { TypeSwitcher } from "./typeSpecific/TypeSwitcher"
 import { isTagType } from "../../utils/typeGuards"
-
-type BuilderProps = {
-  goDormant: Function
-}
+import { NoDeck } from "../../NoDeck"
+import { useReset } from "../../utils/generic/useReset"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
   if (isTagType(value)) {
@@ -17,7 +15,7 @@ let TagTypes = TAG_TYPES.map(({ value }) => {
   }
 })
 
-export const TagQueryBuilder = ({ goDormant }: BuilderProps) => {
+export const TagQueryBuilder = () => {
   const dispatch = useDispatch()
   const [type, setType] = useStateCallback<TagType>(TagTypes[0])
   const [turn, setTurn] = useStateCallback<number>(
@@ -29,23 +27,27 @@ export const TagQueryBuilder = ({ goDormant }: BuilderProps) => {
   const [groupName, setGroupName] = useStateCallback<string | null>(
     null
   )
+  const deck = useSelector((state) => state.data.deck.cards)
+  const [formKey, refresh] = useReset() 
 
+  if (deck.length == 0) return (<NoDeck/>)
 
   const handleSubmit = () => {
     dispatch(addTag({ type, referents, turn, groupName}))
-    goDormant()
+    refresh()
   }
 
   return (
-    <div>
+    <form key={formKey} onSubmit={handleSubmit}>
       <Dropdown options={TAG_TYPES} name={"types"} onSelectedChange={setType} />
       <Dropdown options={TURNS} name={"turns"} onSelectedChange={setTurn} />
       <TypeSwitcher
         referentsCallback={setReferents}
         groupNameCallback={setGroupName}
         tag={type}
+        deck={deck}
       />
-      <button onClick={handleSubmit}>Submit mulligan rule</button>
-    </div>
+      <button type="submit" >Submit mulligan rule</button>
+    </form>
   )
 }
