@@ -47,9 +47,8 @@
 **** DONE Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
      will be able to accomplish the above change, but I feel that it is warranted that we break
      up MulliganQueryBuilder into subcomponents for further fine-tuning.
-*** NEXT Replace RulesContainer with the following tab system
+*** DONE Replace RulesContainer with the following tab system
   https://codepen.io/wallaceerick/pen/
-SCHEDULED: <2021-06-03 Thu>
 *** TODO Take TagList and MulliganList out of MulliganContainer/Tag Container and put it below it in its own div. It
     might be necessary to odo this before replacing RulesContainer with the tab system. It might even be necessary to
     rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
