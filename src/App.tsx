@@ -3,15 +3,13 @@ import React, { Component } from "react"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
-import "./App.css"  
+import "./App.scss"  
 import { DeckList } from "./features/deck/DeckList"
 import { RulesContainer } from "./features/rules/RulesContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
 import { CounterList } from "./features/rules/tags/tag displays/CounterList"
 
 import { Test } from "./features/test/Test"
-import { MulliganActionRadio } from "./features/rules/mulligan/mulliganQueryComponents/MulliganActionRadio"
-import { MulliganConditionRadio } from "./features/rules/mulligan/mulliganQueryComponents/MulliganConditionRadio"
 
 class App extends Component {
   render() {
