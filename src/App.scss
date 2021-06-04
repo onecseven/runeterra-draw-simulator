@@ -1,0 +1,138 @@
+
+body {
+  background-color: #162944;
+  color: hsl(37, 100%, 50%);
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+h1{
+  margin-left: 2%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "deck rules sim"
+    "deck tag sim";
+}
+
+.deck {
+  grid-area: deck;
+
+  margin-left: 10%;
+}
+.deck-input {
+  margin-bottom: 5%;
+}
+
+    
+ol,
+ul {
+  list-style: none;
+}
+
+.card {
+  grid-area: tag;
+}
+.rules {
+  grid-area: rules;
+}
+
+.sim{
+  grid-area: sim;
+}
+
+
+option{
+  font-family: "Press Start 2P", 'Ubuntu Mono', Helvetica, Arial, sans-serif;
+}
+
+.selected{
+  background-color: #33698f ;
+}
+.trans{
+  background-color: #193549 ;
+}
+
+.deckbox{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px 5px;
+    grid-template-areas:
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . ."
+      ". . .";  
+    
+}
+
+
+.cardContainer > img, span{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.card {
+  height: 80%;
+  width: 60%;
+}
+
+.radio {
+  display: grid;
+  grid-template-columns: 0.2fr 1.8fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". ."
+    ". .";
+  border: 3px solid #723822;
+  /* top | right | bottom | left */
+  padding: 5px 0 5px 0;
+}
+
+.radio > p {
+  margin-top: auto;
+  margin-bottom:auto;
+}
+
+input{
+margin-right: 2%;
+}
+
+
+.button_slide {
+  color: hsl(37, 100%, 50%); 
+  background-color: #162944;
+  border: 2px solid #685EB1;
+  border-radius: 0px;
+  padding: 9px 36px;
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #685EB1;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.button_slide:hover {
+  box-shadow: inset 400px 0 0 0 #685EB1;
+}
