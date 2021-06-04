@@ -1,22 +1,10 @@
-import React, { useState } from "react"
-import { MulliganContainer } from "./mulligan/MulliganContainer"
-import { TagContainer } from "./tags/TagContainer"
-import { useAppSelector as useSelector } from "../../store/hooks"
+import React from "react"
 import "./rules.scss"
+import { MulliganQueryBuilder } from "./mulligan/MulliganQueryBuilder"
+import { TagQueryBuilder } from "./tags/TagQueryBuilder"
 
-type RULE_SWITCH = "MULLIGAN" | "TAG"
 
 export const RulesContainer = () => {
-  const [ruleSwitch, setRuleSwitch] = useState<RULE_SWITCH>("MULLIGAN")
-  const deckLength = useSelector((state) => state.data.deck.cards.length)
-  const handleChange = (event: { target: HTMLInputElement }) => {
-    if (event.target.value == "MULLIGAN" || event.target.value == "TAG") {
-      setRuleSwitch(event.target.value)
-    }
-  }
-  let switchingElement = (
-    <>{ruleSwitch === "MULLIGAN" ? <MulliganContainer /> : <TagContainer />}</>
-  )
 
   return (
     <ul className="tabs" role="tablist">
@@ -38,7 +26,7 @@ export const RulesContainer = () => {
           aria-labelledby="description"
           aria-hidden="false"
         >
-          <MulliganContainer/>
+          <MulliganQueryBuilder/>
         </div>
       </li>
 
@@ -60,7 +48,7 @@ export const RulesContainer = () => {
           aria-labelledby="specification"
           aria-hidden="true"
         >
-          <TagContainer/>
+          <TagQueryBuilder/>
         </div>
       </li>
     </ul>
