@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { MulliganContainer } from "./mulligan/MulliganContainer"
 import { TagContainer } from "./tags/TagContainer"
 import { useAppSelector as useSelector } from "../../store/hooks"
+import "./rules.scss"
 
 type RULE_SWITCH = "MULLIGAN" | "TAG"
 
@@ -13,38 +14,55 @@ export const RulesContainer = () => {
       setRuleSwitch(event.target.value)
     }
   }
-  let switchingElement = (<>
-        {ruleSwitch === "MULLIGAN" ? (<MulliganContainer/>) : (<TagContainer/>)}
-      </>)
+  let switchingElement = (
+    <>{ruleSwitch === "MULLIGAN" ? <MulliganContainer /> : <TagContainer />}</>
+  )
 
   return (
-    <div className="nes-container is-rounded with-title">
-      <div className="title" style={{ display: "flex", backgroundColor: "transparent"}} >
-        <label style={{backgroundColor: "var(--main-bg-color)", marginTop: "-8px", paddingRight: "15px"}}>
-          <input
-            type="radio"
-            onChange={handleChange}
-            className="nes-radio"
-            name="answer"
-            checked={ruleSwitch === "MULLIGAN"} 
-            value="MULLIGAN"
-          />
-          <span>Mulligan</span>
+    <ul className="tabs" role="tablist">
+      <li className="tab-li">
+        <input type="radio" name="tabs" id="tab1" className="tab-input" checked />
+        <label
+          htmlFor="tab1"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel1"
+          tabIndex={0}
+        >
+          Mulligan
         </label>
-        <hr></hr>
-        <label style={{backgroundColor: "var(--main-bg-color)", marginTop: "-8px", paddingRight: "15px"}}>
-          <input
-            type="radio"
-            className="nes-radio"
-            onChange={handleChange}
-            checked={ruleSwitch === "TAG"} 
-            name="answer"
-            value="TAG"
-          />
-          <span>Rules</span>
+        <div
+          id="tab-content1"
+          className="tab-content"
+          role="tabpanel"
+          aria-labelledby="description"
+          aria-hidden="false"
+        >
+          <MulliganContainer/>
+        </div>
+      </li>
+
+      <li className="tab-li">
+        <input type="radio" name="tabs" className="tab-input" id="tab2" />
+        <label
+          htmlFor="tab2"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel2"
+          tabIndex={0}
+        >
+          Tags
         </label>
-      </div>
-      {deckLength > 0 ? switchingElement : null}
-    </div>
+        <div
+          id="tab-content2"
+          className="tab-content"
+          role="tabpanel"
+          aria-labelledby="specification"
+          aria-hidden="true"
+        >
+          <TagContainer/>
+        </div>
+      </li>
+    </ul>
   )
 }
