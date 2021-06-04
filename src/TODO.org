@@ -54,6 +54,7 @@
     rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
     uiSlice to handle switching between components.
 *** TODO Find a nice drop down.
+*** TODO "Mulligan/Tag Added" feedback
 ** TODO Maybe a HELP component
 ** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
 unless they have another   
