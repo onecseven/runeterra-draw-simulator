@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
 
 body {
+  font-family: Lato, Arial;
   background-color: #162944;
   color: hsl(37, 100%, 50%);
   font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
 }
 
 h1{
@@ -28,6 +32,10 @@ h1{
   margin-bottom: 5%;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
     
 ol,
 ul {
