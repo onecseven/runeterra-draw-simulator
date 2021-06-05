@@ -33,6 +33,9 @@ export const uiSlice = createSlice({
     setMulliganReference: (state, action: Actions.setMulliganReference) => {
       let mulliganReference = action.payload
       state.mulliganQuery.onHit.referenceCard = mulliganReference
+    },
+    clearUI: (state, action: Actions.clearUI) => {
+      state.mulliganQuery = initialMulliganQuery
     }
   }
 })
@@ -41,7 +44,8 @@ export const {
   setMulliganAction,
   setMulliganCondition,
   setMulliganReferent,
-  setMulliganReference
+  setMulliganReference,
+  clearUI
 } = uiSlice.actions
 
 export default uiSlice.reducer

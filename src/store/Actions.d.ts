@@ -60,4 +60,8 @@ declare namespace Actions {
     type: "ui/setMulliganReference"
     payload: Card["code"]
   }
+  type clearUI = {
+    type: "ui/clearUI"
+    payload: null
+  }
 }

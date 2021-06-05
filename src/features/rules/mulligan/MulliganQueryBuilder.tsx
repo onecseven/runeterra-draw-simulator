@@ -4,12 +4,13 @@ import { useAppDispatch as useDispatch } from "../../../store/hooks"
 import { Dropdown } from "../../utils/generic/UI/Dropdown"
 import { useReset } from "../../utils/generic/useReset"
 import { deckFilter } from "../../utils/deckFilter"
-import { setMulliganReference, setMulliganReferent } from "../../../store/uiSlice"
+import { setMulliganReference, setMulliganReferent, clearUI } from "../../../store/uiSlice"
 import {addMulligan} from "../../../store/dataSlice"
 import { MulliganActionRadio } from "./mulliganQueryComponents/MulliganActionRadio"
 import { MulliganConditionRadio } from "./mulliganQueryComponents/MulliganConditionRadio"
 import {NoDeck} from "./../../NoDeck"
 import { StyledDropdown } from "../../utils/generic/UI/StyledDropdown/StyledDropdown"
+import { clear } from "node:console"
 
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
@@ -20,6 +21,7 @@ export const MulliganQueryBuilder = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addMulligan(query))
+    dispatch(clearUI(null))
     refresh()
   }
 
