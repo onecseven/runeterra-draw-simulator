@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
 import { useAppDispatch as useDispatch } from "../../../store/hooks"
-import { Dropdown } from "../../utils/generic/UI/Dropdown"
 import { useReset } from "../../utils/generic/useReset"
 import { deckFilter } from "../../utils/deckFilter"
 import { setMulliganReference, setMulliganReferent, clearUI } from "../../../store/uiSlice"
@@ -10,7 +9,6 @@ import { MulliganActionRadio } from "./mulliganQueryComponents/MulliganActionRad
 import { MulliganConditionRadio } from "./mulliganQueryComponents/MulliganConditionRadio"
 import {NoDeck} from "./../../NoDeck"
 import { StyledDropdown } from "../../utils/generic/UI/StyledDropdown/StyledDropdown"
-import { clear } from "node:console"
 
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
