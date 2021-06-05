@@ -110,6 +110,7 @@ declare namespace Dropdown {
     onSelectedChange(Z): void
     options: UIElementIterator<Z>[]
     name: string
+    defaultStr?: string
     defaultNumber?: number
   }
 }
