@@ -9,6 +9,7 @@ import {addMulligan} from "../../../store/dataSlice"
 import { MulliganActionRadio } from "./mulliganQueryComponents/MulliganActionRadio"
 import { MulliganConditionRadio } from "./mulliganQueryComponents/MulliganConditionRadio"
 import {NoDeck} from "./../../NoDeck"
+import { StyledDropdown } from "../../utils/generic/UI/StyledDropdown/StyledDropdown"
 
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
@@ -23,30 +24,30 @@ export const MulliganQueryBuilder = () => {
   }
 
   if (deck.length == 0) return (<NoDeck/>)
-
   let deckOptions = deckFilter(deck)
-  deckOptions.unshift({ value: "", name: "Choose a card." })
+  let secondDeckDropdownVisibility = (query.onHit.condition === "ALWAYS" || query.referent === null) 
+
   return (
     <form onSubmit={handleSubmit} key={formKey}>
       <br />
       <p>Pick a card to add a mulligan rule:</p>
-      <Dropdown
+      <StyledDropdown
         options={deckOptions}
         name={"reference"}
         onSelectedChange={(cardCode) => dispatch(setMulliganReferent(cardCode))}
+        defaultStr="Choose a card"
       />
       <MulliganActionRadio/>
       <MulliganConditionRadio/>
-      {query.onHit.condition === "ALWAYS" ? null : (
-        <div>
+      <div className={secondDeckDropdownVisibility ? "hidden" : ""}>
         <p>Which card?</p>
-        <Dropdown
-          options={deckOptions}
-          name={"deck"}
+        <StyledDropdown
+          options={deckOptions.filter(card => card.value !== query.referent)}
+          name={"reference"}
           onSelectedChange={(cardCode) => dispatch(setMulliganReference(cardCode))}
+          defaultStr="Pick another one"
         />
         </div>
-      )}
       <button className={'button_slide'} style={{marginTop: "20px"}} type="submit">Submit mulligan rule</button>
     </form>
   )
