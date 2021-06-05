@@ -49,12 +49,15 @@
      up MulliganQueryBuilder into subcomponents for further fine-tuning.
 *** DONE Replace RulesContainer with the following tab system
   https://codepen.io/wallaceerick/pen/
-*** TODO Take TagList and MulliganList out of MulliganContainer/Tag Container and put it below it in its own div. It
+*** DONE Take TagList and MulliganList out of MulliganContainer/Tag Container and put it below it in its own div. It
     might be necessary to odo this before replacing RulesContainer with the tab system. It might even be necessary to
     rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
     uiSlice to handle switching between components.
-*** TODO Find a nice drop down.
-*** TODO "Mulligan/Tag Added" feedback
-** TODO Maybe a HELP component
+*** DONE Find a nice drop down.
+*** TODO Style tagQueryBuilder
+SCHEDULED: <2021-06-08 Mon>
+*** TODO Selected cards apply a selection thing on the decklist
+*** TODO Create a new List component
+*** TODO "Mulligan/Tag Added" feedback (?)
 ** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
 unless they have another   
