@@ -54,8 +54,12 @@
     rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
     uiSlice to handle switching between components.
 *** DONE Find a nice drop down.
-*** TODO Style tagQueryBuilder
-SCHEDULED: <2021-06-08 Mon>
+*** DONE Style tagQueryBuilder
+*** TODO Make a new component that lets ExtensibleCardChooser know how many cards to display
+**** It should send a number to the UI store
+**** ExtensibleCardChooser should read defaultNumber from the store
+**** Figure out a way to make this dropdown and the turn picker be like a square
+SCHEDULED: <2021-06-10 Wed>
 *** TODO Selected cards apply a selection thing on the decklist
 *** TODO Create a new List component
 *** TODO "Mulligan/Tag Added" feedback (?)
