@@ -1,0 +1,22 @@
+.tagContainer {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "tag tag turn"
+}
+.tag { grid-area: tag; }
+.turn { grid-area: turn; }
+
+.squared {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "top top"
+    "bot bot"; 
+}
+.top { grid-area: top; }
+.bot { grid-area: bot; }
