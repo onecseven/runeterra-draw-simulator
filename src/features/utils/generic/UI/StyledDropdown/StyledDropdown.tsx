@@ -33,6 +33,7 @@ export const StyledDropdown = <Z extends string | number>({
         style={{ display: active ? "block" : "none" }}
       >
         {options.map(({ value, name }) => {
+          if (name === selection) return
           return (
             <li onClick={() => handleSelect(value, name)} value={value}>
               {name}
