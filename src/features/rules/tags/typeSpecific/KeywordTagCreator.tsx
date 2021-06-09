@@ -1,8 +1,8 @@
 import React from "react"
-import { Dropdown } from "../../../utils/generic/UI/Dropdown"
 import { KEYWORDS } from "../../../../store/constants"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
 import { formatDeck } from "../../../utils/formatDeck"
+import { StyledDropdown } from "../../../utils/generic/UI/StyledDropdown/StyledDropdown"
 
 let optionKeywords: UIElementIterator<KEYWORD>[] = KEYWORDS.map((keyword) => {
   return {
@@ -38,7 +38,7 @@ export const KeywordTagCreator = ({
     onSelectedChange(value)
   }
   return (
-    <Dropdown
+    <StyledDropdown
       onSelectedChange={handleChange}
       options={optionKeywords}
       name={"keywords"}
