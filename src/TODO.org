@@ -65,5 +65,6 @@ SCHEDULED: <2021-06-10 Thu>
 **** Changing tabs should clear UI store.
 *** TODO Create a new List component
 *** TODO "Mulligan/Tag Added" feedback (?)
+*** TODO New Tab in the Rules Thingy that helps the user get the app
 ** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
 unless they have another   
