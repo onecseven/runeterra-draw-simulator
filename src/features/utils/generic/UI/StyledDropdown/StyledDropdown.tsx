@@ -29,7 +29,7 @@ export const StyledDropdown = <Z extends string | number>({
         {selection}
       </div>
       <ul
-        className="select-options"
+        className={`select-options ${name}`}
         style={{ display: active ? "block" : "none" }}
       >
         {options.map(({ value, name }) => {

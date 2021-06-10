@@ -12,13 +12,11 @@ export const ExtensibleCardChooser = ({onSelectedChange}) => {
   let deckOptions = deckFilter(deck)
 
   return (
-    <div className="extensible">
         <ExtensibleDropdown
         options={deckOptions}
         name={"referents"}
         onSelectedChange={onSelectedChange}
-        defaultNumber={3}
+        defaultNumber={5}
       />
-    </div>
   )
 }
