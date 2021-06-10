@@ -19,7 +19,7 @@ h1{
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "deck rules sim"
+    "deck rules rules"
     "deck tag sim";
 }
 

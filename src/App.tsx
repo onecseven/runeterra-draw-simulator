@@ -27,10 +27,10 @@ class App extends Component {
             <div className="rules">
               <RulesContainer/>
             </div>
-            <div className="sim">
+            {/* <div className="sim">
               <NumberSimInput/>
               <CounterList/>
-            </div>
+            </div> */}
           </div>
         </Provider>
       </div>
