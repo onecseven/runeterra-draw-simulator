@@ -12,8 +12,10 @@ import { useReset } from "../../utils/generic/useReset"
 import { TagTypeDropdown } from "./typeSpecific/TagTypeDropdown"
 import { TurnDrodpown } from "./typeSpecific/TurnDropdown"
 import "./tagQueryBuilder.scss"
+import { CardAmountPicker } from "./typeSpecific/CardAmountPicker"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
+  
   return value
 })
 
@@ -40,17 +42,21 @@ export const TagQueryBuilder = () => {
     <form key={formKey} onSubmit={handleSubmit} className="squared">
       <div className="tagContainer top">
         <TagTypeDropdown setType={setType} />
+        <CardAmountPicker/>
         <TurnDrodpown onSelectedChange={setTurn} />
       </div>
+      <div className="bot extensible">
+
       <TypeSwitcher
         referentsCallback={setReferents}
         groupNameCallback={setGroupName}
         tag={type}
         deck={deck}
-      />
-      {/* <button className="submit" type="submit">
+        />
+        </div>
+      <button className="submit button_slide" type="submit">
         Submit mulligan rule
-      </button> */}
+      </button>
     </form>
   )
 }
