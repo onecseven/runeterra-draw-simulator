@@ -1,22 +1,87 @@
 .tagContainer {
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "tag tag turn"
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas: "tag tag cardAmount cardAmount turn turn";
 }
-.tag { grid-area: tag; }
-.turn { grid-area: turn; }
+.tag {
+  grid-area: tag;
+  padding: 5%;
+}
+.cardAmount {
+  grid-area: cardAmount;
+  border-left: 2px solid #c0392b;
+  padding-left: 5%;
+  margin-right: 20px;
+}
+
+.turn {
+  grid-area: turn;
+  margin-left: 5px;
+  border-left: 2px solid #c0392b;
+  padding-left: 5%;
+  margin-right: 15px;
+}
 
 .squared {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 1fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "top top"
-    "bot bot"; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40% 40% 10%;
+  grid-template-areas:
+    "top top top"
+    "bot bot bot"
+    "submit submit2 submit3";
 }
-.top { grid-area: top; }
-.bot { grid-area: bot; }
+.top {
+  grid-area: top;
+  margin-bottom: 10%;
+}
+.bot {
+  grid-area: bot;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "extensible0 extensible1 extensible2"
+    "extensible3 extensible4 extensible5";
+}
+.submit {
+  margin-top: 10%;
+}
+
+.bot > div {
+  font-size: 80%;
+}
+
+.extensible0 {
+  grid-area: extensible0;
+  margin: 8%;
+
+}
+.extensible1 {
+  grid-area: extensible1;
+  margin: 8%;
+
+}
+.extensible2 {
+  grid-area: extensible2;
+  margin: 8% 0% 0% 0%;
+}
+.extensible3 {
+  grid-area: extensible3;
+  margin: 8%;
+
+}
+.extensible4 {
+  grid-area: extensible4;
+  margin: 8%;
+
+}
+
+.types {
+  right: 20%;
+}
+
+.referents {
+  right: 30%;
+}
