@@ -28,7 +28,6 @@ declare type KEYWORD =
   | "Deep"
   | "Immobile"
   | "Scout"
-  | "Missing Translation"
   | "Vulnerable"
   | "Focus"
   | "Landmark"
@@ -112,6 +111,7 @@ declare namespace Dropdown {
     name: string
     defaultStr?: string
     defaultNumber?: number
+    disabled?: boolean
   }
 }
 
