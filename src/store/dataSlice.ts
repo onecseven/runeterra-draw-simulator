@@ -50,7 +50,7 @@ export const dataSlice = createSlice({
     },
   },
   reducers: {
-    addDeck: (state, action: Actions.addDeck) => {
+    addDeck: (state, action: Actions.data.addDeck) => {
       let { code } = action.payload
       //maybe have a verify clause here?
       let cards = deckCodeTranslation(code)
@@ -58,18 +58,18 @@ export const dataSlice = createSlice({
       state.deck.cards = cards
       return state
     },
-    addMulligan: (state, action: Actions.addMulligan) => {
+    addMulligan: (state, action: Actions.data.addMulligan) => {
       const mulliganQuery = action.payload
       if (validateMulligan(mulliganQuery)) {
         state.mulliganQueries.push(mulliganQuery)
       }
       return state
     },
-    removeMulligan: (state, action: Actions.removeMulligan) => {
+    removeMulligan: (state, action: Actions.data.removeMulligan) => {
       let { index } = action.payload
       state.mulliganQueries.splice(index, 1)
     },
-    addTag: (state, action: Actions.addTag) => {
+    addTag: (state, action: Actions.data.addTag) => {
       let tag = tagValidator(action.payload, [])
       if (tag) {
         let id = Object.keys(state.tags.counters).length
@@ -80,7 +80,7 @@ export const dataSlice = createSlice({
         return state
       }
     },
-    runMulligan: (state, action: Actions.runMulligan) => {
+    runMulligan: (state, action: Actions.data.runMulligan) => {
       let { numberOfSimulations } = action.payload
       let hands = getMulliganedHands({
         deck: state.deck.cards,
@@ -93,13 +93,13 @@ export const dataSlice = createSlice({
       })
       state.simulations.hands = state.simulations.hands.concat(formattedHands)
     },
-    runTags: (state, action: Actions.runTags) => {
+    runTags: (state, action: Actions.data.runTags) => {
       state.tags.counters = countTags({
         hands: state.simulations.hands,
         tags: state.tags.counters,
       })
     },
-    removeTag: (state, action: Actions.removeTag) => {
+    removeTag: (state, action: Actions.data.removeTag) => {
       let {index} = action.payload
       let newTags = {}
       for (let key in state.tags.counters) {

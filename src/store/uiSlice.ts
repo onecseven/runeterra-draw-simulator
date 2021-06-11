@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ACTIONS } from "./constants"
 
 let initialMulliganQuery: MulliganQuery = {
   referent: null,
@@ -6,38 +7,67 @@ let initialMulliganQuery: MulliganQuery = {
   onHit: {
     action: "KEEP_ALL",
     condition: "ALWAYS",
-    referenceCard: null
-  }
+    referenceCard: null,
+  },
+}
+
+let initialTagQuery = {
+  type: null,
+  turn: 1,
+  referents: {
+    1: null,
+    2: null,
+    3: null,
+    4: null,
+    5: null,
+    keyword: null,
+  },
 }
 
 export const uiSlice = createSlice({
   name: "ui",
   initialState: {
     mulliganQuery: initialMulliganQuery,
-    tagQuery: {
-    },
+    tagQuery: initialTagQuery,
+    tagQueryBuilder: {
+      amountOfReferents: 0
+    }
   },
   reducers: {
-    setMulliganAction: (state, action: Actions.setMulliganAction) => {
+    setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
       let mulliganAction = action.payload
       state.mulliganQuery.onHit.action = mulliganAction
     },
-    setMulliganCondition: (state, action: Actions.setMulliganCondition) => {
+    setMulliganCondition: (state, action: Actions.UI.setMulliganCondition) => {
       let mulliganCondition = action.payload
       state.mulliganQuery.onHit.condition = mulliganCondition
     },
-    setMulliganReferent: (state, action: Actions.setMulliganReferent) => {
+    setMulliganReferent: (state, action: Actions.UI.setMulliganReferent) => {
       let mulliganReferent = action.payload
       state.mulliganQuery.referent = mulliganReferent
     },
-    setMulliganReference: (state, action: Actions.setMulliganReference) => {
+    setMulliganReference: (state, action: Actions.UI.setMulliganReference) => {
       let mulliganReference = action.payload
       state.mulliganQuery.onHit.referenceCard = mulliganReference
     },
-    clearUI: (state, action: Actions.clearUI) => {
+    clearUI: (state, action: Actions.UI.clearUI) => {
       state.mulliganQuery = initialMulliganQuery
+      state.tagQuery = initialTagQuery
+    },
+    setTagType: (state, action: Actions.UI.setTagType) => {
+      state.tagQuery.type = action.payload
+    },
+    setTagTurns: (state, action: Actions.UI.setTagTurns) => {
+      state.tagQuery.turn = action.payload
+    },
+    setTagReferents: (state, action: Actions.UI.setTagReferents) => {
+      let { index, code } = action.payload
+      state.tagQuery.referents[index] = code
+    },
+    setAmountTagReferents: (state, action: Actions.UI.setAmountTagReferents) => {
+      state.tagQueryBuilder.amountOfReferents = action.payload
     }
-  }
+  },
 })
 
 export const {
@@ -45,7 +75,11 @@ export const {
   setMulliganCondition,
   setMulliganReferent,
   setMulliganReference,
-  clearUI
+  clearUI,
+  setTagType,
+  setTagTurns,
+  setTagReferents,
+  setAmountTagReferents
 } = uiSlice.actions
 
 export default uiSlice.reducer
