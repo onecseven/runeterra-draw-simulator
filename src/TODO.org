@@ -39,7 +39,6 @@
 ** NOW Design New Workflow / Views
 *** DONE Replace the DeckList component with a box with the card images 
 **** TODO Give it a border
-
 **** TODO Make an UI store
 **** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
 *** DONE Replace the RadioChoices component with a list Radio Choice component that looks like this:
@@ -63,7 +62,7 @@
 *** TODO Selected cards apply a selection thing on the decklist
 **** Changing tabs should clear UI store.
 *** TODO Create a new List component
-*** TODO Connect addTag to the UI store
+*** DONE Connect addTag to the UI store
 *** TODO "Mulligan/Tag Added" feedback (?)
 **** A little notif or something
 *** TODO New Tab in the Rules Thingy that helps the user get the app

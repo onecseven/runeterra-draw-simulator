@@ -51,6 +51,27 @@ export const RulesContainer = () => {
           <TagQueryBuilder/>
         </div>
       </li>
+      <li className="tab-li">
+        <input type="radio" name="tabs" className="tab-input" id="tab3" />
+        <label
+          htmlFor="tab3"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel3"
+          tabIndex={0}
+        >
+          REVIEW
+        </label>
+        <div
+          id="tab-content3"
+          className="tab-content"
+          role="tabpanel"
+          aria-labelledby="specification"
+          aria-hidden="true"
+        >
+          <p>hi</p>
+        </div>
+      </li>
     </ul>
   )
 }
