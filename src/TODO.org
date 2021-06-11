@@ -55,16 +55,17 @@
     uiSlice to handle switching between components.
 *** DONE Find a nice drop down.
 *** DONE Style tagQueryBuilder
-*** NOW Make a new component that lets ExtensibleCardChooser know how many cards to display
-**** NEXT connect tagQueryBuilder components to UI store!!
-SCHEDULED: <2021-06-10 Thu>
-***** WAIT It should send a number to the UI store
-***** WAIT ExtensibleCardChooser should read defaultNumber from the store
+*** DONE Make a new component that lets ExtensibleCardChooser know how many cards to display
+**** DONE connect tagQueryBuilder components to UI store!!
+***** DONE It should send a number to the UI store
+***** DONE ExtensibleCardChooser should read defaultNumber from the store
 **** DONE Figure out a way to make this dropdown and the turn picker be like a square
 *** TODO Selected cards apply a selection thing on the decklist
 **** Changing tabs should clear UI store.
 *** TODO Create a new List component
+*** TODO Connect addTag to the UI store
 *** TODO "Mulligan/Tag Added" feedback (?)
+**** A little notif or something
 *** TODO New Tab in the Rules Thingy that helps the user get the app
 ** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
 unless they have another   
