@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
-
+$highlight: #c0392b;
 
 body {
   font-family: Lato, Arial;
@@ -112,6 +112,7 @@ option{
 
 
 .radio {
+  background-color: darken(#612e76, 5);
   display: grid;
   grid-template-columns: 0.2fr 1.8fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -121,6 +122,8 @@ option{
     ". ."
     ". .";
   /* top | right | bottom | left */
+  /* TeRRBLe */
+
   padding: 5px 0 5px 0;
 }
 
@@ -152,4 +155,12 @@ margin-right: 2%;
 
 .button_slide:hover {
   box-shadow: inset 400px 0 0 0 #685EB1;
+}
+
+.mulliganQueryBuilder > *{
+  margin-bottom: 2%;
+}
+
+.mulliganQueryBuilder > p {
+  border-bottom: 1px dotted $highlight;
 }
