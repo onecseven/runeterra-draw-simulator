@@ -28,7 +28,7 @@ export const MulliganQueryBuilder = () => {
   let secondDeckDropdownVisibility = (query.onHit.condition === "ALWAYS" || query.referent === null) 
 
   return (
-    <form onSubmit={handleSubmit} key={formKey}>
+    <form onSubmit={handleSubmit} key={formKey} className="mulliganQueryBuilder">
       <br />
       <p>Pick a card to add a mulligan rule:</p>
       <StyledDropdown

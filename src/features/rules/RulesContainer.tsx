@@ -39,7 +39,7 @@ export const RulesContainer = () => {
           aria-controls="panel2"
           tabIndex={0}
         >
-          Tags
+          Counters
         </label>
         <div
           id="tab-content2"

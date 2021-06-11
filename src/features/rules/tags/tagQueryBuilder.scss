@@ -1,3 +1,5 @@
+$highlight: #c0392b;
+
 .tagContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -7,20 +9,40 @@
 .tag {
   grid-area: tag;
   padding: 5%;
+  margin-left: 10%;
 }
+
+.tag > p {
+  width: 80%;
+}
+
 .cardAmount {
   grid-area: cardAmount;
-  border-left: 2px solid #c0392b;
+  border-left: 3px solid $highlight;
   padding-left: 5%;
   margin-right: 20px;
+  padding: 5%;
+}
+
+.cardAmount > p {
+  width: 85%;
+}
+
+.cardAmountInput{
+  right: 75%
 }
 
 .turn {
   grid-area: turn;
   margin-left: 5px;
-  border-left: 2px solid #c0392b;
+  border-left: 3px solid $highlight;
   padding-left: 5%;
   margin-right: 15px;
+  padding: 5%;
+}
+
+.turn-picker {
+  right: 75%;
 }
 
 .squared {
@@ -56,6 +78,7 @@
 .extensible0 {
   grid-area: extensible0;
   margin: 8%;
+  border-bottom: 3px solid $highlight;
 
 }
 .extensible1 {
@@ -75,13 +98,22 @@
 .extensible4 {
   grid-area: extensible4;
   margin: 8%;
+}
+
+.extensible5 {
+  grid-area: extensible5;
+  margin: 8%;
 
 }
 
 .types {
-  right: 20%;
+  right: 45%;
 }
 
 .referents {
   right: 30%;
+}
+
+.disabled {
+  display: none;
 }

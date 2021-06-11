@@ -9,7 +9,8 @@ export const StyledDropdown = <Z extends string | number>({
   options,
   name,
   onSelectedChange,
-  defaultStr
+  defaultStr,
+  disabled=false
 }: Dropdown.props<Z>) => {
   const [active, setActive] = useState(false)
   const [selection, setSelection] = useState<string | number>(defaultStr ? defaultStr : options[0].name)
@@ -23,8 +24,8 @@ export const StyledDropdown = <Z extends string | number>({
   return (
     <div className="select">
       <div
-        className={`select-styled ${active ? "active" : ""} ${name}`}
-        onClick={toggleActive}
+        className={`select-styled ${active ? "active" : ""} ${name} ${disabled ? "disabled" : ""}`}
+        onClick={disabled ? null : toggleActive}
       >
         {selection}
       </div>

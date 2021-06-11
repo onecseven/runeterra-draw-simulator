@@ -6,7 +6,7 @@ export const ExtensibleDropdown = <Q extends string>({
   options,
   name,
   onSelectedChange,
-  defaultNumber = 2,
+  defaultNumber
 }: Dropdown.props<Q>) => {
   const [allDrops, setDrops] = useState(
     options.slice(0, defaultNumber).map(({ value }) => value)

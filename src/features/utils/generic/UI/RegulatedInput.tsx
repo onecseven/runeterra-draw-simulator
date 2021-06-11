@@ -16,19 +16,19 @@ export const RegulatedInput = ({
   name,
   defaultNum = null,
 }: RegulatedInputProps) => {
-  const [currentValue, setCurrentValue] = useState(
-    defaultNum ? defaultNum : min
-  )
+  const [currentValue, setCurrentValue] = useState(0)
   const handleChange = (event) => {
     let newValue = Number(event.target.value)
     if (newValue > max) {
+      onSelectedChange(max)
       setCurrentValue(max)
     } else if (min > newValue) {
+      onSelectedChange(min)
       setCurrentValue(min)
     } else {
       setCurrentValue(newValue)
+      onSelectedChange(newValue)
     }
-    onSelectedChange(currentValue)
   }
   return (
     <input

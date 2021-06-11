@@ -19,6 +19,7 @@ $select-color: #fff;
   height: $select-height;
 }
 .select-styled {
+  overflow: clip;
   position: absolute; 
   top: 0;
   right: 0;
@@ -47,6 +48,11 @@ $select-color: #fff;
       border-color: transparent transparent $select-color transparent;
     }
   }
+}
+
+.disabled{
+  background-color: darken($select-background,10);
+  color: gray;
 }
 
 .select-options {

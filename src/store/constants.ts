@@ -23,7 +23,6 @@ export const KEYWORDS: KEYWORD[] = [
   "Deep",
   "Immobile",
   "Scout",
-  "Missing Translation",
   "Vulnerable",
   "Focus",
   "Landmark",
