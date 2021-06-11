@@ -13,49 +13,51 @@ import { TagTypeDropdown } from "./typeSpecific/TagTypeDropdown"
 import { TurnDrodpown } from "./typeSpecific/TurnDropdown"
 import "./tagQueryBuilder.scss"
 import { CardAmountPicker } from "./typeSpecific/CardAmountPicker"
+import { keywords } from "../../../assets/keywords"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
-  
   return value
 })
 
+let rollUp = (tagQuery) => {
+  let referents = []
+  for (let index in tagQuery.referents) {
+    if (index === "KEYWORD") continue
+    let current = tagQuery.referents[index]
+    if (current) referents.push(current)
+  }
+  return referents
+}
+
 export const TagQueryBuilder = () => {
   const dispatch = useDispatch()
-  const [type, setType] = useStateCallback<TagType>(TagTypes[0])
-  const [turn, setTurn] = useStateCallback<number>(
-    TURNS.map(({ value }) => value)[0]
-  )
-  const [referents, setReferents] =
-    useStateCallback<Card["code"][] | null>(null)
-  const [groupName, setGroupName] = useStateCallback<string | null>(null)
   const deck = useSelector((state) => state.data.deck.cards)
+  const tagQuery = useSelector((state) => state.ui.tagQuery)
   const [formKey, refresh] = useReset()
 
   if (deck.length == 0) return <NoDeck />
 
   const handleSubmit = () => {
-    dispatch(addTag({ type, referents, turn, groupName }))
+    let {type, turn} = tagQuery
+    let referents = type === "KEYWORD" ? tagQuery.referents.keyword : rollUp(tagQuery)
+    dispatch(addTag({ type, referents, turn }))
     refresh()
   }
 
   return (
     <form key={formKey} onSubmit={handleSubmit} className="squared">
       <div className="tagContainer top">
-        <TagTypeDropdown setType={setType} />
+        <TagTypeDropdown />
         <CardAmountPicker/>
-        <TurnDrodpown onSelectedChange={setTurn} />
+        <TurnDrodpown />
       </div>
       <div className="bot extensible">
 
       <TypeSwitcher
-        referentsCallback={setReferents}
-        groupNameCallback={setGroupName}
-        tag={type}
-        deck={deck}
         />
         </div>
       <button className="submit button_slide" type="submit">
-        Submit mulligan rule
+        Submit counter
       </button>
     </form>
   )
