@@ -1,4 +1,4 @@
-@import "../../../../../node_modules/compass-sass-mixins/lib/compass/";
+@import "../../../node_modules/compass-sass-mixins/lib/compass/";
 
 
 $background: #9b59b6;
@@ -10,19 +10,6 @@ $tabs-base-color: #8e44ad;
   @include box-sizing(border-box);
 }
 
-.title-with-span {
-  font-weight: normal;
-  font-size: 40px;
-  font-weight: normal;
-  text-transform: uppercase;
-  float: left;
-  margin: 20px 0 100px 10px; 
-  span { 
-    font-size: 13px;
-    display: block;
-    padding-left: 4px;
-  }
-}
 .tabs {
   width: 650px;  
   float: none;
@@ -66,13 +53,12 @@ $tabs-base-color: #8e44ad;
     left: 0; 
     background: darken($tabs-base-color, 15);
   }
-  //The Magic
-  [id^="tab"]:checked + label { 
+  .default + label { 
     top: 0;
     padding-top: 17px; 
     background: darken($tabs-base-color, 15); 
   }
-  [id^="tab"]:checked ~ [id^="tab-content"] {
+  .tab-visible{
     display: block;
   }
 }
