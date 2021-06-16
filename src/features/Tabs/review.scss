@@ -1,0 +1,15 @@
+.review {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "mulligan counter"; 
+}
+.mulligan { 
+  grid-area: mulligan; 
+}
+.counter { grid-area: counter; }
+h3 {
+  text-decoration: underline solid #c0392b 1px;
+}
