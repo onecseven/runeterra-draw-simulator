@@ -1,4 +1,4 @@
-@import "../../../node_modules/compass-sass-mixins/lib/compass/";
+@import "../../../../../../node_modules/compass-sass-mixins/lib/compass/";
 
 
 $background: #9b59b6;
@@ -11,7 +11,7 @@ $tabs-base-color: #8e44ad;
 }
 
 .tabs {
-  width: 650px;  
+  width: 700px;  
   float: none;
   list-style: none;
   position: relative;
@@ -36,7 +36,8 @@ $tabs-base-color: #8e44ad;
     background: $tabs-base-color;
     cursor: pointer;
     position: relative;
-    top: 4px; 
+    top: 4px;
+    margin-right: 2%;
     @include transition(all 0.2s ease-in-out);
     &:hover {
       background: darken($tabs-base-color, 10);
