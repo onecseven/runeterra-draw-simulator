@@ -1,5 +1,7 @@
-* Tasklist
-** DONE Receive decklists
+*
+
+* TASKLIST
+**  DONE Receive decklists
 *** DONE Input field for deck code
 *** DONE Deck code validity checker? Or does the lor-decode package contain that?
 *** DONE Action, reducers for this. Also figure out a structure for the code.
@@ -35,12 +37,9 @@
 *** TODO Override modal?
  
  
-* New UI Design
-** NOW Design New Workflow / Views
+** New UI Design
+** DONE Design New Workflow / Views
 *** DONE Replace the DeckList component with a box with the card images 
-**** TODO Give it a border
-**** TODO Make an UI store
-**** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
 *** DONE Replace the RadioChoices component with a list Radio Choice component that looks like this:
   [radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
 **** DONE Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
@@ -59,12 +58,22 @@
 ***** DONE It should send a number to the UI store
 ***** DONE ExtensibleCardChooser should read defaultNumber from the store
 **** DONE Figure out a way to make this dropdown and the turn picker be like a square
-*** TODO Selected cards apply a selection thing on the decklist
-**** Changing tabs should clear UI store.
-*** TODO Create a new List component
-*** DONE Connect addTag to the UI store
-*** TODO "Mulligan/Tag Added" feedback (?)
-**** A little notif or something
-*** TODO New Tab in the Rules Thingy that helps the user get the app
-** TODO "Default behaviour" option that applies a "Thrown Always" mulligan behavior to all cards that applies
-unless they have another   
+*** DONE Make an UI store
+**** DONE Connect addTag to the UI store
+*** DROP Changing tabs should clear UI store.
+
+
+* CRUNCH 
+*** NEXT Create a new List component: Review.tsx
+**** Gotta join TagList/MulliganList in a half and half tab
+**** Create grid layout 
+*** TODO "Mulligan/Tag Added" Component
+**** Let's add it right next to the submit buttons
+**** A little notif or something with ur added thing
+*** TODO Help.tsx
+*** TODO Border component for DeckList (CSS)
+
+* LOW PRIORITY
+**** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
+***** TODO Selected cards apply a selection thing on the decklist
+
