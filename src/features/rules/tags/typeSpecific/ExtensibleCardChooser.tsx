@@ -33,7 +33,7 @@ export const ExtensibleCardChooser = () => {
   }, amountOfReferents)
   return (
     <>
-    <h3 className={`extensible0 ${amountOfReferents === 0 ? "disabled" : "" }`}>Select the cards you want to keep track of:</h3>
+    <h3 className={`extensible0 ${amountOfReferents === 0 ? "disabled-tqb" : "" }`}>Select the cards you want to keep track of:</h3>
     {...elements}
     </>
     )
