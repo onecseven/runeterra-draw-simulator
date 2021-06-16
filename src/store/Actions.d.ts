@@ -86,5 +86,9 @@ declare namespace Actions {
       type: "ui/setAmountTagReferents"
       payload: number
     }
+    type switchTab = {
+      type: "ui/switchTab",
+      payload: null
+    }
   }
 }

@@ -66,7 +66,7 @@ export const uiSlice = createSlice({
     },
     setAmountTagReferents: (state, action: Actions.UI.setAmountTagReferents) => {
       state.tagQueryBuilder.amountOfReferents = action.payload
-    }
+    },
   },
 })
 
