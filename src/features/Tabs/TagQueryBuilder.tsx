@@ -2,18 +2,18 @@ import React from "react"
 import {
   useAppDispatch as useDispatch,
   useAppSelector as useSelector,
-} from "../../../store/hooks"
-import { useStateCallback } from "../../utils/generic/useStateCallback"
-import { addTag } from "../../../store/dataSlice"
-import { TAG_TYPES, TURNS } from "../../../store/constants"
-import { TypeSwitcher } from "./typeSpecific/TypeSwitcher"
-import { NoDeck } from "../../NoDeck"
-import { useReset } from "../../utils/generic/useReset"
-import { TagTypeDropdown } from "./typeSpecific/TagTypeDropdown"
-import { TurnDrodpown } from "./typeSpecific/TurnDropdown"
+} from "../../store/hooks"
+import { useStateCallback } from "../utils/generic/useStateCallback"
+import { addTag } from "../../store/dataSlice"
+import { TAG_TYPES, TURNS } from "../../store/constants"
+import { TypeSwitcher } from "../rules/tags/typeSpecific/TypeSwitcher"
+import { NoDeck } from "../NoDeck"
+import { useReset } from "../utils/generic/useReset"
+import { TagTypeDropdown } from "../rules/tags/typeSpecific/TagTypeDropdown"
+import { TurnDrodpown } from "../rules/tags/typeSpecific/TurnDropdown"
 import "./tagQueryBuilder.scss"
-import { CardAmountPicker } from "./typeSpecific/CardAmountPicker"
-import { keywords } from "../../../assets/keywords"
+import { CardAmountPicker } from "../rules/tags/typeSpecific/CardAmountPicker"
+import { keywords } from "../../assets/keywords"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
   return value
