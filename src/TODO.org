@@ -64,9 +64,11 @@
 
 
 * CRUNCH 
-*** NEXT Create a new List component: Review.tsx
-**** Gotta join TagList/MulliganList in a half and half tab
-**** Create grid layout 
+*** DONE Create a new List component: Review.tsx
+**** DONE Gotta join TagList/MulliganList in a half and half tab
+**** DONE Create grid layout
+**** TODO Style RemoveButton
+**** TODO Make the CounterList cards small. 
 *** TODO "Mulligan/Tag Added" Component
 **** Let's add it right next to the submit buttons
 **** A little notif or something with ur added thing
