@@ -28,9 +28,9 @@ export const MulliganList = () => {
 
   return (
     <ul>
-      <Collapsable name={"Mulligan Rules"} className="" openedByDefault={true}>
+      <>
         {...ruleElements}
-      </Collapsable>
+      </>
     </ul>
   )
 }
