@@ -5,7 +5,7 @@ import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
 import "./App.scss"  
 import { DeckList } from "./features/deck/DeckList"
-import { RulesContainer } from "./features/rules/RulesContainer"
+import { TabsContainer } from "./features/TabsContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
 import { CounterList } from "./features/rules/tags/tag displays/CounterList"
 
@@ -25,7 +25,7 @@ class App extends Component {
               <DeckList />
             </div>
             <div className="rules">
-              <RulesContainer/>
+              <TabsContainer/>
             </div>
             {/* <div className="sim">
               <NumberSimInput/>
