@@ -7,9 +7,12 @@
     "mulligan counter"; 
 }
 .mulligan { 
-  grid-area: mulligan; 
+  grid-area: mulligan;
+  border-right: 2px solid #c0392b;
 }
-.counter { grid-area: counter; }
+.counter { grid-area: counter;
+  margin-left: 7%;
+ }
 h3 {
   text-decoration: underline solid #c0392b 1px;
 }

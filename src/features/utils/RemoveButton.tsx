@@ -19,9 +19,9 @@ export const RemoveButton = ({
 
   return (
     <>
-      <button onClick={handleRemove} value={index}>
-        X
-      </button>
+      <a href="#" style={{"padding": "4px 9px", "color": "red"}} onClick={handleRemove}>
+        (Delete)
+      </a>
     </>
   )
 }

@@ -12,8 +12,8 @@ export const MulliganList = () => {
   let ruleElements = queries.map((rule, index) => {
     return (
       <>
-        <li>
-          {ruleTranslator(
+        <li style={{"textIndent": "2%", marginRight: "4%"}}>
+        ○ {ruleTranslator(
             rule.referent,
             rule.onHit.action,
             rule.onHit.condition,

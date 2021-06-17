@@ -15,7 +15,7 @@ export const TagList = () => {
   return (<ul>
     {...queryElements.map((query, index) => {
       return (
-        <li>
+        <li style={{"textIndent": "5%"}}>
           <Tag tag={query}/>
           <RemoveButton type="TAG" index={index}/>
         </li>

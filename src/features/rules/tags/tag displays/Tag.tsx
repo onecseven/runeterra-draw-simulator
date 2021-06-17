@@ -39,13 +39,13 @@ export const Tag = ({ tag, title = null}: { tag: Tag, title?: string}) => {
     })
 
   let collapsable = (title) => (
-    <>
+    <ul >
       <Collapsable name={title} openedByDefault={false} className={"link"}>
         {cards.map((card) => {
-          return <Card card={card} />
+          return <li style={{"textIndent": "10%"}}>{}○ {card.name} x{card.count}</li> 
         })} 
       </Collapsable>
-    </>
+    </ul>
   )
   return collapsable(tagLabel(tag))
 }
