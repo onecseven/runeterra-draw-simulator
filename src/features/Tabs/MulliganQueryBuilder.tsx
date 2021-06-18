@@ -14,15 +14,15 @@ import { MulliganConditionRadio } from "../rules/mulligan/mulliganQueryComponent
 import { NoDeck } from "../NoDeck"
 import { StyledDropdown } from "../utils/generic/UI/StyledDropdown/StyledDropdown"
 import { NotificationFeedback } from "../rules/NotificationFeedback"
-
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
   const query = useSelector((state) => state.ui.mulliganQuery)
   const dispatch = useDispatch()
-
+  const [formKey, reset] = useReset()
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addMulligan(query))
+    reset()
     // dispatch(clearUI(null))
   }
 
@@ -35,6 +35,7 @@ export const MulliganQueryBuilder = () => {
     <form
       onSubmit={handleSubmit}
       className="mulliganQueryBuilder"
+      key={formKey}
     >
       <p>Pick a card to add a mulligan rule:</p>
       <StyledDropdown
