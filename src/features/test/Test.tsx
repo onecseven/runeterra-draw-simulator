@@ -13,7 +13,7 @@ export const Test = () => {
     dispatch({type: "data/addTag", payload: {
       type: "KEYWORD",
       referents: ["01FR004", "01FR012"],
-      turn: "8",
+      turn: 8,
       groupName: "Burst"
     }})
   }
