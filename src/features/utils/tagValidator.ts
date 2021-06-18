@@ -20,7 +20,7 @@ export const tagValidator = (
       break
     }
     case "KEYWORD": {
-      if (isKeyword(groupName)) {
+      if (isKeyword(groupName) && referents && referents.length > 0) {
         return { type, turn, groupName, referents }
       }
 

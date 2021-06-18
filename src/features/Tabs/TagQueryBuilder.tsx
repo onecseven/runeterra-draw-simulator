@@ -15,6 +15,7 @@ import "./tagQueryBuilder.scss"
 import { CardAmountPicker } from "../rules/tags/typeSpecific/CardAmountPicker"
 import { NotificationFeedback } from "../rules/NotificationFeedback"
 import { clearUI } from "../../store/uiSlice"
+import { isKeyword } from "../utils/typeGuards"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
   return value
@@ -23,7 +24,7 @@ let TagTypes = TAG_TYPES.map(({ value }) => {
 let rollUp = (tagQuery) => {
   let referents = []
   for (let index in tagQuery.referents) {
-    if (index === "KEYWORD") continue
+    if (isKeyword(index)) continue
     let current = tagQuery.referents[index]
     if (current) referents.push(current)
   }
@@ -39,10 +40,9 @@ export const TagQueryBuilder = () => {
   if (deck.length == 0) return <NoDeck />
 
   const handleSubmit = () => {
-    let { type, turn } = tagQuery
-    let referents =
-      type === "KEYWORD" ? tagQuery.referents.keyword : rollUp(tagQuery)
-    dispatch(addTag({ type, referents, turn }))
+    let { type, turn, groupName} = tagQuery
+    let referents = rollUp(tagQuery)
+    dispatch(addTag({ type, referents, turn, groupName}))
     refresh()
   }
 

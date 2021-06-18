@@ -32,12 +32,12 @@ export const KeywordTagCreator = ({
       .map(({ code }) => code)
   }
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: KEYWORD) => {
     let referents = findCards(value)
     dispatch(
       setTagReferents({
         code: referents,
-        index: "keyword"
+        index: value
       })
     )
   }
