@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { tagLabel } from "../features/rules/tags/tag displays/Tag"
+import { isKeyword } from "../features/utils/typeGuards"
+import { ACTIONS } from "./constants"
 
 let initialMulliganQuery: MulliganQuery = {
   referent: null,
@@ -19,8 +22,9 @@ let initialTagQuery = {
     3: null,
     4: null,
     5: null,
-    keyword: null,
-  },
+    keyword: null
+    },
+  groupName: null
 }
 
 type notif = "SUCCESS" | "FAILURE" | null
@@ -66,7 +70,18 @@ export const uiSlice = createSlice({
     },
     setTagReferents: (state, action: Actions.UI.setTagReferents) => {
       let { index, code } = action.payload
-      state.tagQuery.referents[index] = code
+      if (Number.isInteger(index)) {
+        state.tagQuery.referents[index] = code
+      } else if (isKeyword(String(index))) {
+        state.tagQuery.groupName = index
+        if (Array.isArray(action.payload.code)){
+          action.payload.code.forEach((cardCode, index) => {
+            if (index < 5) {
+              state.tagQuery.referents[index] = cardCode
+            }
+          })
+        }
+      }
     },
     setAmountTagReferents: (state, action: Actions.UI.setAmountTagReferents) => {
       state.tagQueryBuilder.amountOfReferents = action.payload
