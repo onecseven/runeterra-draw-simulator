@@ -84,6 +84,7 @@ export const dataSlice = createSlice({
         action.asyncDispatch({type:"ui/clearUI", payload: null})
         action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
       } else {
+        action.asyncDispatch({type:"ui/clearUI", payload: null})
         action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
       }
       return state
@@ -100,6 +101,7 @@ export const dataSlice = createSlice({
         return { cards, read: false }
       })
       state.simulations.hands = state.simulations.hands.concat(formattedHands)
+      action.asyncDispatch({type: "data/runTags", payload: null})
     },
     runTags: (state, action: Actions.data.runTags) => {
       state.tags.counters = countTags({
