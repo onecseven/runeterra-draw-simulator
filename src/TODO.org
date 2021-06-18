@@ -69,12 +69,16 @@
 **** DONE Create grid layout
 **** DONE Style RemoveButton
 **** DONE Make the CounterList cards small. 
-*** TODO "Mulligan/Tag Added" Component
-**** Let's add it right next to the submit buttons
-**** A little notif or something with ur added thing
-*** TODO Help.tsx
+*** DONE "Mulligan/Tag Added" Component
+**** DONE Let's add it right next to the submit buttons
+**** DONE A little notif or something with ur added thing
+**** DONE Style the Notif component
+*** TODO Redo the Simulation Component
+**** TODO Add a NumberSimInput component to figure out how many hands to calculate
+**** TODO Once we have calculated, then render features/rules/tags/tag displays/CounterList beneath it
+**** TODO Style the above components
+*** TODO Help Component
 *** TODO Border component for DeckList (CSS)
-
 * LOW PRIORITY
 **** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
 ***** TODO Selected cards apply a selection thing on the decklist

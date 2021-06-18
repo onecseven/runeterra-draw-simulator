@@ -2,19 +2,19 @@ import React from "react"
 
 type Props = {
   label: string
-  key: string
+  role: string
   visible: boolean
   children?: React.ReactChild    | React.ReactChild[];
   id: number
   onClick: () => void
 }
 
-export const Tab = ({label, key, visible, children, id, onClick}: Props) => {
+export const Tab = ({label, role, visible, children, id, onClick}: Props) => {
   return (
     <li className="tab-li">
-      <input type="radio" name="tabs" id={key} className={`tab-input  ${visible ? "visible default" : ""}`}  />
+      <input type="radio" name="tabs" id={role} className={`tab-input  ${visible ? "visible default" : ""}`}  />
       <label
-        htmlFor={key}
+        htmlFor={role}
         role="tab"
         aria-selected="true"
         aria-controls={"panel"+id}

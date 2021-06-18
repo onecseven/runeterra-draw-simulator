@@ -1,3 +1,9 @@
+
+declare type action = {
+  type: string
+  payload: any
+}
+
 declare namespace Actions {
   declare namespace data {
     type addDeck = {
@@ -9,6 +15,7 @@ declare namespace Actions {
     type addMulligan = {
       type: "data/addMulligan"
       payload: MulliganQuery
+      asyncDispatch: (action: action) => any
     }
     type removeMulligan = {
       type: "data/removeMulligan"
@@ -30,6 +37,7 @@ declare namespace Actions {
         referents?: Card["code"][]
         groupName?: string
       }
+      asyncDispatch: (action: action) => any
     }
     type runMulligan = {
       type: "data/runMulligan"
@@ -89,6 +97,16 @@ declare namespace Actions {
     type switchTab = {
       type: "ui/switchTab",
       payload: null
+    }
+    type notificationSuccess = {
+      type: "ui/notificationSuccess"
+      payload: null
+      asyncDispatch: (action: action) => any
+    }
+    type notificationFailure = {
+      type: "ui/notificationFailure"
+      payload: null
+      asyncDispatch: (action: action) => any
     }
   }
 }

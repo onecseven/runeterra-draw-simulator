@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { ACTIONS } from "./constants"
 
 let initialMulliganQuery: MulliganQuery = {
   referent: null,
@@ -24,6 +23,9 @@ let initialTagQuery = {
   },
 }
 
+type notif = "SUCCESS" | "FAILURE" | null
+let notification: notif = null 
+
 export const uiSlice = createSlice({
   name: "ui",
   initialState: {
@@ -31,7 +33,8 @@ export const uiSlice = createSlice({
     tagQuery: initialTagQuery,
     tagQueryBuilder: {
       amountOfReferents: 0
-    }
+    },
+    notification
   },
   reducers: {
     setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
@@ -53,6 +56,7 @@ export const uiSlice = createSlice({
     clearUI: (state, action: Actions.UI.clearUI) => {
       state.mulliganQuery = initialMulliganQuery
       state.tagQuery = initialTagQuery
+      state.notification = null
     },
     setTagType: (state, action: Actions.UI.setTagType) => {
       state.tagQuery.type = action.payload
@@ -67,6 +71,18 @@ export const uiSlice = createSlice({
     setAmountTagReferents: (state, action: Actions.UI.setAmountTagReferents) => {
       state.tagQueryBuilder.amountOfReferents = action.payload
     },
+    setNotificationSuccess: (state, action: Actions.UI.notificationSuccess) => {
+      state.notification = "SUCCESS"
+      setTimeout(() => {
+        action.asyncDispatch({type:"ui/clearUI", payload: null})
+      }, 3000)
+    },
+    setNotificationFailure: (state, action: Actions.UI.notificationFailure) => {
+      state.notification = "FAILURE"
+      setTimeout(() => {
+        action.asyncDispatch({type:"ui/clearUI", payload: null})
+      }, 3000)
+    }
   },
 })
 
@@ -79,7 +95,9 @@ export const {
   setTagType,
   setTagTurns,
   setTagReferents,
-  setAmountTagReferents
+  setAmountTagReferents,
+  setNotificationSuccess,
+  setNotificationFailure
 } = uiSlice.actions
 
 export default uiSlice.reducer

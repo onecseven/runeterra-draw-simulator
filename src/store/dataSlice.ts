@@ -62,6 +62,10 @@ export const dataSlice = createSlice({
       const mulliganQuery = action.payload
       if (validateMulligan(mulliganQuery)) {
         state.mulliganQueries.push(mulliganQuery)
+        action.asyncDispatch({type:"ui/clearUI", payload: null})
+        action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
+      } else {
+        action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
       }
       return state
     },
@@ -77,8 +81,12 @@ export const dataSlice = createSlice({
           tag,
           hits: [],
         }
-        return state
+        action.asyncDispatch({type:"ui/clearUI", payload: null})
+        action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
+      } else {
+        action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
       }
+      return state
     },
     runMulligan: (state, action: Actions.data.runMulligan) => {
       let { numberOfSimulations } = action.payload

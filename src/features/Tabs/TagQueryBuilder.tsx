@@ -13,7 +13,8 @@ import { TagTypeDropdown } from "../rules/tags/typeSpecific/TagTypeDropdown"
 import { TurnDrodpown } from "../rules/tags/typeSpecific/TurnDropdown"
 import "./tagQueryBuilder.scss"
 import { CardAmountPicker } from "../rules/tags/typeSpecific/CardAmountPicker"
-import { keywords } from "../../assets/keywords"
+import { NotificationFeedback } from "../rules/NotificationFeedback"
+import { clearUI } from "../../store/uiSlice"
 
 let TagTypes = TAG_TYPES.map(({ value }) => {
   return value
@@ -38,8 +39,9 @@ export const TagQueryBuilder = () => {
   if (deck.length == 0) return <NoDeck />
 
   const handleSubmit = () => {
-    let {type, turn} = tagQuery
-    let referents = type === "KEYWORD" ? tagQuery.referents.keyword : rollUp(tagQuery)
+    let { type, turn } = tagQuery
+    let referents =
+      type === "KEYWORD" ? tagQuery.referents.keyword : rollUp(tagQuery)
     dispatch(addTag({ type, referents, turn }))
     refresh()
   }
@@ -48,17 +50,18 @@ export const TagQueryBuilder = () => {
     <form key={formKey} onSubmit={handleSubmit} className="squared">
       <div className="tagContainer top">
         <TagTypeDropdown />
-        <CardAmountPicker/>
+        <CardAmountPicker />
         <TurnDrodpown />
       </div>
       <div className="bot extensible">
-
-      <TypeSwitcher
-        />
-        </div>
+        <TypeSwitcher />
+      </div>
       <button className="submit button_slide" type="submit">
         Submit counter
       </button>
+      <div className="submit2">
+        <NotificationFeedback source="Counter" />
+      </div>
     </form>
   )
 }

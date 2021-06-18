@@ -11,7 +11,7 @@ export const MulliganList = () => {
   if (queries.length == 0) return null
   let ruleElements = queries.map((rule, index) => {
     return (
-      <>
+      <React.Fragment key={`mulliganListIndex${index}`}>
         <li style={{"textIndent": "2%", marginRight: "4%"}}>
         ○ {ruleTranslator(
             rule.referent,
@@ -22,7 +22,7 @@ export const MulliganList = () => {
           )}
           <RemoveButton type="MULLIGAN" index={index}/>
         </li>
-      </>
+      </React.Fragment>
     )
   })
 
