@@ -20,7 +20,7 @@ export const NumberSimInput = () => {
           value={numberOfSims}
           onChange={(e) => setnumberOfSims(Number(e.target.value))}
         ></input>
-        <button type="submit">Mulligan</button>
+        <button type="submit">Calculate</button>
       </form>
     </div>
   )
