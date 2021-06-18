@@ -44,6 +44,7 @@ declare namespace Actions {
       payload: {
         numberOfSimulations: number
       }
+      asyncDispatch: (action: action) => any
     }
     type runTags = {
       type: "data/runTags"
@@ -83,7 +84,7 @@ declare namespace Actions {
       type: "ui/addTagReferents"
       payload: {
         code: Card["code"] | Card["code"][]
-        index: number | "keyword"
+        index: number | KEYWORD
       }
     }
     type setTagTurns = {
