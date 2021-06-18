@@ -10,9 +10,9 @@ export const TypeSwitcher = () => {
   const tag = useSelector(state => state.ui.tagQuery.type)
   if (tag === "KEYWORD") {
     return <KeywordTagCreator />
-  } else {
+  } else if (tag === "WITH" || tag === "WITHOUT" || tag === "SEQUENCE") {
     return (
       <ExtensibleCardChooser />
     )
-  }
+  } else return null
 }
