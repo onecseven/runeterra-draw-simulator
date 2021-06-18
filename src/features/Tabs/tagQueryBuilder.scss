@@ -48,7 +48,7 @@ $highlight: #c0392b;
 .squared {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 40% 40% 10%;
+  grid-template-rows: 40% 40% 20%;
   grid-template-areas:
     "top top top"
     "bot bot bot"
@@ -68,9 +68,13 @@ $highlight: #c0392b;
     "extensible3 extensible4 extensible5";
 }
 .submit {
-  margin-top: 10%;
+  grid-area: submit;
 }
 
+
+.submit2 {
+  grid-area: submit2;
+}
 .bot > div {
   font-size: 80%;
 }
