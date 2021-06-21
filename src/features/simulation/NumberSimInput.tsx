@@ -1,27 +1,23 @@
 import React, { useState } from "react"
 import { useAppDispatch as useDispatch } from "../../store/hooks"
 import { runMulligan } from "../../store/dataSlice"
+import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
 
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
 
-  const [numberOfSims, setnumberOfSims] = useState(0)
-
-  const handleSubmit = (event) => {
+  const handleSubmit = (numberOfSimulations) => {
     event.preventDefault()
-    dispatch(runMulligan({ numberOfSimulations: numberOfSims }))
+    dispatch(runMulligan({ numberOfSimulations }))
   }
 
   return (
-    <div className="deck-input">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          value={numberOfSims}
-          onChange={(e) => setnumberOfSims(Number(e.target.value))}
-        ></input>
-        <button type="submit">Calculate</button>
-      </form>
-    </div>
+    <InputBox
+      onSubmit={handleSubmit}
+      type="number"
+      placeholder="Amount of hands to calculate"
+      buttonText="Calculate"
+      className="deck-input"
+    />
   )
 }
