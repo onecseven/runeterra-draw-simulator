@@ -3,9 +3,7 @@ import {
   useAppDispatch as useDispatch,
   useAppSelector as useSelector,
 } from "../../store/hooks"
-import { useStateCallback } from "../utils/generic/useStateCallback"
 import { addTag } from "../../store/dataSlice"
-import { TAG_TYPES, TURNS } from "../../store/constants"
 import { TypeSwitcher } from "../rules/tags/typeSpecific/TypeSwitcher"
 import { NoDeck } from "../NoDeck"
 import { useReset } from "../utils/generic/useReset"
@@ -14,12 +12,7 @@ import { TurnDrodpown } from "../rules/tags/typeSpecific/TurnDropdown"
 import "./tagQueryBuilder.scss"
 import { CardAmountPicker } from "../rules/tags/typeSpecific/CardAmountPicker"
 import { NotificationFeedback } from "../rules/NotificationFeedback"
-import { clearUI } from "../../store/uiSlice"
 import { isKeyword } from "../utils/typeGuards"
-
-let TagTypes = TAG_TYPES.map(({ value }) => {
-  return value
-})
 
 let rollUp = (tagQuery) => {
   let referents = []
