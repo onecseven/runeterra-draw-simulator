@@ -1,6 +1,5 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../../store/hooks"
-import Collapsable from "../../utils/generic/UI/Collapsable"
 import { ruleTranslator } from "../../utils/ruleTranslator"
 import { RemoveButton } from "../../utils/RemoveButton"
 
