@@ -19,7 +19,7 @@ export const CounterList = () => {
         <li>
           <>
           <Tag tag={counter.tag}/>
-          <p>Hit Percentage: {((counter.hits.length / hands) * 100).toFixed(2)}%</p>
+          <p>Hit Percentage: {((counter.hits.length / hands) * 100).toFixed(2)}% ({counter.hits.length} hands)</p>
           </> 
         </li>
       )
