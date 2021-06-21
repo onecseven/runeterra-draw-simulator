@@ -1,0 +1,37 @@
+/*
+┌─────────────────────────────────────────────────────────────────┐
+┃                   LAYOUT MADE BY VIPERESOLIDE                	┃
+┌─────────────────────────────────────────────────────────────────┐
+┃  Please montion me in your code. This layout is free but I		┃
+┃  request a place in your project. You can just copy-paste			┃
+┃  this piece of text if you don't want to write another one.		┃
+┃																						┃
+┃  On this, have fun using this template :D                       ┃
+└─────────────────────────────────────────────────────────────────┘
+*/
+
+.input {
+	width: 250px;
+	height: 20px;
+	background: #1C1B22;
+	border: 1px solid #1C1B22;
+	border-radius: 8px;
+	padding: 15px;
+	color: #C0742B;
+	transition: .1s;
+	cursor: default;
+	font-size: 15px;
+}
+
+.input:hover {
+	box-shadow: 0 0 0 2px #685EB1;
+}
+
+
+.input:focus {
+	box-shadow: 0 0 0 2px #685EB1;
+}
+
+.input:active {
+	box-shadow: 0 0 0 2px #685EB1;
+}
