@@ -1,26 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Lato");
-$highlight: #c0392b;
+$highlight: #8c325e;
 
 body {
-  font-family: Lato, Arial;
+  font-family: Lato, Arial, "Lucida Console", Monaco, monospace;
   background-color: #162944;
   color: hsl(37, 100%, 50%);
-  font-family: "Lucida Console", Monaco, monospace;
-  font-size: 14px;
+  font-size: 18px;
+
 }
 
-h1{
-  margin-left: 2%;
+.header {
+  width:40%;
+
+}
+h1 {
+  margin: 2% 0% 2% 2%;
+  border-bottom: 5px solid $highlight;
+}
+
+h2, h3 {
+  margin-bottom: 2%;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
     "deck rules rules"
-    "deck tag sim";
 }
 
 .deck {
@@ -32,11 +39,19 @@ h1{
   margin-bottom: 5%;
 }
 
+.SUCCESS> form > input {
+  box-shadow: 0 0 0 2px #7CA43C;
+}
+
+.FAILURE> form > input {
+  box-shadow: 0 0 0 2px #933563;
+}
+
 .hidden {
   display: none;
   visibility: hidden;
 }
-    
+
 ol,
 ul {
   list-style: none;
@@ -49,47 +64,45 @@ ul {
   grid-area: rules;
 }
 
-.sim{
+.sim {
   grid-area: sim;
 }
 
-
-option{
-  font-family: "Press Start 2P", 'Ubuntu Mono', Helvetica, Arial, sans-serif;
+option {
+  font-family: "Press Start 2P", "Ubuntu Mono", Helvetica, Arial, sans-serif;
 }
 
-.selected{
-  background-color: #33698f ;
+.selected {
+  background-color: #33698f;
 }
-.trans{
-  background-color: #193549 ;
-}
-
-.deckbox{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 5px 5px;
-    grid-template-areas:
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . ."
-      ". . .";  
-    
+.trans {
+  background-color: #193549;
 }
 
+.deckbox {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . .";
+}
 
-.cardContainer > img, span{
+.cardContainer > img,
+span {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -102,19 +115,17 @@ option{
 }
 
 .border {
-  border: 3px solid #c0392b;
+  border: 3px solid #8c325e;
 }
 
 .border-orange {
-  border: 3px solid #C0742B;
-
+  border: 3px solid #8c325e;
 }
-
 
 .radio {
   background-color: darken(#612e76, 5);
   display: grid;
-  grid-template-columns: 0.2fr 1.8fr;
+  grid-template-columns: 5% 95%;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -129,25 +140,26 @@ option{
 
 .radio > p {
   margin-top: auto;
-  margin-bottom:auto;
+  margin-bottom: auto;
 }
 
-input{
-margin-right: 2%;
+.chrome-radio > input {
+  margin-right: 2%;
+  margin-left: 25%;
+  margin-top: 20%;
 }
-
 
 .button_slide {
-  color: hsl(37, 100%, 50%); 
+  color: hsl(37, 100%, 50%);
   background-color: #162944;
-  border: 2px solid #685EB1;
+  border: 2px solid #685eb1;
   border-radius: 0px;
   padding: 9px 36px;
   max-height: 38px;
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 0 #685EB1;
+  box-shadow: inset 0 0 0 0 #685eb1;
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
@@ -155,10 +167,10 @@ margin-right: 2%;
 }
 
 .button_slide:hover {
-  box-shadow: inset 400px 0 0 0 #685EB1;
+  box-shadow: inset 400px 0 0 0 #685eb1;
 }
 
-.mulliganQueryBuilder > *{
+.mulliganQueryBuilder > * {
   margin-bottom: 2%;
 }
 

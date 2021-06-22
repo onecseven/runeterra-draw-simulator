@@ -1,4 +1,4 @@
-$highlight: #c0392b;
+$highlight: #8c325e;
 
 .tagContainer {
   display: grid;
@@ -66,6 +66,12 @@ $highlight: #c0392b;
   grid-template-areas:
     "extensible0 extensible1 extensible2"
     "extensible3 extensible4 extensible5";
+  margin-top: auto;
+}
+
+.bot > * {
+  margin-top: 5%;
+  margin-left: 4%;
 }
 .submit {
   grid-area: submit;
@@ -81,32 +87,26 @@ $highlight: #c0392b;
 
 .extensible0 {
   grid-area: extensible0;
-  margin: 8%;
   border-bottom: 3px solid $highlight;
 
 }
 .extensible1 {
   grid-area: extensible1;
-  margin: 8%;
 
 }
 .extensible2 {
   grid-area: extensible2;
-  margin: 8% 0% 0% 0%;
 }
 .extensible3 {
   grid-area: extensible3;
-  margin: 8%;
 
 }
 .extensible4 {
   grid-area: extensible4;
-  margin: 8%;
 }
 
 .extensible5 {
   grid-area: extensible5;
-  margin: 8% auto;
 
 }
 
