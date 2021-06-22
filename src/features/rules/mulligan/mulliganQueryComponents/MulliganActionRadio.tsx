@@ -10,13 +10,13 @@ export const MulliganActionRadio = () => {
   const handleChange = (action) => {
     dispatch(setMulliganAction(action))
   }
-  
+  var isChrome = navigator.appVersion.indexOf("Chrome/") !== -1
   return (
     <>
       <p>How should this card be mulliganed?</p>
       <RadioChoices
         options={ACTIONS}
-        name={"actions radio border"}
+        name={`actions radio border ${isChrome ? "chrome-radio" : ""}`}
         onSelectedChange={handleChange}
       />
     </>
