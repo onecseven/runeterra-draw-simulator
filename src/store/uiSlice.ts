@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { tagLabel } from "../features/rules/tags/tag displays/Tag"
 import { isKeyword } from "../features/utils/typeGuards"
-import { ACTIONS } from "./constants"
 
 let initialMulliganQuery: MulliganQuery = {
   referent: null,
@@ -30,6 +28,9 @@ let initialTagQuery = {
 type notif = "SUCCESS" | "FAILURE" | null
 let notification: notif = null 
 
+type deckInputNotif = "SUCCESS" | "FAILURE" | null
+let deckInputNotif: deckInputNotif = null
+
 export const uiSlice = createSlice({
   name: "ui",
   initialState: {
@@ -38,7 +39,8 @@ export const uiSlice = createSlice({
     tagQueryBuilder: {
       amountOfReferents: 0
     },
-    notification
+    notification,
+    deckInputNotif
   },
   reducers: {
     setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
@@ -89,15 +91,33 @@ export const uiSlice = createSlice({
     setNotificationSuccess: (state, action: Actions.UI.notificationSuccess) => {
       state.notification = "SUCCESS"
       setTimeout(() => {
-        action.asyncDispatch({type:"ui/clearUI", payload: null})
+        action.asyncDispatch({type:"ui/setNotificationNeutral", payload: null})
       }, 3000)
     },
     setNotificationFailure: (state, action: Actions.UI.notificationFailure) => {
       state.notification = "FAILURE"
       setTimeout(() => {
-        action.asyncDispatch({type:"ui/clearUI", payload: null})
+        action.asyncDispatch({type:"ui/setNotificationNeutral", payload: null})
       }, 3000)
-    }
+    },
+    setNotificationNeutral:  (state, action: Actions.UI.notificationNeutral) => {
+      state.notification = null
+    },
+    setDeckInputSuccess: (state, action: Actions.UI.deckInputSuccess) => {
+      state.deckInputNotif = "SUCCESS"
+      setTimeout(() => {
+        action.asyncDispatch({type:"ui/setDeckInputNeutral", payload: null})
+      }, 3000)
+    },
+    setDeckInputFailure: (state, action: Actions.UI.deckInputFailure) => {
+      state.deckInputNotif = "FAILURE"
+      setTimeout(() => {
+        action.asyncDispatch({type:"ui/setDeckInputNeutral", payload: null})
+      }, 3000)
+    },
+    setDeckInputNeutral:  (state, action: Actions.UI.deckInputNeutral) => {
+      state.deckInputNotif = null
+    },
   },
 })
 
@@ -112,7 +132,11 @@ export const {
   setTagReferents,
   setAmountTagReferents,
   setNotificationSuccess,
-  setNotificationFailure
+  setNotificationFailure,
+  setNotificationNeutral,
+  setDeckInputFailure,
+  setDeckInputNeutral,
+  setDeckInputSuccess
 } = uiSlice.actions
 
 export default uiSlice.reducer

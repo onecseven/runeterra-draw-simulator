@@ -52,10 +52,15 @@ export const dataSlice = createSlice({
   reducers: {
     addDeck: (state, action: Actions.data.addDeck) => {
       let { code } = action.payload
-      //maybe have a verify clause here?
       let cards = deckCodeTranslation(code)
+      console.log(cards)
+      if (cards.length < 40) {
+        action.asyncDispatch({type:"ui/setDeckInputFailure", payload: null})
+        return state
+      }
       state.deck.code = code
       state.deck.cards = cards
+      action.asyncDispatch({type:"ui/setDeckInputSuccess", payload: null})
       return state
     },
     addMulligan: (state, action: Actions.data.addMulligan) => {

@@ -11,6 +11,7 @@ declare namespace Actions {
       payload: {
         code: string
       }
+      asyncDispatch: (action: action) => any
     }
     type addMulligan = {
       type: "data/addMulligan"
@@ -108,6 +109,24 @@ declare namespace Actions {
       type: "ui/notificationFailure"
       payload: null
       asyncDispatch: (action: action) => any
+    }
+    type notificationNeutral = {
+      type: "ui/notificationNeutral"
+      payload: null
+    }
+    type deckInputSuccess = {
+      type: "ui/setDeckInputSuccess"
+      payload: null
+      asyncDispatch: (action: action) => any
+    }
+    type deckInputFailure = {
+      type: "ui/setDeckInputFailure"
+      payload: null
+      asyncDispatch: (action: action) => any
+    }
+    type deckInputNeutral = {
+      type: "ui/setDeckInputNeutral"
+      payload: null
     }
   }
 }
