@@ -17,7 +17,7 @@ export const TabsContainer = () => {
   return (
       <Tabs
         onChange={handleChange}
-        labels={["Mullligan", "Counters", "Review", "Calculate", "HELP"]}
+        labels={["Mulligan", "Counters", "Review", "Calculate", "HELP"]}
       >
         <MulliganQueryBuilder />
         <TagQueryBuilder />

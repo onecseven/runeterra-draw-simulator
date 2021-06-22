@@ -18,7 +18,7 @@ export const tagLabel = (tag: Tag): string => {
       return `Every hand that draws the following cards together by turn ${turn}, in the following order.`
     }
     case "KEYWORD": {
-      return `Every hand that contain any cards that have the keyword: ${groupName} by turn ${turn}`
+      return `Every hand that contain any cards which have the keyword "${groupName}" by turn ${turn}`
     }
     case "GROUP": {
       return `Hands that contain all cards in group "${groupName}" by turn ${turn}`

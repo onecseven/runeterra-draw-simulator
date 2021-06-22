@@ -16,10 +16,10 @@ export const CounterList = () => {
   return (<ul>
     {...counterElements.map((counter) => {
       return (
-        <li>
+        <li >
           <>
           <Tag tag={counter.tag}/>
-          <p>Hit Percentage: {((counter.hits.length / hands) * 100).toFixed(2)}% ({counter.hits.length} hands)</p>
+          <p> 🔶 Hit Percentage: {((counter.hits.length / hands) * 100).toFixed(2)}% ({counter.hits.length} hands)</p>
           </> 
         </li>
       )

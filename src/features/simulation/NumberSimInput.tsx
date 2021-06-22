@@ -8,6 +8,7 @@ export const NumberSimInput = () => {
 
   const handleSubmit = (numberOfSimulations) => {
     event.preventDefault()
+    if (numberOfSimulations > 1000000) numberOfSimulations = 1000000
     dispatch(runMulligan({ numberOfSimulations }))
   }
 

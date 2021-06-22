@@ -1,7 +1,6 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../store/hooks"
 import { Card } from "../card/Card"
-import Collapsable from "../utils/generic/UI/Collapsable"
 import {formatDeck} from "../utils/formatDeck"
 
 

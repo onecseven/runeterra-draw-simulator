@@ -44,6 +44,7 @@ $tabs-base-color: #8e44ad;
     }
   }
   .tab-content{
+    margin-top: -1%; /* chrome fix*/
     z-index: 2;
     display: none; 
     width: 100%;
