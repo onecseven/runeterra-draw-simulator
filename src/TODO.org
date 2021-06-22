@@ -76,14 +76,15 @@
 *** DONE Redo the Simulation Component
 **** DONE Add a NumberSimInput component to figure out how many hands to calculate
 **** DONE Once we have calculated, then render features/rules/tags/tag displays/CounterList beneath it
-**** TODO Style the above components
-***** Label for input box
-***** Style the button to the slidey Once
-***** A number on the right for hands counted
+**** DONE Style the above components
+***** DONE Label for input box
+***** DONE Style the button to the slidey Once
+***** A number on the right for hands counted (CounterList or NumberSimInput)
 *** TODO Help Component
-*** TODO Border component for DeckList (CSS)
+*** DROP Border component for DeckList (CSS)
 
 * LOW PRIORITY
 **** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
 ***** TODO Selected cards apply a selection thing on the decklist
+**** DONE Sending empty string into DeckInput crashes the app
 

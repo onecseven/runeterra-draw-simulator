@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
-import "./App.scss"  
+import "./App.scss"
 import { DeckList } from "./features/deck/DeckList"
 import { TabsContainer } from "./features/TabsContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
@@ -16,16 +16,17 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <h1>Submit deck code</h1>
-          <br />
+          <div className="header">
+            <h1>Tati's LOR Mulligan Simulator</h1>
+          </div>
           <div className="grid-container">
             <div className="deck">
               <DeckInput />
-              <Test/>
+              <Test />
               <DeckList />
             </div>
             <div className="rules">
-              <TabsContainer/>
+              <TabsContainer />
             </div>
             {/* <div className="sim">
               <NumberSimInput/>
