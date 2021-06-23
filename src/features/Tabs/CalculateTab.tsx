@@ -6,6 +6,7 @@ import { CounterList } from "../rules/tags/tag displays/CounterList"
 import {NumberSimInput} from "../simulation/NumberSimInput"
 import { ProgressBar } from "../utils/ProgressBar"
 
+
 export const CalculateTab = () => {
   const counters = useSelector(state => state.data.tags.counters)
   const spinner = useSelector(state => state.ui.spinner)

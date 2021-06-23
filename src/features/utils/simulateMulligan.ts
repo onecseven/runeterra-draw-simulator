@@ -16,7 +16,7 @@ export const getNumberOfTurns = (tags: tagInitialState["counters"]) => {
 
 let doMulliganAction = (action: mulliganAction, preMullHand: Card["code"][], referent: Card["code"]) => {
   let thrown: Card["code"][] = []
-  let kept = preMullHand.slice()
+  let kept = preMullHand
   switch (action) {
     case "THROW":
       thrown = kept.filter((code) => (code === referent))

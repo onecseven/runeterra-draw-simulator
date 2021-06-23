@@ -14,7 +14,8 @@ export interface tagInitialState {
     [id: number]: {
       //should match Counter["id"]
       tag: Tag
-      hits: Card["code"][][]
+      // hits: Card["code"][][]
+      hits: number
     }
   }
 }
@@ -93,7 +94,7 @@ export const dataSlice = createSlice({
         let id = Object.keys(state.tags.counters).length
         state.tags.counters[id] = {
           tag,
-          hits: [],
+          hits: 0
         }
         action.asyncDispatch({type:"ui/clearUI", payload: null})
         action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
@@ -115,14 +116,13 @@ export const dataSlice = createSlice({
         return { cards, read: false }
       })
       state.simulations.hands = state.simulations.hands.concat(formattedHands)
-      action.asyncDispatch({type: "data/runTags", payload: null})
+      // action.asyncDispatch({type: "data/runTags", payload: null})
     },
     runTags: (state, action: Actions.data.runTags) => {
       let q = countTags({
         hands: state.simulations.hands,
         tags: state.tags.counters,
       })
-      state.tags.counters = q 
       action.asyncDispatch({type: "ui/setSpinnerOff", payload:null})
     },
     removeTag: (state, action: Actions.data.removeTag) => {

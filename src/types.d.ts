@@ -68,6 +68,7 @@ declare interface dataCards extends Card{
 type hand = {
   read: boolean
   cards: Card["code"][]
+  hit?: boolean
 }
 declare interface UIElementIterator <Q> {
   name: string

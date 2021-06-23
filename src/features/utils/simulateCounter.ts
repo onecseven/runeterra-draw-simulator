@@ -19,26 +19,22 @@ let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
     }
     case "SEQUENCE": {
       return isSequenceInTarget(referents, hand)
+    }
   }
-}
 }
 
 export const countTags = ({
   hands,
-  tags,
+  tag,
 }: {
   hands: hand[]
-  tags: tagInitialState["counters"]
-}): tagInitialState["counters"] => {
+  tag: Tag
+}): number => {
+  let counter = 0
   for (let hand of hands) {
-    if (hand.read) continue
-    for (let index in tags) {
-      let {tag, hits} = tags[index]
-      if (tagVerification(tag, hand.cards)){
-        hits.push(hand.cards)
-      }
+    if (tagVerification(tag, hand.cards)) {
+      counter++
     }
-    hand.read = true
   }
-  return tags
+  return counter
 }

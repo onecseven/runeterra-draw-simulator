@@ -41,7 +41,7 @@ export const uiSlice = createSlice({
     },
     notification,
     deckInputNotif,
-    spinner: false
+    spinner: true
   },
   reducers: {
     setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
