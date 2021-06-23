@@ -10,9 +10,9 @@ export const DeckList = () => {
   let formattedDeck = formatDeck(deck)
   return (
      <div className={"deckbox"}>
-      {formattedDeck.map((card) => {
+      {formattedDeck.map((card, index) => {
         return (
-            <Card card={card} />
+            <Card key={`decklist${index}`} card={card} />
         )
       })}
       </div>

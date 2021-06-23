@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { isValueInArray } from "../isValueInArray"
+import { useReset } from "../useReset"
 
 export type RadioChoicesProps<Z> = {
   onSelectedChange(Z): void
@@ -45,6 +46,7 @@ export const RadioChoices = <A extends Constraint>({
   name,
 }: RadioChoicesProps<A>) => {
   const [localValue, setlocalValue] = useState<A>(options[0].value)
+  const [key, reset] = useReset()  
   const handleChange = (event: { target: HTMLInputElement }) => {
     let { value } = event.target
     if (
@@ -59,8 +61,10 @@ export const RadioChoices = <A extends Constraint>({
   }
   return (
     <div className={name}>
-      {options.map(({ name, value }) =>
-        labelMaker({ name, value, handleChange, localValue })
+      {options.map(({ name, value }, index) =>
+      {return (<React.Fragment key={`${key}+${index}`}>
+        {labelMaker({ name, value, handleChange, localValue })}
+      </React.Fragment>)}
       )}
     </div>
   )

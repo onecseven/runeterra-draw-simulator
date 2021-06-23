@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useReset } from "../../useReset"
 import "./dropdown.scss"
 
 /*
@@ -14,6 +15,7 @@ export const StyledDropdown = <Z extends string | number>({
 }: Dropdown.props<Z>) => {
   const [active, setActive] = useState(false)
   const [selection, setSelection] = useState<string | number>(defaultStr ? defaultStr : options[0].name)
+  const [key, reset] = useReset()  
   const toggleActive = () => setActive(!active)
   const handleSelect = (value, name) => {
     setSelection(name)
@@ -33,10 +35,10 @@ export const StyledDropdown = <Z extends string | number>({
         className={`select-options ${name}`}
         style={{ display: active ? "block" : "none" }}
       >
-        {options.map(({ value, name }) => {
+        {options.map(({ value, name }, index) => {
           if (name === selection) return
           return (
-            <li onClick={() => handleSelect(value, name)} value={value}>
+            <li key={`${key}+${index}`} onClick={() => handleSelect(value, name)} value={value}>
               {name}
             </li>
           )

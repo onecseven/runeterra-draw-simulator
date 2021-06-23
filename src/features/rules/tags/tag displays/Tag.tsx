@@ -3,6 +3,7 @@ import {formatDeck} from "../../../utils/formatDeck"
 import { Card } from "../../../card/Card"
 import Collapsable from "../../../utils/generic/UI/Collapsable"
 import { useAppSelector as useSelector } from "../../../../store/hooks"
+import { useReset } from "../../../utils/generic/useReset"
 
 
 export const tagLabel = (tag: Tag): string => {
@@ -20,8 +21,8 @@ export const tagLabel = (tag: Tag): string => {
     case "KEYWORD": {
       return `Every hand that contain any cards which have the keyword "${groupName}" by turn ${turn}`
     }
-    case "GROUP": {
-      return `Hands that contain all cards in group "${groupName}" by turn ${turn}`
+    case "ANY": {
+      return `Hands that contain any of the following cards by turn ${turn}`
     }
   }
 }
@@ -29,6 +30,7 @@ export const tagLabel = (tag: Tag): string => {
 
 export const Tag = ({ tag, title = null}: { tag: Tag, title?: string}) => {
   const deck = useSelector((state) => formatDeck(state.data.deck.cards))
+  const [key, reset] = useReset()  
   let { referents, turn, type } = tag
 
   title = title ? title : tagLabel(tag)
@@ -41,8 +43,8 @@ export const Tag = ({ tag, title = null}: { tag: Tag, title?: string}) => {
   let collapsable = (title) => (
     <ul >
       <Collapsable name={title} openedByDefault={false} className={"link"}>
-        {cards.map((card) => {
-          return <li title={card.code} style={{"textIndent": "10%"}}>{}○ {card.name} x{card.count}</li> 
+        {cards.map((card, index) => {
+          return <li key={`${key}+${index}`} title={card.code} style={{"textIndent": "10%"}}>{}○ {card.name} x{card.count}</li> 
         })} 
       </Collapsable>
     </ul>
