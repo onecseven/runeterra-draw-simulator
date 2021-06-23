@@ -8,6 +8,7 @@ import {
 } from "../features/utils/simulateMulligan"
 import { countTags } from "../features/utils/simulateCounter"
 import { ACTIONS } from "./constants"
+import { deckFilter } from "../features/utils/deckFilter"
 
 export interface tagInitialState {
   counters: {
@@ -24,7 +25,7 @@ const tagInitialState: tagInitialState = {
   counters: {},
 }
 
-let hands: hand[] = []
+let hands: number = 0
 
 const mulliganInitialState: MulliganQuery[] = []
 
@@ -77,11 +78,14 @@ export const dataSlice = createSlice({
       return state
     },
     addMulliganToAll: (state, action: Actions.data.addMulliganToAll) => {
+      let lastCard 
       state.deck.cards.forEach(card => {
+        if (lastCard === card.code) return
         action.asyncDispatch({type: "data/addMulligan", payload: {
           ...action.payload,
           referent: card.code
         }})
+        lastCard = card.code
       })
     },
     removeMulligan: (state, action: Actions.data.removeMulligan) => {
@@ -105,24 +109,23 @@ export const dataSlice = createSlice({
       return state
     },
     runMulligan: (state, action: Actions.data.runMulligan) => {
-      let { numberOfSimulations } = action.payload
-      let hands = getMulliganedHands({
-        deck: state.deck.cards,
-        mulliganQueries: state.mulliganQueries,
-        numberOfSimulations,
-      })
-      let numberOfTurns = getNumberOfTurns(state.tags.counters)
-      let formattedHands = hands.map((hand) => hand.slice(0, numberOfTurns+4)).map((cards) => {
-        return { cards, read: false }
-      })
-      state.simulations.hands = state.simulations.hands.concat(formattedHands)
+      // let { numberOfSimulations } = action.payload
+      // let hands = getMulliganedHands({
+      //   deck: state.deck.cards,
+      //   mulliganQueries: state.mulliganQueries,
+      //   numberOfSimulations,
+      // })
+      // let numberOfTurns = getNumberOfTurns(state.tags.counters)
+      // let formattedHands = hands.map((hand) => hand.slice(0, numberOfTurns+4)).map((cards) => {
+      //   return { cards, read: false }
+      // })
+      // state.simulations.hands = state.simulations.hands.concat(formattedHands)
       // action.asyncDispatch({type: "data/runTags", payload: null})
     },
     runTags: (state, action: Actions.data.runTags) => {
-      let q = countTags({
-        hands: state.simulations.hands,
-        tags: state.tags.counters,
-      })
+      let { index, hits, hands} = action.payload
+      state.tags.counters[index].hits = hits
+      state.simulations.hands = hands
       action.asyncDispatch({type: "ui/setSpinnerOff", payload:null})
     },
     removeTag: (state, action: Actions.data.removeTag) => {
