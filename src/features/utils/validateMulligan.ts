@@ -1,5 +1,4 @@
-import { Card } from "lor-deckcode"
-
+/** doesn't actually check for type validity, TODO */
 export const validateMulligan = (potentialQuery
 ): potentialQuery is MulliganQuery => {
   let card = potentialQuery.referent
