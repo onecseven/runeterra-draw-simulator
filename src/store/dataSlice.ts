@@ -39,52 +39,71 @@ const deckInitialState: deckInitialState = {
   cards: [],
 }
 
+const initialState = {
+  deck: deckInitialState,
+  tags: tagInitialState,
+  mulliganQueries: mulliganInitialState,
+  simulations: {
+    hands,
+  },
+}
+
 export const dataSlice = createSlice({
   name: "data",
-  initialState: {
-    deck: deckInitialState,
-    tags: tagInitialState,
-    mulliganQueries: mulliganInitialState,
-    simulations: {
-      hands,
-    },
-  },
+  initialState: initialState,
   reducers: {
     addDeck: (state, action: Actions.data.addDeck) => {
       let { code } = action.payload
       let cards = deckCodeTranslation(code)
       if (!cards || cards.length < 40) {
-        action.asyncDispatch({type:"ui/setDeckInputFailure", payload: null})
+        action.asyncDispatch({ type: "ui/setDeckInputFailure", payload: null })
         return state
       }
-      state.deck.code = code
-      state.deck.cards = cards
-      action.asyncDispatch({type:"ui/setDeckInputSuccess", payload: null})
+      state = {
+        ...initialState,
+        deck: {
+          code: code,
+          cards: cards,
+        },
+      }
+      action.asyncDispatch({ type: "ui/setDeckInputSuccess", payload: null })
       return state
     },
     addMulligan: (state, action: Actions.data.addMulligan) => {
       const mulliganQuery = action.payload
       if (validateMulligan(mulliganQuery)) {
         if (mulliganQuery.referent === "ALL") {
-          action.asyncDispatch({type:"data/addMulliganToAll", payload: mulliganQuery})
+          action.asyncDispatch({
+            type: "data/addMulliganToAll",
+            payload: mulliganQuery,
+          })
           return state
         }
         state.mulliganQueries.unshift(mulliganQuery)
-        action.asyncDispatch({type:"ui/clearUI", payload: null})
-        action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationSuccess",
+          payload: null,
+        })
       } else {
-        action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
+        action.asyncDispatch({
+          type: "ui/setNotificationFailure",
+          payload: null,
+        })
       }
       return state
     },
     addMulliganToAll: (state, action: Actions.data.addMulliganToAll) => {
-      let lastCard 
-      state.deck.cards.forEach(card => {
+      let lastCard
+      state.deck.cards.forEach((card) => {
         if (lastCard === card.code) return
-        action.asyncDispatch({type: "data/addMulligan", payload: {
-          ...action.payload,
-          referent: card.code
-        }})
+        action.asyncDispatch({
+          type: "data/addMulligan",
+          payload: {
+            ...action.payload,
+            referent: card.code,
+          },
+        })
         lastCard = card.code
       })
     },
@@ -98,13 +117,19 @@ export const dataSlice = createSlice({
         let id = Object.keys(state.tags.counters).length
         state.tags.counters[id] = {
           tag,
-          hits: 0
+          hits: 0,
         }
-        action.asyncDispatch({type:"ui/clearUI", payload: null})
-        action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationSuccess",
+          payload: null,
+        })
       } else {
-        action.asyncDispatch({type:"ui/clearUI", payload: null})
-        action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationFailure",
+          payload: null,
+        })
       }
       return state
     },
@@ -123,13 +148,13 @@ export const dataSlice = createSlice({
       // action.asyncDispatch({type: "data/runTags", payload: null})
     },
     runTags: (state, action: Actions.data.runTags) => {
-      let { index, hits, hands} = action.payload
+      let { index, hits, hands } = action.payload
       state.tags.counters[index].hits = hits
       state.simulations.hands = hands
-      action.asyncDispatch({type: "ui/setSpinnerOff", payload:null})
+      action.asyncDispatch({ type: "ui/setSpinnerOff", payload: null })
     },
     removeTag: (state, action: Actions.data.removeTag) => {
-      let {index} = action.payload
+      let { index } = action.payload
       let newTags = {}
       for (let key in state.tags.counters) {
         if (key === index.toString()) continue
@@ -141,7 +166,7 @@ export const dataSlice = createSlice({
       }
       state.tags.counters = newTags
     },
-  }
+  },
 })
 
 export const {
@@ -151,7 +176,7 @@ export const {
   runMulligan,
   runTags,
   removeMulligan,
-  removeTag
+  removeTag,
 } = dataSlice.actions
 
 export default dataSlice.reducer
