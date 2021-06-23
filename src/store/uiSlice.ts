@@ -41,7 +41,7 @@ export const uiSlice = createSlice({
     },
     notification,
     deckInputNotif,
-    spinner: true
+    spinner: false
   },
   reducers: {
     setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
@@ -64,6 +64,7 @@ export const uiSlice = createSlice({
       state.mulliganQuery = initialMulliganQuery
       state.tagQuery = initialTagQuery
       state.notification = null
+      state.tagQueryBuilder.amountOfReferents = 0
     },
     setTagType: (state, action: Actions.UI.setTagType) => {
       state.tagQuery.type = action.payload
