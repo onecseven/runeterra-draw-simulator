@@ -72,6 +72,7 @@ type hand = {
 declare interface UIElementIterator <Q> {
   name: string
   value: Q
+  cost?: number
 }
 
 declare interface Card {

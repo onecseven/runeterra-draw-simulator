@@ -18,7 +18,7 @@
     "@types/react-dom": "^16.9.12",
     "@types/react-redux": "^7.1.16",
     "compass-sass-mixins": "^0.12.7",
-    "lor-deckcode": "^0.1.0",
+    "lor-deckcodes-ts": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
@@ -60,10 +60,10 @@
   },
   "devDependencies": {
     "@webpack-cli/serve": "latest",
-    "webpack": "latest",
     "html-webpack-plugin": "latest",
     "node-sass": "^6.0.0",
     "sass-loader": "^11.1.1",
+    "webpack": "latest",
     "webpack-cli": "^4.7.2"
   }
 }
