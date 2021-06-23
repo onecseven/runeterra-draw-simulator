@@ -4,9 +4,9 @@ import {Tag} from "./Tag"
 
 export const CounterList = () => {
   const counters = useSelector((state) => state.data.tags.counters)
-  const hands = useSelector((state) => state.data.simulations.hands.length)
+  const hands = useSelector((state) => state.data.simulations.hands)
 
-  if (Object.keys(counters).length == 0 || hands < 1) return null
+  if (Object.keys(counters).length == 0 || hands === 0) return null
   let counterElements = []
   for (let key in counters) {
     let counter = counters[key]

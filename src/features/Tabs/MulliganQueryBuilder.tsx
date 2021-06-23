@@ -60,7 +60,7 @@ export const MulliganQueryBuilder = () => {
       />
       <MulliganActionRadio />
       <MulliganConditionRadio />
-      <div className={secondDeckDropdownVisibility ? "hidden" : ""}>
+      <div className={secondDeckDropdownVisibility ? "hidden" : "mulliganQueryBuilder"}>
         <p>Which card?</p>
         <StyledDropdown
           options={deckOptions.filter((card) => card.value !== query.referent)}
