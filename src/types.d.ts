@@ -1,7 +1,7 @@
 
 declare type mulliganAction =  "THROW" | "KEEP_ALL" | "KEEP_ONE" | "KEEP_TWO"
 declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "GROUP"
+declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "ANY"
 declare type TagTiming = "EXACT" | "RELATIVE"
 declare type KEYWORD =
   | "Burst"

@@ -33,10 +33,10 @@ export const KEYWORDS: KEYWORD[] = [
 
 export const TAG_TYPES: UIElementIterator<TagType>[] = [
   { name: "Sequence", value: "SEQUENCE" },
-  { name: "Link", value: "WITH" },
+  { name: "Group", value: "WITH" },
   { name: "Exclusive", value: "WITHOUT" },
   { name: "Keyword", value: "KEYWORD" },
-  // { name: "Custom Grouping", value: "GROUP" }, deprecated
+  { name: "Any", value: "ANY" }, 
 ]
 
 export const TURNS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
