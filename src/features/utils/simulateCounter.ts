@@ -27,12 +27,12 @@ export const countTags = ({
   hands,
   tag,
 }: {
-  hands: hand[]
+  hands: Card["code"][][]
   tag: Tag
 }): number => {
   let counter = 0
   for (let hand of hands) {
-    if (tagVerification(tag, hand.cards)) {
+    if (tagVerification(tag, hand)) {
       counter++
     }
   }
