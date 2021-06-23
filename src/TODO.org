@@ -81,7 +81,7 @@
 ***** DONE Style the button to the slidey Once
 ***** A number on the right for hands counted (CounterList or NumberSimInput)
 *** TODO Help Component
-*** TODO Update Card Library
+*** NOW Update Card Library
 *** DROP Border component for DeckList (CSS)
 
 * LOW PRIORITY
