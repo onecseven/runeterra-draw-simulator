@@ -80,9 +80,12 @@
 ***** DONE Label for input box
 ***** DONE Style the button to the slidey Once
 ***** A number on the right for hands counted (CounterList or NumberSimInput)
-*** TODO Help Component
-*** NOW Update Card Library
+*** DONE NOW Update Card Library
 *** DROP Border component for DeckList (CSS)
+*** TODO Help Component
+*** TODO We need an "ANY" tagtype lmao
+*** TODO Rename "LINK" tagtype lol
+*** TODO [BREAKING] Trying to replace the deck via addDeck after using the test settings breaks the package 
 
 * LOW PRIORITY
 **** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
