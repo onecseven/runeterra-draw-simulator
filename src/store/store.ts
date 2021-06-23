@@ -10,7 +10,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     let middlewareArray = getDefaultMiddleware()
     middlewareArray.push(asyncDispatchMiddleware)
-    return middlewareArray
+    return [asyncDispatchMiddleware]
   }
 })
 

@@ -7,6 +7,7 @@ import {
   getMulliganedHands,
 } from "../features/utils/simulateMulligan"
 import { countTags } from "../features/utils/simulateCounter"
+import { ACTIONS } from "./constants"
 
 export interface tagInitialState {
   counters: {
@@ -32,17 +33,14 @@ type deckInitialState = {
 }
 
 const deckInitialState: deckInitialState = {
-  code: "",
+  code: null,
   cards: [],
 }
 
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
-    deck: {
-      code: null,
-      cards: [],
-    },
+    deck: deckInitialState,
     tags: tagInitialState,
     mulliganQueries: mulliganInitialState,
     simulations: {
@@ -53,8 +51,7 @@ export const dataSlice = createSlice({
     addDeck: (state, action: Actions.data.addDeck) => {
       let { code } = action.payload
       let cards = deckCodeTranslation(code)
-      console.log(cards)
-      if (cards.length < 40) {
+      if (!cards || cards.length < 40) {
         action.asyncDispatch({type:"ui/setDeckInputFailure", payload: null})
         return state
       }
@@ -66,13 +63,25 @@ export const dataSlice = createSlice({
     addMulligan: (state, action: Actions.data.addMulligan) => {
       const mulliganQuery = action.payload
       if (validateMulligan(mulliganQuery)) {
-        state.mulliganQueries.push(mulliganQuery)
+        if (mulliganQuery.referent === "ALL") {
+          action.asyncDispatch({type:"data/addMulliganToAll", payload: mulliganQuery})
+          return state
+        }
+        state.mulliganQueries.unshift(mulliganQuery)
         action.asyncDispatch({type:"ui/clearUI", payload: null})
         action.asyncDispatch({type:"ui/setNotificationSuccess", payload: null})
       } else {
         action.asyncDispatch({type:"ui/setNotificationFailure", payload: null})
       }
       return state
+    },
+    addMulliganToAll: (state, action: Actions.data.addMulliganToAll) => {
+      state.deck.cards.forEach(card => {
+        action.asyncDispatch({type: "data/addMulligan", payload: {
+          ...action.payload,
+          referent: card.code
+        }})
+      })
     },
     removeMulligan: (state, action: Actions.data.removeMulligan) => {
       let { index } = action.payload
@@ -109,10 +118,12 @@ export const dataSlice = createSlice({
       action.asyncDispatch({type: "data/runTags", payload: null})
     },
     runTags: (state, action: Actions.data.runTags) => {
-      state.tags.counters = countTags({
+      let q = countTags({
         hands: state.simulations.hands,
         tags: state.tags.counters,
       })
+      state.tags.counters = q 
+      action.asyncDispatch({type: "ui/setSpinnerOff", payload:null})
     },
     removeTag: (state, action: Actions.data.removeTag) => {
       let {index} = action.payload

@@ -14,20 +14,34 @@ import { MulliganConditionRadio } from "../rules/mulligan/mulliganQueryComponent
 import { NoDeck } from "../NoDeck"
 import { StyledDropdown } from "../utils/generic/UI/StyledDropdown/StyledDropdown"
 import { NotificationFeedback } from "../rules/NotificationFeedback"
+
+const ALL = {name: "All", value: "ALL"}
+const sortingCost = (a,b) => {
+  if (a.cost > b.cost) {
+    return 1
+  } else if (a.cost < b.cost) {
+    return -1
+  } else return 0
+}
+
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
   const query = useSelector((state) => state.ui.mulliganQuery)
   const dispatch = useDispatch()
   const [formKey, reset] = useReset()
+
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addMulligan(query))
     reset()
-    // dispatch(clearUI(null))
   }
+  /*
+  Add an ALL option to deckFilter
+  */
 
   if (deck.length == 0) return <NoDeck />
-  let deckOptions = deckFilter(deck)
+  let deckOptions = deckFilter(deck).sort(sortingCost)
+  let deckOptionsWithAll = [ALL].concat(deckOptions.slice())
   let secondDeckDropdownVisibility =
     query.onHit.condition === "ALWAYS" || query.referent === null
 
@@ -39,7 +53,7 @@ export const MulliganQueryBuilder = () => {
     >
       <p>Pick a card to add a mulligan rule:</p>
       <StyledDropdown
-        options={deckOptions}
+        options={deckOptionsWithAll}
         name={"reference"}
         onSelectedChange={(cardCode) => dispatch(setMulliganReferent(cardCode))}
         defaultStr="Choose a card"

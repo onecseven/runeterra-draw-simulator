@@ -18,6 +18,11 @@ declare namespace Actions {
       payload: MulliganQuery
       asyncDispatch: (action: action) => any
     }
+    type addMulliganToAll = {
+      type: "data/addMulligan"
+      payload: MulliganQuery
+      asyncDispatch: (action: action) => any
+    }
     type removeMulligan = {
       type: "data/removeMulligan"
       payload: {
@@ -50,6 +55,8 @@ declare namespace Actions {
     type runTags = {
       type: "data/runTags"
       payload: {}
+      asyncDispatch: (action: action) => any
+
     }
   }
   declare namespace UI {
@@ -126,6 +133,14 @@ declare namespace Actions {
     }
     type deckInputNeutral = {
       type: "ui/setDeckInputNeutral"
+      payload: null
+    }
+    type setSpinnerOff = {
+      type: "ui/setSpinnerOff"
+      payload: null
+    }
+    type setSpinnerOn = {
+      type: "ui/setSpinnerOn"
       payload: null
     }
   }
