@@ -1,0 +1,88 @@
+$loader-size: 1.5rem;
+$loader-shift: $loader-size * 1.5;
+
+@keyframes spinner {
+  0% {
+    transform: translate(0,0);
+    box-shadow: 0 $loader-size * -1 0 0 #8d6ca1,
+      $loader-shift * -1 $loader-shift * -1 0 0 #7b86a6;
+  }
+  25% {
+    transform: translate(-100%,0);
+    box-shadow: $loader-size 0 0 0 #8d6ca1, 
+      $loader-shift $loader-shift * -1 0 0 #7b86a6;
+  }
+  50% {
+    transform: translate(-100%, -100%);
+    box-shadow: 0 $loader-size 0 0 #8d6ca1, 
+      $loader-shift $loader-shift 0 0 #7b86a6;
+  }
+  75% {
+    transform: translate(0, -100%);
+    box-shadow: $loader-size * -1 0 0 0 #8d6ca1, 
+     $loader-shift * -1 $loader-shift 0 0 #7b86a6;
+  }
+  100% {
+    transform: translate(0,0);
+    box-shadow: 0 $loader-size * -1 0 0 #8d6ca1, 
+      $loader-shift * -1 $loader-shift * -1 0 0 #7b86a6;
+  }
+}
+
+@keyframes spinner-after {
+  0% {
+    transform: translate(-100%, -100%);
+    box-shadow: 0 $loader-size 0 0 #8d6ca1, 
+      $loader-shift $loader-shift 0 0 #7b86a6;
+  }
+  25% {
+    transform: translate(0, -100%);
+    box-shadow: $loader-size * -1 0 0 0 #8d6ca1, 
+     $loader-shift * -1 $loader-shift 0 0 #7b86a6;
+  }
+  50% {
+    transform: translate(0, 0);
+    box-shadow: 0 $loader-size * -1 0 0 #8d6ca1, 
+      $loader-shift * -1 $loader-shift * -1 0 0 #7b86a6;
+  }
+  75% {
+    transform: translate(-100%,0);
+    box-shadow: $loader-size 0 0 0 #8d6ca1, 
+      $loader-shift $loader-shift * -1 0 0 #7b86a6;
+  }
+  100% {
+    transform: translate(-100%, -100%);
+    box-shadow: 0 $loader-size 0 0 #8d6ca1, 
+      $loader-shift $loader-shift 0 0 #7b86a6;
+  }
+}
+
+.progress {
+  --app-purple: #475778;
+  --app-blue: #487c85;
+  --app-peach: #ecc7a2;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    perspective: 1000px;
+    width: $loader-size;
+    height: $loader-size;
+    background-color: var(--app-purple);
+    opacity: 0.85;
+  }
+  &::before {
+    animation: spinner 2000ms steps(5) infinite;
+  }
+  &::after {
+    animation: spinner-after 2000ms steps(5) infinite;
+  }
+  &:hover {
+    &::before {
+      transform: translate(-150%, -50%);
+    }
+  }
+}

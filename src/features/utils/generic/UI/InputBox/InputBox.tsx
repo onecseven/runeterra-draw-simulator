@@ -43,7 +43,7 @@ export const InputBox = ({onSubmit, placeholder, type, buttonText="Submit", clas
     <div className={className}>
       <form onSubmit={handleSubmit}>
         {type === "number" ? (<NumberInput onChange={(newVal) => setValue(newVal)} value={value as number} />) : (<TextInput onChange={(newVal) => setValue(newVal)} value={value as string} placeholder={placeholder} />)}
-        <button className="button_slide" type="submit">{buttonText}</button>
+        <button className={`button_slide ${className}`} type="submit">{buttonText}</button>
       </form>
     </div>
   )

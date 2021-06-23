@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { Action, createSlice } from "@reduxjs/toolkit"
 import { isKeyword } from "../features/utils/typeGuards"
 
 let initialMulliganQuery: MulliganQuery = {
@@ -40,7 +40,8 @@ export const uiSlice = createSlice({
       amountOfReferents: 0
     },
     notification,
-    deckInputNotif
+    deckInputNotif,
+    spinner: false
   },
   reducers: {
     setMulliganAction: (state, action: Actions.UI.setMulliganAction) => {
@@ -118,6 +119,12 @@ export const uiSlice = createSlice({
     setDeckInputNeutral:  (state, action: Actions.UI.deckInputNeutral) => {
       state.deckInputNotif = null
     },
+    setSpinnerOn: (state, action: Actions.UI.setSpinnerOn) => {
+      state.spinner = true
+    },
+    setSpinnerOff: (state, action: Actions.UI.setSpinnerOff) => {
+      state.spinner = false
+    }
   },
 })
 
@@ -136,7 +143,9 @@ export const {
   setNotificationNeutral,
   setDeckInputFailure,
   setDeckInputNeutral,
-  setDeckInputSuccess
+  setDeckInputSuccess,
+  setSpinnerOn,
+  setSpinnerOff
 } = uiSlice.actions
 
 export default uiSlice.reducer
