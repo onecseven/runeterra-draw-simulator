@@ -54,7 +54,11 @@ declare namespace Actions {
     }
     type runTags = {
       type: "data/runTags"
-      payload: {}
+      payload: {
+        index: number
+        hits: number
+        hands: number
+      }
       asyncDispatch: (action: action) => any
 
     }
