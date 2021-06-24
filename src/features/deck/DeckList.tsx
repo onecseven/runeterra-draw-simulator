@@ -1,7 +1,6 @@
 import React from "react"
 import { useAppSelector as useSelector } from "../../store/hooks"
 import { Card } from "../card/Card"
-import Collapsable from "../utils/generic/UI/Collapsable"
 import {formatDeck} from "../utils/formatDeck"
 
 
@@ -10,14 +9,12 @@ export const DeckList = () => {
   if (!deck.length) return null
   let formattedDeck = formatDeck(deck)
   return (
-    <Collapsable name={"Deck"} openedByDefault={false} className="  " >
-     <>
-      {formattedDeck.map((card) => {
+     <div className={"deckbox"}>
+      {formattedDeck.map((card, index) => {
         return (
-            <Card card={card} />
+            <Card key={`decklist${index}`} card={card} />
         )
       })}
-      </>
-    </Collapsable>
+      </div>
   )
 }

@@ -1,6 +1,7 @@
+
 declare type mulliganAction =  "THROW" | "KEEP_ALL" | "KEEP_ONE" | "KEEP_TWO"
 declare type mulliganCondition = "ALWAYS" | "PRESENCE" | "ABSENCE"
-declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "GROUP"
+declare type TagType = "SEQUENCE" | "WITH" | "WITHOUT" | "KEYWORD" | "ANY"
 declare type TagTiming = "EXACT" | "RELATIVE"
 declare type KEYWORD =
   | "Burst"
@@ -27,7 +28,6 @@ declare type KEYWORD =
   | "Deep"
   | "Immobile"
   | "Scout"
-  | "Missing Translation"
   | "Vulnerable"
   | "Focus"
   | "Landmark"
@@ -38,7 +38,6 @@ declare type KEYWORD =
 declare interface dataCards extends Card{
   associatedCards: string[]
   associatedCardRefs: []
-  assets: asset[]
   region: string
   regionRef: string
   attack: number
@@ -69,16 +68,21 @@ declare interface dataCards extends Card{
 type hand = {
   read: boolean
   cards: Card["code"][]
+  hit?: boolean
 }
-declare interface UIElementIterator {
+declare interface UIElementIterator <Q> {
   name: string
-  value: string | number
+  value: Q
+  cost?: number
 }
 
 declare interface Card {
   code: string
   name: string
-  assets?: asset[]
+  assets?: {
+    gameAbsolutePath: string,
+    fullAbsolutePath: string
+}[]
   region: string
   cost: number
   keywords: KEYWORD[]
@@ -103,11 +107,13 @@ declare interface MulliganQuery {
 }
 
 declare namespace Dropdown {
-  interface props {
-    onSelectedChange(arg: (string | number) | (string | number)[]): void
-    options: UIElementIterator[]
+  interface props <Z> {
+    onSelectedChange(Z): void
+    options: UIElementIterator<Z>[]
     name: string
+    defaultStr?: string
     defaultNumber?: number
+    disabled?: boolean
   }
 }
 
@@ -123,51 +129,4 @@ declare interface Counter {
   hits: Card["code"][][]
 }
 
-declare namespace Actions {
-  type addDeck = {
-    type: "data/addDeck"
-    payload: {
-      code: string
-    }
-  }
-  type addMulligan = {
-    type: "data/addMulligan"
-    payload: {
-      mulliganAction: mulliganAction
-      condition: mulliganCondition
-      referent: Card["code"]
-      reference: Card["code"]
-    }
-  }
-  type removeMulligan = {
-    type: "data/removeMulligan"
-    payload: {
-      index: number
-    }
-  }
-  type removeTag = {
-    type: "data/removeTag"
-    payload: {
-      index: number
-    }
-  }
-  type addTag = {
-    type: "data/addTag"
-    payload: {
-      type: TagType
-      turn: number
-      referents?: Card["code"][]
-      groupName?: string
-    }
-  }
-  type runMulligan = {
-    type: "data/runMulligan"
-    payload: {
-      numberOfSimulations: number
-    }
-  }
-  type runTags = {
-    type: "data/runTags"
-    payload: {}
-  }
-}
+

@@ -1,26 +1,30 @@
-import React, {useState} from "react"
-import { useAppDispatch as useDispatch } from "../../store/hooks"
+import React from "react"
+import {
+  useAppDispatch as useDispatch,
+  useAppSelector as useSelector,
+} from "../../store/hooks"
 import { addDeck } from "../../store/dataSlice"
+import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
 
 export const DeckInput = () => {
   const dispatch = useDispatch()
-  const [label, setLabel] = useState("")
-  
-  const handleSubmit = (event) =>{
+  const deckCode = useSelector((state) => state.data.deck.code)
+  const notif = useSelector((state) => state.ui.deckInputNotif)
+  const handleSubmit = (code) => {
     event.preventDefault()
-    dispatch(addDeck({code: label}))
+    dispatch(addDeck({ code }))
   }
 
   return (
-    <div className="deck-input">
-      <form onSubmit={handleSubmit}>
-        <input 
+    <>
+      <h2>Import deck code</h2>
+      <InputBox
+        className={`deck-input ${notif ? notif : ""}`}
+        onSubmit={handleSubmit}
+        placeholder={deckCode ? deckCode : "Paste your deck code here"}
         type="text"
-        value={label}
-        onChange={(e) => setLabel(e.target.value)}
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+        buttonText="Import"
+      />
+    </>
   )
 }

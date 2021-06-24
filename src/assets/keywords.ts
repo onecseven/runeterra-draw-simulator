@@ -23,7 +23,6 @@ export const keywords =[
   "Deep",
   "Immobile",
   "Scout",
-  "Missing Translation",
   "Vulnerable",
   "Focus",
   "Landmark",

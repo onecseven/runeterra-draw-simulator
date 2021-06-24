@@ -1,14 +1,15 @@
 import { doTimes } from "./generic/doTimes"
-import { decode } from "lor-deckcode"
+import { getDeckFromCode, Deck } from "lor-deckcodes-ts"
 import { CardLookup } from "./CardLookup"
 
 
 export const deckCodeTranslation = (deckCode: string): Card[] => {
   let newDeck: Card[] = []
   try {
-    let deck = decode(deckCode)
-    deck.forEach(({ code, count }) => {
-      let card = CardLookup(code)
+    let deck: Deck = getDeckFromCode(deckCode)
+    console.log(deck)
+    deck.forEach(({ cardCode, count }) => {
+      let card = CardLookup(cardCode)
       doTimes(() => {
         newDeck.push(card)
       }, count)

@@ -1,26 +1,25 @@
 import React from "react"
-import { Dropdown } from "../../../utils/generic/UI/Dropdown"
 import { KEYWORDS } from "../../../../store/constants"
-import { useAppSelector as useSelector } from "../../../../store/hooks"
+import {
+useAppDispatch as useDispatch,
+useAppSelector as useSelector,
+} from "../../../../store/hooks"
+import { setTagReferents } from "../../../../store/uiSlice"
 import { formatDeck } from "../../../utils/formatDeck"
+import { StyledDropdown } from "../../../utils/generic/UI/StyledDropdown/StyledDropdown"
 
-let optionKeywords = KEYWORDS.map((keyword) => {
+let optionKeywords: UIElementIterator<KEYWORD>[] = KEYWORDS.map((keyword) => {
   return {
     value: keyword,
     name: keyword,
   }
 })
 
-optionKeywords.unshift({value: "", name: "Choose a keyword"})
-
 export const KeywordTagCreator = ({
-  onSelectedChange,
-  referentsCallback,
 }: {
-  onSelectedChange: Dropdown.props["onSelectedChange"]
-  referentsCallback: Dropdown.props["onSelectedChange"]
 }) => {
   const deck = useSelector((state) => state.data.deck.cards)
+  const dispatch = useDispatch()
   const findCards = (userKeyword) => {
     return formatDeck(deck)
       .filter((card) => {
@@ -32,16 +31,23 @@ export const KeywordTagCreator = ({
       })
       .map(({ code }) => code)
   }
-  const handleChange = (value: string) => {
+
+  const handleChange = (value: KEYWORD) => {
     let referents = findCards(value)
-    referentsCallback(referents)
-    onSelectedChange(value)
+    dispatch(
+      setTagReferents({
+        code: referents,
+        index: value
+      })
+    )
   }
+  
   return (
-    <Dropdown
+    <StyledDropdown
       onSelectedChange={handleChange}
       options={optionKeywords}
       name={"keywords"}
+      defaultStr="Choose a keyword."
     />
   )
 }

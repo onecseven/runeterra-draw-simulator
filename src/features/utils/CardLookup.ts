@@ -1,9 +1,10 @@
-import data from "../../assets/cardInfo.json";
+import data from "../../assets/cardInfo.json"
 
 export const CardLookup = (cardCode: string): Card => {
-  let preCard: dataCards = data[cardCode];
-  if (!preCard)
-    throw new Error("Card unavailable");
+  let preCard: dataCards = data[cardCode]
+  if (!preCard) {
+    throw new Error(`Card Unavailable: ${cardCode}`)
+  }
   let card = {
     name: preCard.name,
     code: preCard.cardCode,
@@ -12,7 +13,7 @@ export const CardLookup = (cardCode: string): Card => {
     cost: preCard.cost,
     keywords: preCard.keywords,
     type: preCard.type,
-    supertype: preCard.supertype
-  };
-  return card || null;
-};
+    supertype: preCard.supertype,
+  }
+  return card || null
+}

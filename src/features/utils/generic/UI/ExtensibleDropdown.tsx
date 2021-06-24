@@ -1,48 +1,44 @@
-import React, { useState } from "react"
-import { Dropdown } from "./Dropdown"
+import React, { useState, useCallback } from "react"
+import { StyledDropdown } from "./StyledDropdown/StyledDropdown"
+import "./button.scss"
 
-
-export const ExtensibleDropdown = ({
+export const ExtensibleDropdown = <Q extends string>({
   options,
   name,
   onSelectedChange,
-}: Dropdown.props) => {
-  let [firstOption, secondOption] = options
-  const [allDrops, setDrops] = useState([firstOption.value, secondOption.value])
+  defaultNumber
+}: Dropdown.props<Q>) => {
+  const [allDrops, setDrops] = useState(
+    options.slice(0, defaultNumber).map(({ value }) => value)
+  )
 
-  const callBackSetter = (id: number, edit: string) => {
-    let newState = allDrops.slice().map((value, i) => (i === id ? edit : value))
-    setDrops(newState)
-    onSelectedChange(newState)
-  }
-  
-  const memoizedCallback = (id: number) => (edit: string) => callBackSetter(id, edit)
+  const callBackSetter = useCallback(
+    (id: number, edit: Q) => {
+      let newState: Q[] = allDrops
+        .slice()
+        .map((value, i) => (i === id ? edit : value))
+      setDrops(newState)
+      onSelectedChange(newState)
+    },
+    [allDrops]
+  )
 
-  const increase = () => {
-    let newState = allDrops.slice()
-    newState.push(firstOption.value)
-    setDrops(newState)
-  }
-  
-  let decrease = (id: number) => {
-    let newState = allDrops.slice()
-    newState.splice(id, 1)
-    setDrops(newState)
-  }
+  const memoizedCallback = (id: number) => (edit: Q) => callBackSetter(id, edit)
 
   return (
     <>
       {allDrops.map((v, id) => {
         let innerCb = memoizedCallback(id)
         return (
-        <>
-        <Dropdown options={options} name={name} onSelectedChange={innerCb} />
-        <button onClick={() => decrease(id)}>-</button>
-        </>
-          )
+          <div className={`extensible${id}`}>
+            <StyledDropdown
+              options={options}
+              name={`${name}`}
+              onSelectedChange={innerCb}
+            />
+          </div>
+        )
       })}
-      <br/>
-      <button onClick={increase}>x</button>
     </>
   )
 }

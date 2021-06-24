@@ -1,0 +1,145 @@
+$highlight: #8c325e;
+
+.tagContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas: "tag tag cardAmount cardAmount turn turn";
+}
+.tag {
+  grid-area: tag;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
+  padding: 5%;
+  margin-left: 10%;
+}
+
+.tag > p {
+  width: 80%;
+}
+
+.cardAmount {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
+  grid-area: cardAmount;
+  border-left: 3px solid $highlight;
+  padding-left: 5%;
+  margin-right: 20px;
+  padding: 5%;
+}
+
+.cardAmount > p {
+  width: 85%;
+}
+
+.cardAmountInput{
+  right: 75%
+}
+
+.turn {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
+
+  grid-area: turn;
+  margin-left: 5px;
+  border-left: 3px solid $highlight;
+  padding-left: 5%;
+  margin-right: 15px;
+  padding: 5%;
+}
+
+.turn-picker {
+  right: 75%;
+}
+
+.squared {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40% 40% 20%;
+  grid-template-areas:
+    "top top top"
+    "bot bot bot"
+    "submit submit2 submit3";
+}
+.top {
+  grid-area: top;
+  margin-bottom: 10%;
+}
+.bot {
+  grid-area: bot;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "extensible0 extensible1 extensible2"
+    "extensible3 extensible4 extensible5";
+  margin-top: auto;
+}
+
+.bot > * {
+  margin-top: 5%;
+  margin-left: 4%;
+}
+.submit {
+  grid-area: submit;
+}
+
+
+.submit2 {
+  grid-area: submit2;
+}
+.bot > div {
+  font-size: 80%;
+}
+
+.extensible0 {
+  grid-area: extensible0;
+  border-bottom: 3px solid $highlight;
+
+}
+.extensible1 {
+  grid-area: extensible1;
+
+}
+.extensible2 {
+  grid-area: extensible2;
+}
+.extensible3 {
+  grid-area: extensible3;
+
+}
+.extensible4 {
+  grid-area: extensible4;
+}
+
+.extensible5 {
+  grid-area: extensible5;
+
+}
+
+.types {
+  right: 45%;
+}
+
+.referents {
+  right: 30%;
+}
+
+.disabled-tqb {
+  display: none;
+}

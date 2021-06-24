@@ -1,11 +1,17 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
+import { configureStore, ThunkAction, Action, getDefaultMiddleware } from "@reduxjs/toolkit"
 import dataSlice from "./dataSlice"
-
+import uiSlice  from "./uiSlice"
+import {asyncDispatchMiddleware} from "./naughty-middleware"
 export const store = configureStore({
   reducer: {
     data: dataSlice,
+    ui: uiSlice,
   },
-  middleware: [],
+  middleware: (getDefaultMiddleware) => {
+    let middlewareArray = getDefaultMiddleware()
+    middlewareArray.push(asyncDispatchMiddleware)
+    return [asyncDispatchMiddleware]
+  }
 })
 
 export type AppDispatch = typeof store.dispatch

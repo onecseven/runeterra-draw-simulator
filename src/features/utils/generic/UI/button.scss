@@ -1,0 +1,34 @@
+@import "../../../../../node_modules/compass-sass-mixins/lib/compass/";
+
+$select-background: #C0742B;
+$select-width: 220px;
+$select-height: 30px; 
+$select-color: #fff;
+
+
+.button-styled {
+  border: none;
+  background-color: $select-background;
+  padding: 10px 10px 30px;
+  @include transition(all 0.2s ease-in);
+  &:after {
+    content:"";
+    width: 0;
+    height: 0;
+    border: 7px solid;
+    border-color: $select-color transparent transparent transparent;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+  }
+  &:hover {
+    background-color: darken($select-background, 2);
+  }
+  &:active, &.active {
+    background-color: darken($select-background, 5);
+    &:after {
+      top: 9px;
+      border-color: transparent transparent $select-color transparent;
+    }
+  }
+}

@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+$highlight: #8c325e;
+
+body {
+  font-family: Lato, Arial, "Lucida Console", Monaco, monospace;
+  background-color: #162944;
+  color: hsl(37, 100%, 50%);
+  font-size: 18px;
+}
+
+.header {
+  width: 40%;
+}
+h1 {
+  margin: 2% 5% 2% 5%;
+  text-decoration: underline solid $highlight 5px;
+}
+
+h2,
+h3 {
+  margin-bottom: 2%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "deck rules rules";
+}
+
+.deck {
+  grid-area: deck;
+
+  margin-left: 10%;
+}
+.deck-input {
+  margin-bottom: 5%;
+}
+
+
+
+.SUCCESS > form > input {
+  box-shadow: 0 0 0 2px #7ca43c;
+}
+
+.FAILURE > form > input {
+  box-shadow: 0 0 0 2px #933563;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+.card {
+  grid-area: tag;
+}
+.rules {
+  grid-area: rules;
+}
+
+.sim {
+  grid-area: sim;
+}
+
+option {
+  font-family: "Press Start 2P", "Ubuntu Mono", Helvetica, Arial, sans-serif;
+}
+
+.selected {
+  background-color: #33698f;
+}
+.trans {
+  background-color: #193549;
+}
+
+.deckbox {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . .";
+}
+
+.cardContainer > img,
+span {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.card {
+  height: 80%;
+  width: 60%;
+}
+
+.border {
+  border: 3px solid #8c325e;
+}
+
+.border-orange {
+  border: 3px solid #8c325e;
+}
+
+.radio {
+  background-color: darken(#612e76, 5);
+  display: grid;
+  grid-template-columns: 5% 95%;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". ."
+    ". .";
+  /* top | right | bottom | left */
+  /* TeRRBLe */
+
+  padding: 5px 0 5px 0;
+}
+
+.radio > p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.chrome-radio > input {
+  margin-right: 2%;
+  margin-left: 25%;
+  margin-top: 20%;
+}
+
+.button_slide {
+  color: hsl(37, 100%, 50%);
+  background-color: #162944;
+  border: 2px solid #685eb1;
+  border-radius: 0px;
+  padding: 9px 36px;
+  max-height: 38px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #685eb1;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  // transition: height 0.66s ease-out;
+}
+
+.button_slide:hover {
+  box-shadow: inset 400px 0 0 0 #685eb1;
+}
+
+.mulliganQueryBuilder > * {
+  margin-bottom: 2%;
+}
+
+.mulliganQueryBuilder > p {
+  border-bottom: 1px dotted $highlight;
+}
+
+.normalpointer {
+  cursor: default;
+}

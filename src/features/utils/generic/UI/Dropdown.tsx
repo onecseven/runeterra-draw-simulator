@@ -1,18 +1,20 @@
 import React, { useState } from "react"
 
-export const Dropdown = ({
+export const Dropdown = <Z extends string|number>({
   onSelectedChange,
   options,
-  name
-}: Dropdown.props) => {
+  name,
+}: Dropdown.props<Z>) => {
   const [localAction, setlocalAction] = useState(options[0].value)
+  
   const handleChange = (e) => {
     let condition = e.target.value
     setlocalAction(condition)
     onSelectedChange(condition)
   }
+
   return (
-    <select name={name} value={localAction} onChange={handleChange}>
+    <select name={name} value={localAction} onChange={handleChange} >
       {options.map((option) => {
         return (
           <option key={option.value} value={option.value}>

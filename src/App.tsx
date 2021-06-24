@@ -3,10 +3,9 @@ import React, { Component } from "react"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
 import { DeckInput } from "./features/deck/DeckInput"
-import "./nes.min.css"
-import "./App.css"  
+import "./App.scss"
 import { DeckList } from "./features/deck/DeckList"
-import { RulesContainer } from "./features/rules/RulesContainer"
+import { TabsContainer } from "./features/TabsContainer"
 import { NumberSimInput } from "./features/simulation/NumberSimInput"
 import { CounterList } from "./features/rules/tags/tag displays/CounterList"
 
@@ -17,21 +16,22 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <h1>Submit deck code</h1>
-          <br />
+          <div className="header">
+            <h1>Tati's LOR Mulligan Simulator</h1>
+          </div>
           <div className="grid-container">
             <div className="deck">
               <DeckInput />
-              <Test/>
+              <Test />
               <DeckList />
             </div>
             <div className="rules">
-              <RulesContainer/>
+              <TabsContainer />
             </div>
-            <div className="sim">
+            {/* <div className="sim">
               <NumberSimInput/>
               <CounterList/>
-            </div>
+            </div> */}
           </div>
         </Provider>
       </div>

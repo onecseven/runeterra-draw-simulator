@@ -5,16 +5,18 @@ import { validateMulligan } from "../features/utils/validateMulligan"
 import {
   getNumberOfTurns,
   getMulliganedHands,
-} from "../features/simulation/simulateMulligan"
-import { countTags } from "../features/simulation/simulateCounter"
-import { checkArrays } from "../features/utils/generic/array-equality"
+} from "../features/utils/simulateMulligan"
+import { countTags } from "../features/utils/simulateCounter"
+import { ACTIONS } from "./constants"
+import { deckFilter } from "../features/utils/deckFilter"
 
 export interface tagInitialState {
   counters: {
     [id: number]: {
       //should match Counter["id"]
       tag: Tag
-      hits: Card["code"][][]
+      // hits: Card["code"][][]
+      hits: number
     }
   }
 }
@@ -23,7 +25,7 @@ const tagInitialState: tagInitialState = {
   counters: {},
 }
 
-let hands: hand[] = []
+let hands: number = 0
 
 const mulliganInitialState: MulliganQuery[] = []
 
@@ -33,84 +35,126 @@ type deckInitialState = {
 }
 
 const deckInitialState: deckInitialState = {
-  code: "",
+  code: null,
   cards: [],
+}
+
+const initialState = {
+  deck: deckInitialState,
+  tags: tagInitialState,
+  mulliganQueries: mulliganInitialState,
+  simulations: {
+    hands,
+  },
 }
 
 export const dataSlice = createSlice({
   name: "data",
-  initialState: {
-    deck: {
-      code: null,
-      cards: [],
-    },
-    tags: tagInitialState,
-    mulliganQueries: mulliganInitialState,
-    simulations: {
-      hands,
-    },
-  },
+  initialState: initialState,
   reducers: {
-    addDeck: (state, action: Actions.addDeck) => {
+    addDeck: (state, action: Actions.data.addDeck) => {
       let { code } = action.payload
-      //maybe have a verify clause here?
       let cards = deckCodeTranslation(code)
-      state.deck.code = code
-      state.deck.cards = cards
+      if (!cards || cards.length < 40) {
+        action.asyncDispatch({ type: "ui/setDeckInputFailure", payload: null })
+        return state
+      }
+      state = {
+        ...initialState,
+        deck: {
+          code: code,
+          cards: cards,
+        },
+      }
+      action.asyncDispatch({ type: "ui/setDeckInputSuccess", payload: null })
       return state
     },
-    addMulligan: (state, action: Actions.addMulligan) => {
-      const { mulliganAction, condition, referent, reference } = action.payload
-      if (validateMulligan(referent, mulliganAction, condition, reference)) {
-        let query = {
-          referent,
-          priority: 1,
-          onHit: {
-            action: mulliganAction,
-            condition,
-            referenceCard: reference,
-          },
+    addMulligan: (state, action: Actions.data.addMulligan) => {
+      const mulliganQuery = action.payload
+      if (validateMulligan(mulliganQuery)) {
+        if (mulliganQuery.referent === "ALL") {
+          action.asyncDispatch({
+            type: "data/addMulliganToAll",
+            payload: mulliganQuery,
+          })
+          return state
         }
-        state.mulliganQueries.push(query)
+        state.mulliganQueries.unshift(mulliganQuery)
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationSuccess",
+          payload: null,
+        })
+      } else {
+        action.asyncDispatch({
+          type: "ui/setNotificationFailure",
+          payload: null,
+        })
       }
       return state
     },
-    removeMulligan: (state, action: Actions.removeMulligan) => {
+    addMulliganToAll: (state, action: Actions.data.addMulliganToAll) => {
+      let lastCard
+      state.deck.cards.forEach((card) => {
+        if (lastCard === card.code) return
+        action.asyncDispatch({
+          type: "data/addMulligan",
+          payload: {
+            ...action.payload,
+            referent: card.code,
+          },
+        })
+        lastCard = card.code
+      })
+    },
+    removeMulligan: (state, action: Actions.data.removeMulligan) => {
       let { index } = action.payload
       state.mulliganQueries.splice(index, 1)
     },
-    addTag: (state, action: Actions.addTag) => {
+    addTag: (state, action: Actions.data.addTag) => {
       let tag = tagValidator(action.payload, [])
       if (tag) {
         let id = Object.keys(state.tags.counters).length
         state.tags.counters[id] = {
           tag,
-          hits: [],
+          hits: 0,
         }
-        return state
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationSuccess",
+          payload: null,
+        })
+      } else {
+        action.asyncDispatch({ type: "ui/clearUI", payload: null })
+        action.asyncDispatch({
+          type: "ui/setNotificationFailure",
+          payload: null,
+        })
       }
+      return state
     },
-    runMulligan: (state, action: Actions.runMulligan) => {
-      let { numberOfSimulations } = action.payload
-      let hands = getMulliganedHands({
-        deck: state.deck.cards,
-        mulliganQueries: state.mulliganQueries,
-        numberOfSimulations,
-      })
-      let numberOfTurns = getNumberOfTurns(state.tags.counters)
-      let formattedHands = hands.map((hand) => hand.slice(0, numberOfTurns+4)).map((cards) => {
-        return { cards, read: false }
-      })
-      state.simulations.hands = state.simulations.hands.concat(formattedHands)
+    runMulligan: (state, action: Actions.data.runMulligan) => {
+      // let { numberOfSimulations } = action.payload
+      // let hands = getMulliganedHands({
+      //   deck: state.deck.cards,
+      //   mulliganQueries: state.mulliganQueries,
+      //   numberOfSimulations,
+      // })
+      // let numberOfTurns = getNumberOfTurns(state.tags.counters)
+      // let formattedHands = hands.map((hand) => hand.slice(0, numberOfTurns+4)).map((cards) => {
+      //   return { cards, read: false }
+      // })
+      // state.simulations.hands = state.simulations.hands.concat(formattedHands)
+      // action.asyncDispatch({type: "data/runTags", payload: null})
     },
-    runTags: (state, action: Actions.runTags) => {
-      state.tags.counters = countTags({
-        hands: state.simulations.hands,
-        tags: state.tags.counters,
-      })
+    runTags: (state, action: Actions.data.runTags) => {
+      let { index, hits, hands } = action.payload
+      state.tags.counters[index].hits = hits
+      state.simulations.hands = hands
+      action.asyncDispatch({ type: "ui/setSpinnerOff", payload: null })
     },
-    removeTag: (state, action: Actions.removeTag) => {
-      let {index} = action.payload
+    removeTag: (state, action: Actions.data.removeTag) => {
+      let { index } = action.payload
       let newTags = {}
       for (let key in state.tags.counters) {
         if (key === index.toString()) continue
@@ -122,7 +166,7 @@ export const dataSlice = createSlice({
       }
       state.tags.counters = newTags
     },
-  }
+  },
 })
 
 export const {
@@ -132,7 +176,7 @@ export const {
   runMulligan,
   runTags,
   removeMulligan,
-  removeTag
+  removeTag,
 } = dataSlice.actions
 
 export default dataSlice.reducer

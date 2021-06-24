@@ -1,5 +1,7 @@
-* Tasklist
-** DONE Receive decklists
+*
+
+* TASKLIST
+**  DONE Receive decklists
 *** DONE Input field for deck code
 *** DONE Deck code validity checker? Or does the lor-decode package contain that?
 *** DONE Action, reducers for this. Also figure out a structure for the code.
@@ -19,23 +21,74 @@
 *** DONE Write a component that can write MULTIPLE tags and send them to the store
 ** DONE Migrate to typescript!!!
 ** DONE Function that looks up cards given a card code. But from the decklist.
-** TODO Add the ability to "KEEP" all copies, 2 or 1 ofs.
-*** TODO Add a new mulligan action, "KEEP_ONE" and "KEEP_TWO"
-*** TODO Replace "KEEP" with "KEEP_ALL"
+** DONE Add the ability to "KEEP" all copies, 2 or 1 ofs.
+*** DONE Add a new mulligan action, "KEEP_ONE" and "KEEP_TWO"
+*** DONE Replace "KEEP" with "KEEP_ALL"
 ** DONE Add new component that displays how many hits each counters receive.[CounterDisplay.tsx]
 *** TODO And, if loaded, shows which cards the hand drew.
 ** DONE remove action for tags
 *** DONE think about how to approach this
 ** DONE remove action for mulligans
-** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
-** TODO Non-destructive Update deck
+** WAIT Export/Import JSON of Mulligan/Tag/Deck combinations
+** WAIT Non-destructive Update deck
 *** TODO Deck Update action
 **** Deck Update should include code that sanitizes tags/mulligans if they combinations
 **** cards that are no longer present and delete them if necessary
 *** TODO Override modal?
  
-* New UI Design
-** TODO Design New Workflow / Views
-*** Keep USABILITY in mind.
-*** Use canvas? 
-** TODO Maybe a HELP component
+ 
+** New UI Design
+** DONE Design New Workflow / Views
+*** DONE Replace the DeckList component with a box with the card images 
+*** DONE Replace the RadioChoices component with a list Radio Choice component that looks like this:
+  [radio](https://tailwindui.com/img/components/radio-groups.02-list-with-description-xl.png)
+**** DONE Messing around with Radio Choices and MulliganQuery, has made me cognizant that CSS alone
+     will be able to accomplish the above change, but I feel that it is warranted that we break
+     up MulliganQueryBuilder into subcomponents for further fine-tuning.
+*** DONE Replace RulesContainer with the following tab system
+  https://codepen.io/wallaceerick/pen/
+*** DONE Take TagList and MulliganList out of MulliganContainer/Tag Container and put it below it in its own div. It
+    might be necessary to odo this before replacing RulesContainer with the tab system. It might even be necessary to
+    rework the Two Containers into just RulesContainer and have a ListContainer below. We might need to used
+    uiSlice to handle switching between components.
+*** DONE Find a nice drop down.
+*** DONE Style tagQueryBuilder
+*** DONE Make a new component that lets ExtensibleCardChooser know how many cards to display
+**** DONE connect tagQueryBuilder components to UI store!!
+***** DONE It should send a number to the UI store
+***** DONE ExtensibleCardChooser should read defaultNumber from the store
+**** DONE Figure out a way to make this dropdown and the turn picker be like a square
+*** DONE Make an UI store
+**** DONE Connect addTag to the UI store
+*** DROP Changing tabs should clear UI store.
+
+
+* CRUNCH 
+*** DONE Create a new List component: Review.tsx
+**** DONE Gotta join TagList/MulliganList in a half and half tab
+**** DONE Create grid layout
+**** DONE Style RemoveButton
+**** DONE Make the CounterList cards small. 
+*** DONE "Mulligan/Tag Added" Component
+**** DONE Let's add it right next to the submit buttons
+**** DONE A little notif or something with ur added thing
+**** DONE Style the Notif component
+*** DONE Redo the Simulation Component
+**** DONE Add a NumberSimInput component to figure out how many hands to calculate
+**** DONE Once we have calculated, then render features/rules/tags/tag displays/CounterList beneath it
+**** DONE Style the above components
+***** DONE Label for input box
+***** DONE Style the button to the slidey Once
+***** A number on the right for hands counted (CounterList or NumberSimInput)
+*** DONE NOW Update Card Library
+*** DROP Border component for DeckList (CSS)
+*** TODO Help Component
+*** DONE Rename "LINK" tagtype lol
+*** DONE We need an "ANY" tagtype lmao
+*** DONE [BREAKING] Trying to replace the deck via addDeck after using the test settings breaks the package 
+
+* LOW PRIORITY
+**** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
+***** TODO Selected cards apply a selection thing on the decklist
+**** DONE Sending empty string into DeckInput crashes the app
+

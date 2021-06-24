@@ -1,5 +1,4 @@
-import { isKeyword } from "./typeGuards";
-
+import { isKeyword } from "./typeGuards"
 
 export const tagValidator = (
   { type, turn, referents = null, groupName = null }: Tag,
@@ -7,29 +6,29 @@ export const tagValidator = (
 ): Tag => {
   switch (type) {
     case "WITH": {
-      if (referents)
-        return { type, turn, referents, groupName};
-      break;
+      if (referents && referents.length > 0 ) {
+        return { type, turn, referents, groupName }
+      }
+      break
     }
     case "SEQUENCE": {
-      if (referents)
-        return { type, turn, referents , groupName};
-      break;
+      if (referents && referents.length > 0 ) return { type, turn, referents, groupName }
+      break
     }
     case "WITHOUT": {
-      if (referents)
-        return { type, turn, referents , groupName};
-      break;
+      if (referents && referents.length > 0 ) return { type, turn, referents, groupName }
+      break
     }
     case "KEYWORD": {
-      if (isKeyword(groupName)) {
-        return { type, turn, groupName, referents };
+      if (isKeyword(groupName) && referents && referents.length > 0) {
+        return { type, turn, groupName, referents }
       }
 
-      break;
+      break
     }
-    case "GROUP": {
-      return { type, turn, groupName, referents };
+    case "ANY": {
+      return { type, turn, referents }
     }
   }
-};
+  return null
+}
