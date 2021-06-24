@@ -13,7 +13,7 @@ export const TagList = () => {
   }
 
   return (<ul>
-    {...queryElements.map((query, index) => {
+    {queryElements.map((query, index) => {
       return (
         <li style={{"textIndent": "5%"}} key={`tagListIndex${index}`}>
           <Tag tag={query}/>

@@ -28,7 +28,7 @@ export const MulliganList = () => {
   return (
     <ul>
       <>
-        {...ruleElements}
+        {ruleElements}
       </>
     </ul>
   )

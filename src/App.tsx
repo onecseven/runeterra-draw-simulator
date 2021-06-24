@@ -6,10 +6,7 @@ import { DeckInput } from "./features/deck/DeckInput"
 import "./App.scss"
 import { DeckList } from "./features/deck/DeckList"
 import { TabsContainer } from "./features/TabsContainer"
-import { NumberSimInput } from "./features/simulation/NumberSimInput"
-import { CounterList } from "./features/rules/tags/tag displays/CounterList"
 
-import { Test } from "./features/test/Test"
 
 class App extends Component {
   render() {
@@ -22,16 +19,11 @@ class App extends Component {
           <div className="grid-container">
             <div className="deck">
               <DeckInput />
-              <Test />
               <DeckList />
             </div>
             <div className="rules">
               <TabsContainer />
             </div>
-            {/* <div className="sim">
-              <NumberSimInput/>
-              <CounterList/>
-            </div> */}
           </div>
         </Provider>
       </div>

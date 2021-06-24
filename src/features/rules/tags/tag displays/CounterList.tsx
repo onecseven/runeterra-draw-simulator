@@ -14,7 +14,7 @@ export const CounterList = () => {
   }
 
   return (<ul>
-    {...counterElements.map((counter) => {
+    {counterElements.map((counter) => {
       return (
         <li >
           <>

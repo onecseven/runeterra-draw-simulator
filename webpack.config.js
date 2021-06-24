@@ -1,11 +1,29 @@
 const path = require("path")
 const webpack = require("webpack")
 var HtmlWebpackPlugin = require("html-webpack-plugin")
+const CompressionPlugin = require("compression-webpack-plugin")
+var DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 
 module.exports = (env, argv) => {
   const dev = argv.mode === "development"
-
   const plugins = [new HtmlWebpackPlugin()]
+  if (!dev) {
+    plugins.concat([
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify("production"),
+        },
+      }),
+      new DuplicatePackageCheckerPlugin(),
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new CompressionPlugin({
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      })
+    ])
+  }
 
   if (dev) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -29,9 +47,9 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader",],
-        }
-      ],      
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
+      ],
     },
     resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
     output: {
@@ -45,5 +63,6 @@ module.exports = (env, argv) => {
       hotOnly: true,
     },
     plugins,
+
   }
 }
