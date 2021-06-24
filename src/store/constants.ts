@@ -54,6 +54,6 @@ export const CONDITIONS: UIElementIterator<mulliganCondition>[] = [
 export const ACTIONS: UIElementIterator<mulliganAction>[] = [
   { value: "KEEP_ALL", name: "Keep all copies that show up" },
   { value: "KEEP_ONE", name: "Keep only one copy" },
-  { value: "KEEP_TWO", name: "Keep two copies (will keep at least one)" },
+  { value: "KEEP_TWO", name: "Keep two copies but throw the third" },
   { value: "THROW", name: "Throw" },
 ]

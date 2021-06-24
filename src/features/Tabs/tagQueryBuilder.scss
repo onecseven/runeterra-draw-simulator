@@ -8,6 +8,13 @@ $highlight: #8c325e;
 }
 .tag {
   grid-area: tag;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
   padding: 5%;
   margin-left: 10%;
 }
@@ -17,6 +24,13 @@ $highlight: #8c325e;
 }
 
 .cardAmount {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
   grid-area: cardAmount;
   border-left: 3px solid $highlight;
   padding-left: 5%;
@@ -33,6 +47,14 @@ $highlight: #8c325e;
 }
 
 .turn {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 15px 0px; 
+  grid-template-areas: 
+    "."
+    "."; 
+
   grid-area: turn;
   margin-left: 5px;
   border-left: 3px solid $highlight;

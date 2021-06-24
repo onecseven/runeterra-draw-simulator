@@ -17,7 +17,7 @@ export const MulliganConditionRadio = () => {
   
   return (
     <>
-      <p>Under what conditions should the mulligan action be taken?</p>
+      <p>When should the mulligan action be taken?</p>
       <RadioChoices
         options={CONDITIONS}
         name={`conditions radio border ${isChrome ? "chrome-radio" : ""}`}

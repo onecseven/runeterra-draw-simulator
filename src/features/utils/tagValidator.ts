@@ -26,9 +26,9 @@ export const tagValidator = (
 
       break
     }
-    // case "GROUP": {
-    //   return { type, turn, groupName, referents }
-    // }
+    case "ANY": {
+      return { type, turn, referents }
+    }
   }
   return null
 }

@@ -16,13 +16,7 @@ import { StyledDropdown } from "../utils/generic/UI/StyledDropdown/StyledDropdow
 import { NotificationFeedback } from "../rules/NotificationFeedback"
 
 const ALL = {name: "All", value: "ALL"}
-const sortingCost = (a,b) => {
-  if (a.cost > b.cost) {
-    return 1
-  } else if (a.cost < b.cost) {
-    return -1
-  } else return 0
-}
+
 
 export const MulliganQueryBuilder = () => {
   const deck = useSelector((state) => state.data.deck.cards)
@@ -40,7 +34,7 @@ export const MulliganQueryBuilder = () => {
   */
 
   if (deck.length == 0) return <NoDeck />
-  let deckOptions = deckFilter(deck).sort(sortingCost)
+  let deckOptions = deckFilter(deck)
   let deckOptionsWithAll = [ALL].concat(deckOptions.slice())
   let secondDeckDropdownVisibility =
     query.onHit.condition === "ALWAYS" || query.referent === null
@@ -51,7 +45,7 @@ export const MulliganQueryBuilder = () => {
       className="mulliganQueryBuilder"
       key={formKey}
     >
-      <p>Pick a card to add a mulligan rule:</p>
+      <p>Pick a card:</p>
       <StyledDropdown
         options={deckOptionsWithAll}
         name={"reference"}
@@ -77,7 +71,7 @@ export const MulliganQueryBuilder = () => {
           style={{ marginTop: "20px" }}
           type="submit"
         >
-          Submit mulligan rule
+          Add mulligan rule
         </button>
         <div style={{"display": "inline-block"}}>
           <NotificationFeedback source={"Mulligan"} />

@@ -23,7 +23,7 @@ export const DeckInput = () => {
         onSubmit={handleSubmit}
         placeholder={deckCode ? deckCode : "Paste your deck code here"}
         type="text"
-        buttonText="Submit"
+        buttonText="Import"
       />
     </>
   )

@@ -3,7 +3,7 @@ import React, { useState } from "react"
 declare interface collapsableProps {
   name: string
   children: React.ReactNode
-  className: string
+  className?: string
   openedByDefault: boolean
 }
 
