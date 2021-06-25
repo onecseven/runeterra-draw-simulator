@@ -7,13 +7,11 @@ export const CardLookup = (cardCode: string): Card => {
   }
   let card = {
     name: preCard.name,
-    code: preCard.cardCode,
+    code: cardCode,
     assets: preCard.assets,
     region: preCard.region,
     cost: preCard.cost,
     keywords: preCard.keywords,
-    type: preCard.type,
-    supertype: preCard.supertype,
   }
   return card || null
 }
