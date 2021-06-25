@@ -29,13 +29,7 @@
 ** DONE remove action for tags
 *** DONE think about how to approach this
 ** DONE remove action for mulligans
-** WAIT Export/Import JSON of Mulligan/Tag/Deck combinations
-** WAIT Non-destructive Update deck
-*** TODO Deck Update action
-**** Deck Update should include code that sanitizes tags/mulligans if they combinations
-**** cards that are no longer present and delete them if necessary
-*** TODO Override modal?
- 
+
  
 ** New UI Design
 ** DONE Design New Workflow / Views
@@ -82,13 +76,18 @@
 ***** A number on the right for hands counted (CounterList or NumberSimInput)
 *** DONE NOW Update Card Library
 *** DROP Border component for DeckList (CSS)
-*** TODO Help Component
+*** DONE Help Component
 *** DONE Rename "LINK" tagtype lol
 *** DONE We need an "ANY" tagtype lmao
 *** DONE [BREAKING] Trying to replace the deck via addDeck after using the test settings breaks the package 
 
-* LOW PRIORITY
-**** TODO Redesign selectedCard action and have the selected card be the default in the dropdowns
-***** TODO Selected cards apply a selection thing on the decklist
+* FEATURE UPDATES
+**** DROP Redesign selectedCard action and have the selected card be the default in the dropdowns
+***** DROP Selected cards apply a selection thing on the decklist
 **** DONE Sending empty string into DeckInput crashes the app
-
+**** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
+***** TODO Download specific ones as matchup profiles.
+***** TODO Matchup Profile Viewer.
+**** TODO Deck Editor?
+**** TODO Lazy Loading the card info later after rendeer
+**** DONE Non-destructive Update deck
