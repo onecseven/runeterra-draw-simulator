@@ -53,7 +53,7 @@ module.exports = (env, argv) => {
     },
     resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
     output: {
-      path: path.resolve(__dirname, "dist/"),
+      path: path.resolve(__dirname, "build/"),
       filename: "bundle.js",
     },
     devServer: {
