@@ -5,14 +5,23 @@ import {
 } from "../../store/hooks"
 import { addDeck } from "../../store/dataSlice"
 import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
+import { deckCodeTranslation } from "../utils/Deck-Code-Lookup"
+import { setDeckInputFailure, setDeckInputSuccess } from "../../store/uiSlice"
 
 export const DeckInput = () => {
   const dispatch = useDispatch()
   const deckCode = useSelector((state) => state.data.deck.code)
   const notif = useSelector((state) => state.ui.deckInputNotif)
-  const handleSubmit = (code) => {
+  const handleSubmit = async (code) => {
     event.preventDefault()
-    dispatch(addDeck({ code }))
+    try {
+      let cards = await deckCodeTranslation(code)
+      dispatch(addDeck({cards, code}))
+      dispatch(setDeckInputSuccess())
+    } catch (e) {
+      console.error(e)
+      dispatch(setDeckInputFailure())
+    }
   }
 
   return (
