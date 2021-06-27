@@ -53,21 +53,9 @@ export const dataSlice = createSlice({
   initialState: initialState,
   reducers: {
     addDeck: (state, action: Actions.data.addDeck) => {
-      let { code } = action.payload
-      let cards = deckCodeTranslation(code)
-      if (!cards || cards.length < 40) {
-        action.asyncDispatch({ type: "ui/setDeckInputFailure", payload: null })
-        return state
-      }
-      state = {
-        ...initialState,
-        deck: {
-          code: code,
-          cards: cards,
-        },
-      }
-      action.asyncDispatch({ type: "ui/setDeckInputSuccess", payload: null })
-      return state
+      let {cards, code} = action.payload
+      state.deck.cards = cards
+      state.deck.code = code
     },
     addMulligan: (state, action: Actions.data.addMulligan) => {
       const mulliganQuery = action.payload

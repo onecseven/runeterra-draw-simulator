@@ -9,6 +9,7 @@ declare namespace Actions {
     type addDeck = {
       type: "data/addDeck"
       payload: {
+        cards: Card[]
         code: string
       }
       asyncDispatch: (action: action) => any
