@@ -2,6 +2,7 @@ import { every } from "../utils/generic/every"
 import { tagInitialState } from "../../store/dataSlice"
 import { isSequenceInTarget } from "../utils/generic/isSequenceInTarget"
 import { any } from "./generic/any"
+import { some } from "./generic/some"
 
 let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
   let { type, referents } = tag
@@ -10,7 +11,7 @@ let tagVerification = (tag: Tag, hand: Card["code"][]): boolean => {
       return every(referents, hand)
     }
     case "WITHOUT": {
-      return !every(referents, hand)
+      return some(referents, hand)
     }
     case "ANY": {
       return any(referents, hand)
