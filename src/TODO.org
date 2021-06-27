@@ -85,9 +85,13 @@
 **** DROP Redesign selectedCard action and have the selected card be the default in the dropdowns
 ***** DROP Selected cards apply a selection thing on the decklist
 **** DONE Sending empty string into DeckInput crashes the app
+**** DONE [BUG FIX] Mulligan
+**** DONE Made a specific function for the WITHOUT TagType
 **** TODO Export/Import JSON of Mulligan/Tag/Deck combinations
 ***** TODO Download specific ones as matchup profiles.
 ***** TODO Matchup Profile Viewer.
 **** TODO Deck Editor?
 **** TODO Lazy Loading the card info later after rendeer
+**** TODO Readd priority system to  to mulligans so if several Mulligans are true at the same time, then you only do highest priority.
+**** TODO Make kick the default action?
 **** DONE Non-destructive Update deck
