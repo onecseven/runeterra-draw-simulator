@@ -39,7 +39,7 @@ export const Help = (props) => {
         specified cards are not together. You can use this if you want to know
         how often you will draw either Atrocity or They Who Endure without
         drawing the other by a specified turn. This will count a hit when you
-        don't draw a specific group of a cards.
+        don't draw a specific group of a cards. It will not count a hit when you don't draw either!
       </Collapsable>
       <Collapsable
         name="Keyword Counters"
