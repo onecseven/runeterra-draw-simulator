@@ -13,7 +13,7 @@ export const tagLabel = (tag: Tag): string => {
       return `Every hand that draws the following cards by turn ${turn} (in any order)`
     }
     case "WITHOUT": {
-      return `Every hand that does not draw the following cards together by turn ${turn}. `
+      return `Every hand that draws some, but not all of the following cards, by ${turn}. (excluding hands where none are drawn) `
     }
     case "SEQUENCE": {
       return `Every hand that draws the following cards together by turn ${turn}, in the following order.`
