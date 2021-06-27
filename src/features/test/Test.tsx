@@ -7,7 +7,7 @@ export const Test = () => {
   
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(addDeck({code: 'CEBAIAIFB4WDANQIAEAQGDAUDAQSIJZUAIAQCBIFAEAQCBAA'}))
+    // dispatch(addDeck({code: 'CEBAIAIFB4WDANQIAEAQGDAUDAQSIJZUAIAQCBIFAEAQCBAA'}))
     dispatch(addMulligan({
       onHit: {action: "THROW", condition: "ALWAYS",  referenceCard: null}, referent: "01SI015", priority: 1}))
     dispatch({type: "data/addTag", payload: {
