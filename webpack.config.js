@@ -6,7 +6,7 @@ var DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-p
 
 module.exports = (env, argv) => {
   const dev = argv.mode === "development"
-  const plugins = [new HtmlWebpackPlugin()]
+  const plugins = [new HtmlWebpackPlugin({title: "Tati's Mulligan Machine"})]
   if (!dev) {
     plugins.concat([
       new webpack.DefinePlugin({

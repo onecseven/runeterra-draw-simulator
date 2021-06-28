@@ -6,7 +6,13 @@ import { DeckInput } from "./features/deck/DeckInput"
 import "./App.scss"
 import { DeckList } from "./features/deck/DeckList"
 import { TabsContainer } from "./features/TabsContainer"
+import ReactGA from 'react-ga'
 
+ReactGA.initialize('UA-200558230-1', {gaOptions: {
+  siteSpeedSampleRate: 100
+}});
+
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 class App extends Component {
   render() {
