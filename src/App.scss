@@ -37,8 +37,6 @@ h3 {
   margin-bottom: 5%;
 }
 
-
-
 .SUCCESS > form > input {
   box-shadow: 0 0 0 2px #7ca43c;
 }
@@ -180,4 +178,58 @@ span {
 
 .normalpointer {
   cursor: default;
+}
+
+.rotate {
+  visibility: hidden;
+  max-height: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    text-align: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "deck"
+      "rules";
+  }
+  .deckbox {
+    display: none;
+  }
+  .select {
+    height: 50px;
+  }
+  .rotate {
+    margin-top: 2%;
+    text-align: center;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    overflow-y: hidden;
+    max-height: 0;
+
+  }
+  @media only screen and (orientation: portrait) {
+    .rotate {
+      display: block;
+      max-height: 500px; /* approximate max height */
+
+    }
+    .rotate-img {
+      background: darken(#162944, 10);
+      border-radius: 5px;
+      visibility: visible;
+    }
+  }
+  @media only screen and (orientation: landscape) {
+    .rotate {
+      max-height: 500px;
+    }
+  }
 }
