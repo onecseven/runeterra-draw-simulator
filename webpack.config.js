@@ -3,10 +3,16 @@ const webpack = require("webpack")
 var HtmlWebpackPlugin = require("html-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin")
 var DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const dev = argv.mode === "development"
-  const plugins = [new HtmlWebpackPlugin({title: "Tati's Mulligan Machine"})]
+  const plugins = [new HtmlWebpackPlugin({title: "Tati's Mulligan Machine"}), new CopyWebpackPlugin({
+    patterns: [
+      { from: "./src/images", to: "images" },
+    ],
+  }),]
+  
   if (!dev) {
     plugins.concat([
       new webpack.DefinePlugin({

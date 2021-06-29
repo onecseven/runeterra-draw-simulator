@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
         <div className="rotate">
           <img
-            src={"./assets/icon-horizontal.png"}
+            src={"./images/icon-horizontal.png"}
             alt={"please rotate your cellphone"}
             width="100" 
             height="60"
