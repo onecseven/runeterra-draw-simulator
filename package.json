@@ -5,17 +5,11 @@
   "main": "./dist/app/src/index.js",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
-    "compass-sass-mixins": "^0.12.7",
-    "compression-webpack-plugin": "^8.0.0",
-    "css-loader": "^5.2.6",
-    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "lor-deckcodes-ts": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
-    "react-hot-loader": "^4.13.0",
-    "react-redux": "^7.2.3",
-    "style-loader": "^3.0.0"
+    "react-redux": "^7.2.3"
   },
   "scripts": {
     "build": "webpack --mode production",
@@ -44,6 +38,12 @@
     ]
   },
   "devDependencies": {
+    "react-hot-loader": "^4.13.0",
+    "compass-sass-mixins": "^0.12.7",
+    "compression-webpack-plugin": "^8.0.0",
+    "css-loader": "^5.2.6",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "style-loader": "^3.0.0",
     "@babel/cli": "^7.14.5",
     "@babel/core": "7.7.0",
     "@babel/preset-env": "7.7.1",

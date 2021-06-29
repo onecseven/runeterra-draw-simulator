@@ -181,8 +181,7 @@ span {
 }
 
 .rotate {
-  visibility: hidden;
-  max-height: 0;
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -208,28 +207,19 @@ span {
   .rotate {
     margin-top: 2%;
     text-align: center;
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-    overflow-y: hidden;
-    max-height: 0;
-
   }
   @media only screen and (orientation: portrait) {
     .rotate {
       display: block;
-      max-height: 500px; /* approximate max height */
-
     }
     .rotate-img {
       background: darken(#162944, 10);
       border-radius: 5px;
-      visibility: visible;
     }
   }
   @media only screen and (orientation: landscape) {
     .rotate {
-      max-height: 500px;
+      display:none;
     }
   }
 }
