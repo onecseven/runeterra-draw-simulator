@@ -1,14 +1,13 @@
 import React, { useState } from "react"
+import ReactGA from "react-ga"
 import {
   useAppDispatch as useDispatch,
   useAppSelector as useSelector,
 } from "../../store/hooks"
-import { runMulligan, tagInitialState, runTags} from "../../store/dataSlice"
+import { runTags } from "../../store/dataSlice"
 import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
-import { setSpinnerOn } from "../../store/uiSlice"
 import { countTags } from "../utils/simulateCounter"
 import { getMulliganedHands, getNumberOfTurns } from "../utils/simulateMulligan"
-import { useStateCallback } from "../utils/generic/useStateCallback"
 
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
@@ -18,15 +17,22 @@ export const NumberSimInput = () => {
 
   const handleSubmit = (numberOfSimulations) => {
     event.preventDefault()
-    setTimeout(() => dispatch(setSpinnerOn()), 1)
+    ReactGA.event({
+      category: "Calculated Deck",
+      action: "Did the whole workflow",
+    })
     setTimeout(() => {
       if (numberOfSimulations > 100000) numberOfSimulations = 100000
       let turns = getNumberOfTurns(counters)
-      let hands = getMulliganedHands({deck, numberOfSimulations, mulliganQueries}).map(hand => hand.slice(0, turns+4))
+      let hands = getMulliganedHands({
+        deck,
+        numberOfSimulations,
+        mulliganQueries,
+      }).map((hand) => hand.slice(0, turns + 4))
       for (let index in counters) {
         let tag = counters[index].tag
         let hits = countTags({ hands, tag })
-        dispatch(runTags({index: Number(index), hits, hands: hands.length}))
+        dispatch(runTags({ index: Number(index), hits, hands: hands.length }))
       }
     }, 2)
   }
