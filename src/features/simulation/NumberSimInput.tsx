@@ -9,6 +9,12 @@ import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
 import { countTags } from "../utils/simulateCounter"
 import { getMulliganedHands, getNumberOfTurns } from "../utils/simulateMulligan"
 
+ReactGA.initialize("UA-200558230-1", {
+  gaOptions: {
+    siteSpeedSampleRate: 100,
+  },
+})
+
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
   const mulliganQueries = useSelector((state) => state.data.mulliganQueries)
