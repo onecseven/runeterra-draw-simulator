@@ -143,16 +143,19 @@ export const dataSlice = createSlice({
     },
     removeTag: (state, action: Actions.data.removeTag) => {
       let { index } = action.payload
-      let newTags = {}
+      let newTagsArr = []
+      let newTagsObj = {}
       for (let key in state.tags.counters) {
         if (key === index.toString()) continue
-        let id = Object.keys(newTags).length
-        newTags[id] = {
-          tag: state.tags.counters[id].tag,
-          hits: state.tags.counters[id].hits,
-        }
+        newTagsArr.push({
+          tag: state.tags.counters[key].tag,
+          hits: state.tags.counters[key].hits,
+        })
       }
-      state.tags.counters = newTags
+      for (let index in newTagsArr) {
+        newTagsObj[index.toString()] = newTagsArr[index]
+      }
+      state.tags.counters = newTagsObj
     },
   },
 })
