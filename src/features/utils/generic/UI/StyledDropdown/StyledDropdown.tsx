@@ -15,12 +15,11 @@ export const StyledDropdown = <Z extends string | number>({
 }: Dropdown.props<Z>) => {
   const [active, setActive] = useState(false)
   const [selection, setSelection] = useState<string | number>(defaultStr ? defaultStr : options[0].name)
-  const [key, reset] = useReset()  
   const toggleActive = () => setActive(!active)
   const handleSelect = (value, name) => {
     setSelection(name)
-    onSelectedChange(value)
     toggleActive()
+    onSelectedChange(value)
   }
 
   return (
@@ -38,7 +37,7 @@ export const StyledDropdown = <Z extends string | number>({
         {options.map(({ value, name }, index) => {
           if (name === selection) return
           return (
-            <li key={`${key}+${index}`} onClick={() => handleSelect(value, name)} value={value}>
+            <li key={`${Math.random()}+${index}`} onClick={() => handleSelect(value, name)} value={value}>
               {name}
             </li>
           )
