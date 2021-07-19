@@ -17,6 +17,7 @@ export const ExtensibleCardChooser = () => {
   const handleChange = (code, index) => {
     dispatch(setTagReferents({code, index}))
   }
+
   let elements = []
   doTimes(() => {
     let id = elements.length
@@ -26,7 +27,6 @@ export const ExtensibleCardChooser = () => {
           options={deckOptions}
           name={`referents`}
           onSelectedChange={(code) => handleChange(code, id)}
-          defaultStr="Choose a card"
         />
       </div>)
     )
