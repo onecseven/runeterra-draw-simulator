@@ -14,9 +14,9 @@ export const CounterList = () => {
   }
 
   return (<ul>
-    {counterElements.map((counter) => {
+    {counterElements.map((counter, index) => {
       return (
-        <li >
+        <li key={`counterList${index}`}>
           <>
           <Tag tag={counter.tag}/>
           <p> 🔶 Hit Percentage: {((counter.hits / hands) * 100).toFixed(2)}% ({counter.hits} out of {hands})</p>
