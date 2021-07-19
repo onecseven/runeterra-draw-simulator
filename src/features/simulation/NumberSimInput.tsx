@@ -9,11 +9,6 @@ import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
 import { countTags } from "../utils/simulateCounter"
 import { getMulliganedHands, getNumberOfTurns } from "../utils/simulateMulligan"
 
-ReactGA.initialize("UA-200558230-1", {
-  gaOptions: {
-    siteSpeedSampleRate: 100,
-  },
-})
 
 export const NumberSimInput = () => {
   const dispatch = useDispatch()
@@ -23,10 +18,6 @@ export const NumberSimInput = () => {
 
   const handleSubmit = (numberOfSimulations) => {
     event.preventDefault()
-    ReactGA.event({
-      category: "Calculated Deck",
-      action: "Did the whole workflow",
-    })
     setTimeout(() => {
       if (numberOfSimulations > 100000) numberOfSimulations = 100000
       let turns = getNumberOfTurns(counters)
