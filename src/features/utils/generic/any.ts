@@ -5,7 +5,7 @@ export let any = <T>(targets: T[], array: T[]): boolean => {
     const target = targets[i];
     let targetIsInArray = isValueInArray(array,target)
     if (targetIsInArray === false) {
-      return false
+      continue
     } else if (targetIsInArray) {
       return true
     }
