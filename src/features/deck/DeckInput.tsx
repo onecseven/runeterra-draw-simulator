@@ -8,7 +8,7 @@ import { InputBox } from "../utils/generic/UI/InputBox/InputBox"
 import { deckCodeTranslation } from "../utils/Deck-Code-Lookup"
 import { setDeckInputFailure, setDeckInputSuccess } from "../../store/uiSlice"
 
-export const DeckInput = () => {
+export const DeckInput = ({analytics}) => {
   const dispatch = useDispatch()
   const deckCode = useSelector((state) => state.data.deck.code)
   const notif = useSelector((state) => state.ui.deckInputNotif)
@@ -16,6 +16,7 @@ export const DeckInput = () => {
     event.preventDefault()
     try {
       let cards = await deckCodeTranslation(code)
+      analytics(code)
       dispatch(addDeck({cards, code}))
       dispatch(setDeckInputSuccess())
     } catch (e) {

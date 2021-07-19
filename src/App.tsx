@@ -24,9 +24,9 @@ class App extends Component {
           <img
             src={"./images/icon-horizontal.png"}
             alt={"please rotate your cellphone"}
-            width="100" 
+            width="100"
             height="60"
-            className="rotate-img" 
+            className="rotate-img"
           />
         </div>
 
@@ -36,7 +36,15 @@ class App extends Component {
           </div>
           <div className="grid-container">
             <div className="deck">
-              <DeckInput />
+              <DeckInput
+                analytics={(label) =>
+                  ReactGA.event({
+                    category: "Inputted a deck",
+                    action: "Did the whole workflow",
+                    label
+                  })
+                }
+              />
               <DeckList />
             </div>
             <div className="rules">
